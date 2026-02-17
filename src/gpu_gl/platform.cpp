@@ -1,7 +1,10 @@
-#include "platform_SDL3.hpp"
-#include "vane/log.hpp"
+#include "vane/platform.hpp"
 #include <SDL3/SDL.h>
-#include "gpu/opengl/gl.hpp"
+#include "gl.hpp"
+#include "vane/log.hpp"
+
+#include <filesystem>
+
 
 
 struct WindowImpl
@@ -36,16 +39,18 @@ struct WindowImpl
 };
 
 static WindowImpl windows_[WindowImpl::MAX_WINDOWS];
-
 static vane::vaneid_t WindowImpl_alloc(SDL_Window*, SDL_GLContext);
 static vane::VaneStat WindowImpl_free(SDL_WindowID);
 
 
-
-
-vane::PlatformSDL3::PlatformSDL3()
+vane::Platform::Platform()
 :   mRunning(true)
 {
+    {
+        namespace fs = std::filesystem;
+        fs::current_path(fs::path(SDL_GetBasePath()));
+    }
+
     if (false == SDL_Init(SDL_INIT_VIDEO))
     {
         VLOG_FATAL("{}", SDL_GetError());
@@ -59,12 +64,12 @@ vane::PlatformSDL3::PlatformSDL3()
     VLOG_INFO("SDL3 Initialized");
 }
 
-bool vane::PlatformSDL3::running()
+bool vane::Platform::running()
 {
     return mRunning;
 }
 
-void vane::PlatformSDL3::shutdown()
+void vane::Platform::shutdown()
 {
     VLOG_INFO("Shutdown initiated");
 
@@ -83,7 +88,7 @@ void vane::PlatformSDL3::shutdown()
 
 
 
-void vane::PlatformSDL3::update()
+void vane::Platform::update()
 {
     if (WindowImpl::numWindows_ == 0)
     {
@@ -131,7 +136,7 @@ void vane::PlatformSDL3::update()
 }
 
 
-vane::vaneid_t vane::PlatformSDL3::createWindow(const char *name, int w, int h)
+vane::vaneid_t vane::Platform::createWindow(const char *name, int w, int h)
 {
     if (WindowImpl::numWindows_ == WindowImpl::MAX_WINDOWS)
     {
@@ -158,20 +163,12 @@ vane::vaneid_t vane::PlatformSDL3::createWindow(const char *name, int w, int h)
         exit(1);
     }
 
+    SDL_SetWindowPosition(sdlWin, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+
     GLint major, minor;
     gl::GetIntegerv(GL_MAJOR_VERSION, &major);
     gl::GetIntegerv(GL_MINOR_VERSION, &minor);
     VLOG_INFO("Device supports up to OpenGL {}.{}", major, minor);
-
-    // SDL_Surface *sdlSurf = SDL_GetWindowSurface(sdlWin);
-    // if (sdlSurf == nullptr)
-    // {
-    //     VLOG_ERROR("{}", SDL_GetError());
-    //     SDL_DestroyWindow(sdlWin);
-    //     return VANEID_NONE;
-    // }
-
-    SDL_SetWindowPosition(sdlWin, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 
     vaneid_t sdlWinId = WindowImpl_alloc(sdlWin, sdlGlCtx);
     VLOG_INFO("Created window {}", sdlWinId);
@@ -180,7 +177,7 @@ vane::vaneid_t vane::PlatformSDL3::createWindow(const char *name, int w, int h)
 }
 
 
-vane::VaneStat vane::PlatformSDL3::destroyWindow(vane::vaneid_t sdlWinId)
+vane::VaneStat vane::Platform::destroyWindow(vane::vaneid_t sdlWinId)
 {
     VaneStat status = WindowImpl_free(sdlWinId);
     if (status == VaneStat::OK)

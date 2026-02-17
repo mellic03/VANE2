@@ -5,7 +5,8 @@
             "includePath": [
                 "${default}",
                 "${workspaceFolder}/include/",
-                "${workspaceFolder}/external/include/"
+                "${workspaceFolder}/external/include/",
+                "${workspaceFolder}/external/vulkan/1.4.341.1/x86_64/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

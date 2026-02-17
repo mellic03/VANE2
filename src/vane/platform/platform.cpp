@@ -1,2 +1,0 @@
-#include "vane/platform.hpp"
-
