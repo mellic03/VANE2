@@ -1,13 +1,22 @@
-#include "vane/world.hpp"
-
+#include <cstdio>
+#include "vane/platform/platform_SDL3.hpp"
+#include "vane/vanelog.hpp"
+// #include "vane/world.hpp"
 
 int main(int argc, char **argv)
 {
-    vane::World world;
+    vane::Platform *plat = new vane::PlatformSDL3();
 
-    while (true)
+    auto winId = plat->createWindow("Test Program", 512, 512);
+    if (winId == vane::VANEID_NONE)
     {
-        world.update();
+        VLOG_FATAL("Failed to create window");
+        return 1;
+    }
+
+    while (plat->running())
+    {
+        plat->update();
     }
 
     return 0;

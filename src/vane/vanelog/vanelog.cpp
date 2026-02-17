@@ -1,4 +1,4 @@
-#include "vanelog.hpp"
+#include "vane/vanelog.hpp"
 #include "ansi.hpp"
 
 #include <cstdarg>
@@ -6,17 +6,19 @@
 
 using namespace vane;
 
-static void *vl_outfile_ = nullptr;
-static void vl_printf(const char *fmt, ...)
+extern "C"
 {
-    va_list vlist;
-    va_start(vlist, fmt);
-    std::vfprintf((std::FILE*)vl_outfile_, fmt, vlist);
-    va_end(vlist);
+    static void *vl_outfile_ = nullptr;
+
+    __attribute__((constructor))
+    static void vl_init(void)
+    {
+        vl_outfile_ = stdout;
+    }
 }
 
 
-void vanelog::detail::write(vane::LogType type, const char *msg)
+void vane::vnlog(vane::LogType type, const char *title, const char *fmt, ...)
 {
     const char *severity = "should_not_happen";
     const char *color = ANSI::RESET;
@@ -26,30 +28,41 @@ void vanelog::detail::write(vane::LogType type, const char *msg)
         using enum vane::LogType;
 
         case INFO:
-            severity = "info";
+            severity = "INFO";
             color = ANSI::Reg::GRN;
             break;
         case WARN:
-            severity = "warn";
-            color = ANSI::Bld::YEL;
+            severity = "WARN";
+            color = ANSI::Reg::YEL;
             break;
         case ERROR:
-            severity = "error";
-            color = ANSI::BldHi::RED;
+            severity = "ERROR";
+            color = ANSI::Reg::RED;
             break;
         case FATAL:
-            severity = "fatal";
+            severity = "FATAL";
             color = ANSI::BldHi::RED;
             break;
         default:
             break;
     }
 
-    vl_printf("%s[%s]%s   %s", color, severity, ANSI::RESET, msg);
+#ifdef VANELOG_VERBOSE
+    fprintf((std::FILE*)vl_outfile_, "%s[%s]%s[%s] ", color, severity, ANSI::RESET, title);
+#else
+    fprintf((std::FILE*)vl_outfile_, "%s[%s]%s ", color, severity, ANSI::RESET);
+#endif
 
-    // if ((Logger::flags & log_flag::PRINT_LAZY) == false)
-    // {
-    //     Logger::print();
-    //     std::cout << std::flush;
-    // }
+    va_list vlist;
+    va_start(vlist, fmt);
+    std::vfprintf((std::FILE*)vl_outfile_, fmt, vlist);
+    va_end(vlist);
+
+    fprintf((std::FILE*)vl_outfile_, "\n");
+
+    if (type == LogType::FATAL)
+    {
+        exit(1);
+    }
 }
+
