@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdint>
-#include "vane/vanelog.hpp"
+#include "vane/log.hpp"
 
 namespace vane
 {

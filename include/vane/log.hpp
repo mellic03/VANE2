@@ -10,14 +10,6 @@ namespace vane
     };
 
     void vnlog(vane::LogType type, const char *title, const char *fmt, ...);
-
-    // namespace vanelog
-    // {
-    //     namespace detail
-    //     {
-    //         void write(vane::LogType type, const char *msg);
-    //     }
-    // }
 }
 
 #define VLOG_INFO(...) \

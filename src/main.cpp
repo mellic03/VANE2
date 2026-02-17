@@ -1,6 +1,6 @@
 #include <cstdio>
 #include "vane/platform/platform_SDL3.hpp"
-#include "vane/vanelog.hpp"
+#include "vane/log.hpp"
 // #include "vane/world.hpp"
 
 int main(int argc, char **argv)

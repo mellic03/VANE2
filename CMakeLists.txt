@@ -2,7 +2,16 @@ cmake_minimum_required(VERSION 3.21)
 
 project(vane)
 
+
+find_package(OpenGL REQUIRED)
 find_package(SDL3 REQUIRED)
+
+add_library(glad STATIC IMPORTED)
+set_target_properties(glad PROPERTIES
+    IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/external/lib/libglad.a"
+    INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/external/include"
+)
+
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/vane")
 
@@ -23,6 +32,8 @@ target_compile_features(
 
 target_link_libraries(
     ${PROJECT_NAME} PUBLIC
+    glad
+    OpenGL::GL
     vane_objects
     SDL3::SDL3
 )

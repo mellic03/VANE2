@@ -1,6 +1,7 @@
 #include "platform_SDL3.hpp"
-#include "vane/vanelog.hpp"
+#include "vane/log.hpp"
 #include <SDL3/SDL.h>
+#include "../graphics/gl.hpp"
 
 
 struct WindowImpl
@@ -8,19 +9,19 @@ struct WindowImpl
     static constexpr size_t MAX_WINDOWS = 8;
     static inline int32_t numWindows_ = 0;
 
-    SDL_Window *sdlWin;
-    SDL_Surface *sdlSurf;
-    SDL_WindowID sdlWinID;
+    SDL_Window   *sdlWin;
+    SDL_GLContext sdlGlCtx;
+    SDL_WindowID  sdlWinID;
 
-    WindowImpl(): sdlWin(nullptr), sdlSurf(nullptr), sdlWinID(0) {  }
+    WindowImpl(): sdlWin(nullptr), sdlGlCtx(nullptr), sdlWinID(0) {  }
 
     bool isInUse() { return (bool)sdlWin; }
     bool notInUse() { return !isInUse(); }
 
-    void init(SDL_Window *win, SDL_Surface *surf)
+    void init(SDL_Window *win, SDL_GLContext glctx)
     {
         sdlWin = win;
-        sdlSurf = surf;
+        sdlGlCtx = glctx;
         sdlWinID = SDL_GetWindowID(win);
         numWindows_ += 1;
     }
@@ -28,7 +29,7 @@ struct WindowImpl
     void deinit()
     {
         sdlWin = nullptr;
-        sdlSurf = nullptr;
+        sdlGlCtx = nullptr;
         sdlWinID = 0;
         numWindows_ -= 1;
     }
@@ -36,8 +37,8 @@ struct WindowImpl
 
 static WindowImpl windows_[WindowImpl::MAX_WINDOWS];
 
-static vane::vaneid_t WindowImpl_alloc(SDL_Window*, SDL_Surface*);
-// static vane::VaneStat WindowImpl_free(SDL_WindowID);
+static vane::vaneid_t WindowImpl_alloc(SDL_Window*, SDL_GLContext);
+static vane::VaneStat WindowImpl_free(SDL_WindowID);
 
 
 
@@ -47,9 +48,13 @@ vane::PlatformSDL3::PlatformSDL3()
 {
     if (false == SDL_Init(SDL_INIT_VIDEO))
     {
-        VLOG_ERROR("{}", SDL_GetError());
+        VLOG_FATAL("{}", SDL_GetError());
         exit(1);
     }
+
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
     VLOG_INFO("SDL3 Initialized");
 }
@@ -113,12 +118,16 @@ void vane::PlatformSDL3::update()
 
     for (int i=0; i<WindowImpl::MAX_WINDOWS; i++)
     {
-        auto &win = windows_[i];
-        if (win.sdlWin)
+        auto &desc = windows_[i];
+        if (desc.isInUse())
         {
-            SDL_UpdateWindowSurface(win.sdlWin);
+            SDL_GL_MakeCurrent(desc.sdlWin, desc.sdlGlCtx);
+            gl::ClearColor(1.0f, 0.5f, 0.0f, 1.0f);
+            gl::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            SDL_GL_SwapWindow(desc.sdlWin);
         }
     }
+
 }
 
 
@@ -129,24 +138,42 @@ vane::vaneid_t vane::PlatformSDL3::createWindow(const char *name, int w, int h)
         return VANEID_NONE;
     }
 
-    SDL_Window *sdlWin = SDL_CreateWindow(name, 1024, 1024, 0);
+    SDL_Window *sdlWin = SDL_CreateWindow(name, 1024, 1024, SDL_WINDOW_OPENGL);
     if (sdlWin == nullptr)
     {
         VLOG_ERROR("{}", SDL_GetError());
         return VANEID_NONE;
     }
 
-    SDL_Surface *sdlSurf = SDL_GetWindowSurface(sdlWin);
-    if (sdlSurf == nullptr)
+    SDL_GLContext sdlGlCtx = SDL_GL_CreateContext(sdlWin);
+    if (sdlGlCtx == nullptr)
     {
         VLOG_ERROR("{}", SDL_GetError());
-        SDL_DestroyWindow(sdlWin);
         return VANEID_NONE;
     }
 
+    if (!gladLoadGL())
+    {
+        VLOG_FATAL("gladLoadGL error");
+        exit(1);
+    }
+
+    GLint major, minor;
+    glGetIntegerv(GL_MAJOR_VERSION, &major);
+    glGetIntegerv(GL_MINOR_VERSION, &minor);
+    VLOG_INFO("Device supports up to OpenGL {}.{}", major, minor);
+
+    // SDL_Surface *sdlSurf = SDL_GetWindowSurface(sdlWin);
+    // if (sdlSurf == nullptr)
+    // {
+    //     VLOG_ERROR("{}", SDL_GetError());
+    //     SDL_DestroyWindow(sdlWin);
+    //     return VANEID_NONE;
+    // }
+
     SDL_SetWindowPosition(sdlWin, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 
-    vaneid_t sdlWinId = WindowImpl_alloc(sdlWin, sdlSurf);
+    vaneid_t sdlWinId = WindowImpl_alloc(sdlWin, sdlGlCtx);
     VLOG_INFO("Created window {}", sdlWinId);
 
     return sdlWinId;
@@ -155,30 +182,19 @@ vane::vaneid_t vane::PlatformSDL3::createWindow(const char *name, int w, int h)
 
 vane::VaneStat vane::PlatformSDL3::destroyWindow(vane::vaneid_t sdlWinId)
 {
-    WindowImpl *desc = &(windows_[0]);
-    for (int i=0; i<WindowImpl::MAX_WINDOWS; i++)
-    {
-        if (desc->isInUse() && desc->sdlWinID == sdlWinId)
-        {
-            SDL_DestroyWindow(desc->sdlWin);
-            desc->deinit();
-            VLOG_INFO("Destroyed window {}", sdlWinId);
-            return VaneStat::OK;
-        }
-        desc++;
-    }
+    VaneStat status = WindowImpl_free(sdlWinId);
+    if (status == VaneStat::OK)
+        VLOG_INFO("Destroyed window {}", sdlWinId);
+    else
+        VLOG_WARN("Invalid WindowID {}", (uint32_t)sdlWinId);
+    return VaneStat::OK;
 
-    VLOG_ERROR("Invalid WindowID {}", (uint32_t)sdlWinId);
-
-    return VaneStat::INVALID;
 }
 
 
 
 
-
-
-static vane::vaneid_t WindowImpl_alloc(SDL_Window *sdlWin, SDL_Surface *sdlSurf)
+static vane::vaneid_t WindowImpl_alloc(SDL_Window *sdlWin, SDL_GLContext sdlGlCtx)
 {
     using namespace vane;
 
@@ -187,7 +203,7 @@ static vane::vaneid_t WindowImpl_alloc(SDL_Window *sdlWin, SDL_Surface *sdlSurf)
     {
         if (desc->notInUse())
         {
-            desc->init(sdlWin, sdlSurf);
+            desc->init(sdlWin, sdlGlCtx);
             return vaneid_t(desc->sdlWinID);
         }
         desc++;
@@ -197,22 +213,22 @@ static vane::vaneid_t WindowImpl_alloc(SDL_Window *sdlWin, SDL_Surface *sdlSurf)
 }
 
 
-// static vane::VaneStat WindowImpl_free(SDL_WindowID sdlWinId)
-// {
-//     using namespace vane;
+static vane::VaneStat WindowImpl_free(SDL_WindowID sdlWinId)
+{
+    using namespace vane;
 
-//     for (int i=0; i<WindowImpl::MAX_WINDOWS; i++)
-//     {
-//         auto &desc = windows_[i];
-//         if (desc.sdlWin && desc.sdlWinID == sdlWinId)
-//         {
-//             SDL_DestroyWindow(desc.sdlWin);
-//             desc = WindowImpl();
-//             numWindows_ -= 1;
-//             return VaneStat::OK;
-//         }
-//     }
+    WindowImpl *desc = &(windows_[0]);
+    for (int i=0; i<WindowImpl::MAX_WINDOWS; i++)
+    {
+        if (desc->isInUse() && desc->sdlWinID == sdlWinId)
+        {
+            SDL_DestroyWindow(desc->sdlWin);
+            desc->deinit();
+            return VaneStat::OK;
+        }
+        desc++;
+    }
 
-//     return VaneStat::INVALID;
-// }
+    return VaneStat::INVALID;
+}
 

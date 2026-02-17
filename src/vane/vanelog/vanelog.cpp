@@ -1,4 +1,4 @@
-#include "vane/vanelog.hpp"
+#include "vane/log.hpp"
 #include "ansi.hpp"
 
 #include <cstdarg>

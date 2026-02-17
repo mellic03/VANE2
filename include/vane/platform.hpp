@@ -1,13 +1,12 @@
 #pragma once
 #include "vane/vanetype.hpp"
-// #include "vane/ds/inplace_list.hpp"
 
 namespace vane
 {
     class Platform
     {
     public:
-        Platform();
+        Platform() {  }
 
         virtual bool running() = 0;
         virtual void shutdown() = 0;
