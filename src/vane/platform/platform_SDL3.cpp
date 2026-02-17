@@ -1,7 +1,7 @@
 #include "platform_SDL3.hpp"
 #include "vane/log.hpp"
 #include <SDL3/SDL.h>
-#include "../graphics/gl.hpp"
+#include "gpu/opengl/gl.hpp"
 
 
 struct WindowImpl
@@ -159,8 +159,8 @@ vane::vaneid_t vane::PlatformSDL3::createWindow(const char *name, int w, int h)
     }
 
     GLint major, minor;
-    glGetIntegerv(GL_MAJOR_VERSION, &major);
-    glGetIntegerv(GL_MINOR_VERSION, &minor);
+    gl::GetIntegerv(GL_MAJOR_VERSION, &major);
+    gl::GetIntegerv(GL_MINOR_VERSION, &minor);
     VLOG_INFO("Device supports up to OpenGL {}.{}", major, minor);
 
     // SDL_Surface *sdlSurf = SDL_GetWindowSurface(sdlWin);
