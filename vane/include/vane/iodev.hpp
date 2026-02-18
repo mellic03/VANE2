@@ -15,10 +15,10 @@ public:
     Platform *mPlatform;
     MsTimer   mTimer;
 
-    IoDevice(Platform *p, uint64_t hz): mPlatform(p), mTimer(1000/hz) {  }
+    IoDevice(Platform *p, uint64_t hz=1000): mPlatform(p), mTimer(1000/hz) {  }
     virtual ~IoDevice() {  }
     virtual void update() = 0;
-    // virtual void updateEvent(const SDL_Event&) = 0;
+    virtual void updateEvent(const SDL_Event&) = 0;
 
 protected:
     // inplace_queue<SDL_Event, 16> mEventQueue;

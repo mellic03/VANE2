@@ -67,6 +67,7 @@ public:
 
     const bool empty()       { return (mSize == 0); }
     const bool empty() const { return (mSize == 0); }
+
     const bool full()        { return (mSize == Capacity); }
     const bool full()  const { return (mSize == Capacity); }
 

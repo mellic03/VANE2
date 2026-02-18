@@ -21,6 +21,8 @@ endif()
 
 add_subdirectory("$ENV{VANE_SOURCE_DIR}/iolib")
 add_subdirectory("$ENV{VANE_SOURCE_DIR}/util")
+add_subdirectory("$ENV{VANE_SOURCE_DIR}/dsa")
+add_subdirectory("$ENV{VANE_SOURCE_DIR}/object")
 
 add_executable(
     ${PROJECT_NAME} "$ENV{VANE_SOURCE_DIR}/main.cpp"
@@ -36,5 +38,7 @@ target_link_libraries(
     vane_gfxlib
     vane_iolib
     vane_utillib
+    vane_dsalib
+    vane_objectlib
 )
 

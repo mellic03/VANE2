@@ -17,7 +17,7 @@ target_link_libraries(
 target_include_directories(
     vane_gfxlib PRIVATE
     "$ENV{VANE_INCLUDE_DIR}"
-    "$ENV{VANE_THIRDPARTY_DIR}/include"
+    "$ENV{THIRDPARTY_INSTALL_PREFIX}/include"
 )
 target_sources(
     vane_gfxlib PRIVATE

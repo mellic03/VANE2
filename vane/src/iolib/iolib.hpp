@@ -1,8 +1,7 @@
 #pragma once
 
 #include "vane/iodev.hpp"
-#include <SDL3/SDL_events.h>
-#include <SDL3/SDL_scancode.h>
+#include <SDL3/SDL.h>
 #include <glm/glm.hpp>
 
 
@@ -13,16 +12,15 @@ namespace vane::iolib
 }
 
 
-
 class vane::iolib::Keyboard: public vane::IoDevice
 {
 public:
     Keyboard(Platform*);
     virtual void update() final;
-    // virtual void updateEvent(const SDL_Event&) final;
-    bool keyPressed(SDL_Scancode);
-    bool keyReleased(SDL_Scancode);
-    bool keyTapped(SDL_Scancode);
+    virtual void updateEvent(const SDL_Event&) final {  };
+    bool keyWasPressed(SDL_Scancode);
+    bool keyWasReleased(SDL_Scancode);
+    bool keyWasTapped(SDL_Scancode);
 
 private:
     bool *mCurrDown;
@@ -31,20 +29,22 @@ private:
 
 
 
-class vane::iolib::Mouse
+class vane::iolib::Mouse: public vane::IoDevice
 {
 public:
     enum class Button: int {
         NONE, LEFT, MID, RIGHT, EXTRA1, EXTRA2, NUM_BUTTONS
     };
 
-    Mouse();
-    void update(const SDL_Event&);
+    Mouse(Platform*);
+    virtual void update() final;
+    virtual void updateEvent(const SDL_Event&) final;
+
     glm::vec2 mousePos();
     glm::vec2 mouseDelta();
-    bool mousePressed(Button, int clicks=0);
-    bool mouseReleased(Button, int clicks=0);
-    bool mouseClicked(Button, int n);
+    bool mouseWasPressed(Button, int clicks=0);
+    bool mouseWasReleased(Button, int clicks=0);
+    bool mouseWasClicked(Button, int n);
 
 private:
     glm::vec2 mPos, mDPos, mDWheel;

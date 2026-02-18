@@ -68,14 +68,10 @@ void vane::Platform::update()
     }
 
     for (auto *winptr: mWindows)
-    {
         winptr->update();
-    }
 
     for (auto *iodev: mIoDevices)
-    {
         iodev->update();
-    }
 
     SDL_Event e;
     while (SDL_PollEvent(&e))
@@ -88,19 +84,10 @@ void vane::Platform::update()
 
         if (auto *winptr = getWindow(e.window.windowID))
             winptr->updateEvent(e);
-    }
 
-    // for (int i=0; i<WindowImpl::MAX_WINDOWS; i++)
-    // {
-    //     auto &desc = windows_[i];
-    //     if (desc.isInUse())
-    //     {
-    //         SDL_GL_MakeCurrent(desc.sdlWin, desc.sdlGlCtx);
-    //         gl::ClearColor(1.0f, 0.5f, 0.0f, 1.0f);
-    //         gl::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //         SDL_GL_SwapWindow(desc.sdlWin);
-    //     }
-    // }
+        for (auto *iodev: mIoDevices)
+            iodev->updateEvent(e);
+    }
 
     while (!cull_list_.empty())
     {
@@ -125,13 +112,8 @@ vane::vaneid_t vane::Platform::createWindow(const char *name, int w, int h)
 vane::VaneStat vane::Platform::destroyWindow(vane::vaneid_t sdlWinId)
 {
     for (auto *winptr: mWindows)
-    {
         if (winptr->mSdlWinID == sdlWinId)
-        {
             return destroyWindow_ptr(winptr);
-        }
-    }
-
     VLOG_ERROR("Deletion of non-existent window ({})", (uint32_t)sdlWinId);
     return VaneStat::INVALID;
 }

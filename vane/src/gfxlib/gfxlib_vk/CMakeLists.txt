@@ -1,9 +1,3 @@
-
-# set(VK_SDK_VERSION "1.4.341.1")
-# set(VK_SDK_ARCH "x86_64")
-# set(VK_SDK_DIR "${CMAKE_SOURCE_DIR}/external/vulkan/${VK_SDK_VERSION}/${VK_SDK_ARCH}")
-# set(ENV{VULKAN_SDK} "${CMAKE_SOURCE_DIR}/external/vulkan/1.4.341.1/x86_64")
-# set(ENV{VULKAN_SDK} "${CMAKE_SOURCE_DIR}/external/vulkan/1.4.341.1/x86_64")
 set(ENV{VULKAN_SDK} "${THIRDPARTY_INSTALL_PREFIX}")
 
 find_package(SDL3 REQUIRED)
@@ -21,7 +15,7 @@ target_link_libraries(
 target_include_directories(
     vane_gfxlib PRIVATE
     "$ENV{VANE_INCLUDE_DIR}"
-    "$ENV{VANE_THIRDPARTY_DIR}/include"
+    "$ENV{THIRDPARTY_INSTALL_PREFIX}/include"
     ${Vulkan_INCLUDE_DIRS}
 )
 target_sources(
