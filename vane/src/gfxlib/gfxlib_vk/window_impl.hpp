@@ -1,7 +1,7 @@
 
 namespace vane
 {
-    namespace gpu_vk
+    namespace gfxlib_vk
     {
         struct WindowImpl
         {
@@ -13,6 +13,6 @@ namespace vane
 
 namespace vane
 {
-    using WindowImplType = gpu_vk::WindowImpl;
+    using WindowImplType = gfxlib_vk::WindowImpl;
 }
 

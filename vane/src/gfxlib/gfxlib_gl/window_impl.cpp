@@ -5,7 +5,7 @@
 using namespace vane;
 
 
-gpu_gl::WindowImpl::WindowImpl(Platform *platform, const char *name, int x, int y, int w, int h)
+gfxlib_gl::WindowImpl::WindowImpl(Platform *platform, const char *name, int x, int y, int w, int h)
 :   mPlatform(platform)
 {
     mSdlWin = SDL_CreateWindow(name, 1024, 1024, SDL_WINDOW_OPENGL);
@@ -42,7 +42,7 @@ gpu_gl::WindowImpl::WindowImpl(Platform *platform, const char *name, int x, int 
 }
 
 
-gpu_gl::WindowImpl::~WindowImpl()
+gfxlib_gl::WindowImpl::~WindowImpl()
 {
     if (!SDL_GL_DestroyContext(mSdlGlCtx))
     {
@@ -54,7 +54,7 @@ gpu_gl::WindowImpl::~WindowImpl()
 }
 
 
-void gpu_gl::WindowImpl::update()
+void gfxlib_gl::WindowImpl::update()
 {
     SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx);
     gl::ClearColor(1.0f, 0.5f, 0.0f, 1.0f);
@@ -63,7 +63,7 @@ void gpu_gl::WindowImpl::update()
 }
 
 
-void gpu_gl::WindowImpl::updateEvent(SDL_Event &e)
+void gfxlib_gl::WindowImpl::updateEvent(SDL_Event &e)
 {
     if (e.type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)
     {

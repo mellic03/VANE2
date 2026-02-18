@@ -1,6 +1,6 @@
 find_package(SDL3 REQUIRED)
 
-add_library(vane_iolib STATIC)
+add_library(vane_iolib OBJECT)
 target_compile_features(
     vane_iolib PUBLIC cxx_std_23
 )

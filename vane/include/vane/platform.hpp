@@ -4,6 +4,8 @@
 
 namespace vane
 {
+    class IoDevice;
+
     class Platform
     {
     public:
@@ -15,10 +17,23 @@ namespace vane
         VaneStat destroyWindow(vaneid_t);
         VaneStat destroyWindow_ptr(WindowImplType*);
         WindowImplType *getWindow(vaneid_t);
+
+        template <typename IoDeviceType>
+        IoDeviceType *createIoDevice();
+
     private:
         bool mRunning;
         std::set<WindowImplType*> mWindows;
+        std::set<vane::IoDevice*> mIoDevices;
 
     };
+}
+
+template <typename IoDeviceType>
+IoDeviceType *vane::Platform::createIoDevice()
+{
+    auto *iodev = new IoDeviceType(this);
+    mIoDevices.insert(iodev);
+    return iodev;
 }
 

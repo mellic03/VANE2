@@ -7,6 +7,7 @@ cd $THIS_DIR && source env.sh
 opt_gpulib="GL"
 opt_clean=""
 opt_run=""
+opt_bdtype=""
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -22,6 +23,14 @@ while [[ $# -gt 0 ]]; do
             opt_run=1
             shift
             ;;
+        --debug)
+            opt_bdtype="Debug"
+            shift
+            ;;
+        --release)
+            opt_bdtype="Release"
+            shift
+            ;;
         *)
             echo "Unknown option $1" >&2
             exit 1
@@ -35,7 +44,7 @@ if [[ "$opt_clean" == "1" ]]; then
 fi
 
 mkdir -p "${VANE_BUILD_DIR}" && cd "${VANE_BUILD_DIR}"
-cmake ../vane -DVANE_GFXLIB_$opt_gpulib=1
+cmake ../vane -DCMAKE_BUILD_TYPE="${opt_bdtype}" -DVANE_GFXLIB_GL=1
 make -j$(nproc)
 
 if [[ "$opt_run" == "1" ]]; then

@@ -1,11 +1,11 @@
-#include "ms.hpp"
+#include "iolib.hpp"
 #include <SDL3/SDL.h>
 #include <cstring>
 
 using namespace vane;
 
 
-iodev::Mouse::Mouse()
+iolib::Mouse::Mouse()
 :   mPos(0), mDPos(0), mDWheel(0)
 {
     memset(mCurrDown, 0, sizeof(mCurrDown));
@@ -14,7 +14,7 @@ iodev::Mouse::Mouse()
 }
 
 
-void iodev::Mouse::update( const SDL_Event &e )
+void iolib::Mouse::update( const SDL_Event &e )
 {
     int idx = e.button.button;
 
@@ -43,31 +43,31 @@ void iodev::Mouse::update( const SDL_Event &e )
     }
 }
 
-glm::vec2 iodev::Mouse::mousePos()
+glm::vec2 iolib::Mouse::mousePos()
 {
     return mPos;
 }
 
-glm::vec2 iodev::Mouse::mouseDelta()
+glm::vec2 iolib::Mouse::mouseDelta()
 {
     return mDPos;
 }
 
-bool iodev::Mouse::mousePressed( Button btn, int clicks )
+bool iolib::Mouse::mousePressed( Button btn, int clicks )
 {
     int i = int(btn);
     bool c = clicks>0 && clicks==mClicks[i];
     return c && !mPrevDown[i] && mCurrDown[i];
 }
 
-bool iodev::Mouse::mouseReleased( Button btn, int clicks )
+bool iolib::Mouse::mouseReleased( Button btn, int clicks )
 {
     int i = int(btn);
     bool c = clicks>0 && clicks==mClicks[i];
     return c && mPrevDown[i] && !mCurrDown[i];
 }
 
-bool iodev::Mouse::mouseClicked( Button btn, int )
+bool iolib::Mouse::mouseClicked( Button btn, int )
 {
     int i = int(btn);
     return (!mPrevDown[i] && mCurrDown[i]) && false;
