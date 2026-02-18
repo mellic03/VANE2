@@ -9,12 +9,13 @@ namespace vane
 
     struct ComponentMessage
     {
-        int64_t type;
-        void   *data;
+        int32_t type;
+        int32_t subtype;
+        void *data;
     
-        static int64_t newMessageTypeID()
+        static int32_t newMessageTypeID()
         {
-            static int64_t value = 0;
+            static int32_t value = 0;
             return value++;
         }
     };

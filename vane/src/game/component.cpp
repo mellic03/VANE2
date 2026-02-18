@@ -3,11 +3,18 @@
 
 void vane::KbInputComponent::update()
 {
-    ComponentMessage msg = {
-        .type = PhysicsComponent::msgTypeID(),
-        .data = (void*)0x2026
-    };
-    mObject->sendmsg(this, msg);
+    static glm::vec3 impulse;
+
+    if (0 || 1)
+    {
+        impulse = glm::vec3(0.0f, 2.523f, 0.0f);
+        ComponentMessage msg = {
+            .type    = PhysicsComponent::msgTypeID(),
+            .subtype = PhysicsComponent::CMD_IMPULSE,
+            .data    = (void*)&impulse
+        };
+        mObject->sendmsg(this, msg);
+    }
 }
 
 void vane::KbInputComponent::recvmsg(const ComponentMessage &msg)
@@ -26,16 +33,9 @@ void vane::PhysicsComponent::update()
 {
     static constexpr glm::vec3 G(0.0f, -9.81f, 0.0f);
 
-    GameObject &obj = *mObject;
-    obj.mAcc = G;
-    obj.mVel += obj.mAcc;
-    obj.mPos += obj.mVel;
-
-    ComponentMessage msg = {
-        .type = GraphicsComponent::msgTypeID(),
-        .data = nullptr
-    };
-    mObject->sendmsg(this, msg);
+    mObject->mAcc = G;
+    mObject->mVel += mObject->mAcc;
+    mObject->mPos += mObject->mVel;
 }
 
 void vane::PhysicsComponent::recvmsg(const ComponentMessage &msg)
@@ -44,17 +44,23 @@ void vane::PhysicsComponent::recvmsg(const ComponentMessage &msg)
     {
         return;
     }
+
+    switch (msg.subtype)
+    {
+        case PhysicsComponent::CMD_DUMMY:
+            break;
+
+        case PhysicsComponent::CMD_IMPULSE:
+            mObject->mVel += *static_cast<glm::vec3*>(msg.data);
+            break;
+    }
 }
 
 
 
 void vane::GraphicsComponent::update()
 {
-    ComponentMessage msg = {
-        .type = PhysicsComponent::msgTypeID(),
-        .data = nullptr
-    };
-    mObject->sendmsg(this, msg);
+
 }
 
 void vane::GraphicsComponent::recvmsg(const ComponentMessage &msg)

@@ -21,9 +21,6 @@ int main(int argc, char **argv)
     player.addComponent<PhysicsComponent>();
     player.addComponent<GraphicsComponent>();
 
-    player.sendmsg(nullptr, {KbInputComponent::msgTypeID(), (void*)0x4321});
-
-
     auto *plat = new vane::Platform();
     auto *kb = plat->createIoDevice<iolib::Keyboard>();
     auto *ms = plat->createIoDevice<iolib::Mouse>();
@@ -38,7 +35,7 @@ int main(int argc, char **argv)
     while (plat->running())
     {
         plat->update();
-        // player.update();
+        player.update();
 
         if (kb->keyWasPressed(SDL_SCANCODE_E))
             printf("E PRESSED\n");

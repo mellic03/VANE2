@@ -23,7 +23,7 @@ public:
 class vane::KbInputComponent: public iInputComponent
 {
 public:
-    static int64_t msgTypeID() { static int64_t value = ComponentMessage::newMessageTypeID(); return value; }
+    static int32_t msgTypeID() { static int32_t value = ComponentMessage::newMessageTypeID(); return value; }
 
     using iInputComponent::iInputComponent;
     virtual ~KbInputComponent() {  }
@@ -38,7 +38,9 @@ private:
 class vane::PhysicsComponent: public iComponent
 {
 public:
-    static int64_t msgTypeID() { static int64_t value = ComponentMessage::newMessageTypeID(); return value; }
+    static int32_t msgTypeID() { static int32_t value = ComponentMessage::newMessageTypeID(); return value; }
+    static constexpr int32_t CMD_DUMMY   = 0x00;
+    static constexpr int32_t CMD_IMPULSE = 0x03;
 
     using iComponent::iComponent;
     virtual void update() override;
@@ -53,7 +55,7 @@ private:
 class vane::GraphicsComponent: public iComponent
 {
 public:
-    static int64_t msgTypeID() { static int64_t value = ComponentMessage::newMessageTypeID(); return value; }
+    static int32_t msgTypeID() { static int32_t value = ComponentMessage::newMessageTypeID(); return value; }
 
     using iComponent::iComponent;
     virtual void update() override;
