@@ -1,5 +1,8 @@
 #include <cstdio>
+
+#include "gpu_gl/platform_impl.hpp"
 #include "vane/platform.hpp"
+
 #include "vane/log.hpp"
 // #include "vane/world.hpp"
 

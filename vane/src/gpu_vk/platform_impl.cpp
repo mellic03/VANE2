@@ -1,10 +1,14 @@
-#include "vane/platform.hpp"
+#include "platform_impl.hpp"
+
 #include <SDL3/SDL.h>
-#include "gl.hpp"
+#include <SDL3/SDL_vulkan.h>
+
+#define VULKAN_HPP_DISPATCH_LOADER_DYNAMIC 1
+#include <vulkan/vulkan.hpp>
+
+VULKAN_HPP_DEFAULT_DISPATCH_LOADER_DYNAMIC_STORAGE
+
 #include "vane/log.hpp"
-
-#include <filesystem>
-
 
 
 struct WindowImpl
@@ -13,18 +17,16 @@ struct WindowImpl
     static inline int32_t numWindows_ = 0;
 
     SDL_Window   *sdlWin;
-    SDL_GLContext sdlGlCtx;
     SDL_WindowID  sdlWinID;
 
-    WindowImpl(): sdlWin(nullptr), sdlGlCtx(nullptr), sdlWinID(0) {  }
+    WindowImpl(): sdlWin(nullptr), sdlWinID(0) {  }
 
     bool isInUse() { return (bool)sdlWin; }
     bool notInUse() { return !isInUse(); }
 
-    void init(SDL_Window *win, SDL_GLContext glctx)
+    void init(SDL_Window *win)
     {
         sdlWin = win;
-        sdlGlCtx = glctx;
         sdlWinID = SDL_GetWindowID(win);
         numWindows_ += 1;
     }
@@ -32,36 +34,43 @@ struct WindowImpl
     void deinit()
     {
         sdlWin = nullptr;
-        sdlGlCtx = nullptr;
         sdlWinID = 0;
         numWindows_ -= 1;
     }
 };
 
 static WindowImpl windows_[WindowImpl::MAX_WINDOWS];
-static vane::vaneid_t WindowImpl_alloc(SDL_Window*, SDL_GLContext);
+static vane::vaneid_t WindowImpl_alloc(SDL_Window*);
 static vane::VaneStat WindowImpl_free(SDL_WindowID);
+
+
 
 
 vane::Platform::Platform()
 :   mRunning(true)
 {
-    {
-        namespace fs = std::filesystem;
-        fs::current_path(fs::path(SDL_GetBasePath()));
-    }
-
     if (false == SDL_Init(SDL_INIT_VIDEO))
     {
         VLOG_FATAL("{}", SDL_GetError());
-        exit(1);
+    }
+    if (!SDL_Vulkan_LoadLibrary(nullptr))
+    {
+        VLOG_FATAL("Failure loading Vulkan library, SDL error: %s\n", SDL_GetError());
+    }
+    VLOG_INFO("SDL3 Initialized");
+
+    uint32_t instanceVersion = VK_API_VERSION_1_0;
+    PFN_vkEnumerateInstanceVersion pfnEnumerateInstanceVersion = (PFN_vkEnumerateInstanceVersion)vkGetInstanceProcAddr(nullptr, "vkEnumerateInstanceVersion");
+    if (pfnEnumerateInstanceVersion)
+    {
+        pfnEnumerateInstanceVersion(&instanceVersion);
     }
 
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    uint32_t vkVersionMajor = VK_VERSION_MAJOR(instanceVersion);
+    uint32_t vkVersionMinor = VK_VERSION_MINOR(instanceVersion);
+    VLOG_INFO("Device supports up to Vulkan {}.{}", vkVersionMajor, vkVersionMinor);
 
-    VLOG_INFO("SDL3 Initialized");
+    // VLOG_INFO("Vulkan Initialized");
 }
 
 bool vane::Platform::running()
@@ -85,7 +94,6 @@ void vane::Platform::shutdown()
 
     VLOG_INFO("Shutdown complete");
 }
-
 
 
 void vane::Platform::update()
@@ -126,10 +134,10 @@ void vane::Platform::update()
         auto &desc = windows_[i];
         if (desc.isInUse())
         {
-            SDL_GL_MakeCurrent(desc.sdlWin, desc.sdlGlCtx);
-            gl::ClearColor(1.0f, 0.5f, 0.0f, 1.0f);
-            gl::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            SDL_GL_SwapWindow(desc.sdlWin);
+            // SDL_GL_MakeCurrent(desc.sdlWin, desc.sdlGlCtx);
+            // gl::ClearColor(1.0f, 0.5f, 0.0f, 1.0f);
+            // gl::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            // SDL_GL_SwapWindow(desc.sdlWin);
         }
     }
 
@@ -143,34 +151,16 @@ vane::vaneid_t vane::Platform::createWindow(const char *name, int w, int h)
         return VANEID_NONE;
     }
 
-    SDL_Window *sdlWin = SDL_CreateWindow(name, 1024, 1024, SDL_WINDOW_OPENGL);
+    SDL_Window *sdlWin = SDL_CreateWindow(name, 1024, 1024, SDL_WINDOW_VULKAN);
     if (sdlWin == nullptr)
     {
         VLOG_ERROR("{}", SDL_GetError());
         return VANEID_NONE;
     }
 
-    SDL_GLContext sdlGlCtx = SDL_GL_CreateContext(sdlWin);
-    if (sdlGlCtx == nullptr)
-    {
-        VLOG_ERROR("{}", SDL_GetError());
-        return VANEID_NONE;
-    }
 
-    if (!gladLoadGL())
-    {
-        VLOG_FATAL("gladLoadGL error");
-        exit(1);
-    }
 
-    SDL_SetWindowPosition(sdlWin, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
-
-    GLint major, minor;
-    gl::GetIntegerv(GL_MAJOR_VERSION, &major);
-    gl::GetIntegerv(GL_MINOR_VERSION, &minor);
-    VLOG_INFO("Device supports up to OpenGL {}.{}", major, minor);
-
-    vaneid_t sdlWinId = WindowImpl_alloc(sdlWin, sdlGlCtx);
+    vaneid_t sdlWinId = WindowImpl_alloc(sdlWin);
     VLOG_INFO("Created window {}", sdlWinId);
 
     return sdlWinId;
@@ -191,7 +181,7 @@ vane::VaneStat vane::Platform::destroyWindow(vane::vaneid_t sdlWinId)
 
 
 
-static vane::vaneid_t WindowImpl_alloc(SDL_Window *sdlWin, SDL_GLContext sdlGlCtx)
+static vane::vaneid_t WindowImpl_alloc(SDL_Window *sdlWin)
 {
     using namespace vane;
 
@@ -200,7 +190,7 @@ static vane::vaneid_t WindowImpl_alloc(SDL_Window *sdlWin, SDL_GLContext sdlGlCt
     {
         if (desc->notInUse())
         {
-            desc->init(sdlWin, sdlGlCtx);
+            desc->init(sdlWin);
             return vaneid_t(desc->sdlWinID);
         }
         desc++;

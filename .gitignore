@@ -1,5 +1,3 @@
 build
-external/glslc
-external/include
-external/lib
-external/vulkan
+external/install
+external/repo

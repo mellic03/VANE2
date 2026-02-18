@@ -6,13 +6,13 @@ cmake_minimum_required(VERSION 3.28) # Essential for non-experimental module sup
 
 project(vane CXX)
 
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src")
+add_subdirectory("$ENV{VANE_SOURCE_DIR}")
 
 add_executable(
-    ${PROJECT_NAME} "${CMAKE_SOURCE_DIR}/src/main.cpp"
+    ${PROJECT_NAME} "$ENV{VANE_SOURCE_DIR}/main.cpp"
 )
 target_include_directories(
-    ${PROJECT_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/include"
+    ${PROJECT_NAME} PUBLIC "$ENV{VANE_INCLUDE_DIR}"
 )
 target_compile_features(
     ${PROJECT_NAME} PUBLIC cxx_std_23

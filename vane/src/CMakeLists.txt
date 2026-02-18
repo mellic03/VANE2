@@ -5,8 +5,8 @@ target_compile_features(
 )
 target_include_directories(
     vane_libs PRIVATE
-    "${CMAKE_SOURCE_DIR}/include"
-    "${CMAKE_SOURCE_DIR}/external/include"
+    "$ENV{VANE_INCLUDE_DIR}"
+    "$ENV{VANE_THIRDPARTY_DIR}/include"
 )
 target_sources(
     vane_libs PRIVATE
@@ -14,17 +14,23 @@ target_sources(
     "${CMAKE_CURRENT_SOURCE_DIR}/vanelog/vanelog.cpp"
 )
 
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/io")
+
 
 if(DEFINED VANE_GPULIB_GL)
     add_compile_definitions(VANE_GPULIB_GL)
     add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/gpu_gl")
-    target_link_libraries(vane_libs PUBLIC vane_gpulib_gl)
 
 elseif(DEFINED VANE_GPULIB_VK)
     add_compile_definitions(VANE_GPULIB_VK)
     add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/gpu_vk")
-    target_link_libraries(vane_libs PUBLIC vane_gpulib_vk)
 else()
     message(FATAL_ERROR "Must define VANE_GPULIB_GL or VANE_GPULIB_VK>")
 endif()
 
+
+target_link_libraries(
+    vane_libs PUBLIC
+    vane_iolib
+    vane_gpulib
+)
