@@ -2,6 +2,10 @@
 #include "gl_bindings.hpp"
 #include "vane/log.hpp"
 
+extern void vaneEnableOpenGlDebugOutput();
+extern GLuint vaneCreateFramebuffer();
+static GLuint test_fbo_;
+
 using namespace vane;
 
 
@@ -10,23 +14,24 @@ gfxlib_gl::WindowImpl::WindowImpl(Platform *platform, const char *name, int x, i
 {
     mSdlWin = SDL_CreateWindow(name, 1024, 1024, SDL_WINDOW_OPENGL);
     if (mSdlWin == NULL)
-    {
         VLOG_FATAL("{}", SDL_GetError());
-    }
+    mSdlWinID = SDL_GetWindowID(mSdlWin);
 
     mSdlGlCtx = SDL_GL_CreateContext(mSdlWin);
     if (mSdlGlCtx == nullptr)
-    {
         VLOG_FATAL("{}", SDL_GetError());
-    }
 
     if (!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress))
-    {
-        VLOG_FATAL("gladLoadGL error");
-    }
+        VLOG_FATAL("gladLoadGLLoader failure");
 
-    mSdlWinID = SDL_GetWindowID(mSdlWin);
-    SDL_SetWindowPosition(mSdlWin, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+    if (!SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_GL_SetSwapInterval(0))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_SetWindowRelativeMouseMode(mSdlWin, false))
+        VLOG_ERROR("{}", SDL_GetError());
 
     static bool is_first = true;
     if (is_first)
@@ -39,7 +44,11 @@ gfxlib_gl::WindowImpl::WindowImpl(Platform *platform, const char *name, int x, i
     }
 
     VLOG_INFO("Created window {}", mSdlWinID);
+
+    vaneEnableOpenGlDebugOutput();
+    test_fbo_ = vaneCreateFramebuffer();
 }
+
 
 
 gfxlib_gl::WindowImpl::~WindowImpl()
@@ -54,11 +63,31 @@ gfxlib_gl::WindowImpl::~WindowImpl()
 }
 
 
+#include <glm/glm.hpp>
+// extern uint32_t compute_shader_init();
 void gfxlib_gl::WindowImpl::update()
 {
+    // static bool first = true;
+    // static uint32_t prog = 0;
+    // if (first)
+    // {
+    //     first = false;
+    //     prog = compute_shader_init();
+    // }
+    // gl::UseProgram(prog);
+    // gl::DispatchCompute(8, 8, 1);
+
     SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx);
-    gl::ClearColor(1.0f, 0.5f, 0.0f, 1.0f);
+
+    // glm::vec4 rgba(0.5f, 1.0f, 0.25f, 1.0f);
+    // glm::vec4 dpth(0.5f, 1.0f, 0.25f, 1.0f);
+    // gl::BindFramebuffer(GL_FRAMEBUFFER, test_fbo_);
+    // gl::ClearNamedFramebufferfv(test_fbo_, GL_COLOR, 0, &(rgba[0]));
+    // gl::ClearNamedFramebufferfv(test_fbo_, GL_DEPTH, 0, &(dpth[0]));
+
+    gl::ClearColor(0.5f, 0.75f, 0.25f, 1.0f);
     gl::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
     SDL_GL_SwapWindow(mSdlWin);
 }
 

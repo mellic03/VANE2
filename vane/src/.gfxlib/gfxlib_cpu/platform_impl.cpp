@@ -5,7 +5,7 @@
 #include <vector>
 #include <filesystem>
 
-static std::vector<vane::WindowImplType*> cull_list_;
+static std::vector<vane::gfxlib_cpu::WindowImpl*> cull_list_;
 
 
 vane::Platform::Platform()
@@ -54,7 +54,6 @@ void vane::Platform::shutdown()
 }
 
 
-
 void vane::Platform::update()
 {
     if (mWindows.empty())
@@ -64,27 +63,25 @@ void vane::Platform::update()
     }
 
     for (auto *winptr: mWindows)
-    {
         winptr->update();
-    }
+
+    for (auto *iodev: mIoDevices)
+        iodev->update();
 
     SDL_Event e;
     while (SDL_PollEvent(&e))
     {
         if (e.type == SDL_EVENT_QUIT)
-        {
             this->shutdown();
-        }
 
         if (!SDL_GetWindowFromEvent(&e))
-        {
             continue;
-        }
 
         if (auto *winptr = getWindow(e.window.windowID))
-        {
             winptr->updateEvent(e);
-        }
+
+        for (auto *iodev: mIoDevices)
+            iodev->updateEvent(e);
     }
 
     while (!cull_list_.empty())
@@ -110,13 +107,8 @@ vane::vaneid_t vane::Platform::createWindow(const char *name, int w, int h)
 vane::VaneStat vane::Platform::destroyWindow(vane::vaneid_t sdlWinId)
 {
     for (auto *winptr: mWindows)
-    {
         if (winptr->mSdlWinID == sdlWinId)
-        {
             return destroyWindow_ptr(winptr);
-        }
-    }
-
     VLOG_ERROR("Deletion of non-existent window ({})", (uint32_t)sdlWinId);
     return VaneStat::INVALID;
 }

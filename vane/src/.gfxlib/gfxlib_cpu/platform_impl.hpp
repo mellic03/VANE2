@@ -1,4 +1,7 @@
+#pragma once
+
 #include <SDL3/SDL.h>
+
 
 namespace vane
 {
@@ -10,6 +13,7 @@ namespace vane
         {
             Platform     *mPlatform;
             SDL_Window   *mSdlWin;
+            SDL_Surface  *mSdlSurf;
             SDL_WindowID  mSdlWinID;
 
             WindowImpl(Platform*, const char *name, int x, int y, int w, int h);
@@ -20,9 +24,11 @@ namespace vane
     }
 }
 
-
 namespace vane
 {
     using WindowImplType = gfxlib_cpu::WindowImpl;
 }
 
+
+#include "vane/platform.hpp"
+#include "vane/iodev.hpp"

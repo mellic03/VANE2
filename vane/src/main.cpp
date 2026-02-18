@@ -1,11 +1,11 @@
 #include <cstdio>
 
-#include "gfxlib/gfxlib.hpp"
+// #include "gfxlib/gfxlib.hpp"
+#include "platform/platform_impl.hpp"
 #include "iolib/iolib.hpp"
 #include "vane/log.hpp"
 #include "vane/dsa/bump_allocator.hpp"
 #include "vane/util/metric.hpp"
-// #include "vane/world.hpp"
 
 
 int main(int argc, char **argv)

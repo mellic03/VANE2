@@ -427,6 +427,30 @@ namespace gl
     inline void NamedFramebufferTextureLayer( GLuint framebuffer, GLenum attachment, GLuint texture,
                                                   GLint level, GLint layer )
     { VN_GLCALL( glNamedFramebufferTextureLayer(framebuffer, attachment, texture, level, layer); ) }
+
+    inline void ClearNamedFramebufferiv(GLuint framebuffer, GLenum buffer,
+                                        GLint drawbuffer, const GLint *value)
+    { VN_GLCALL( glClearNamedFramebufferiv(framebuffer, buffer, drawbuffer, value); ) }
+
+    inline void ClearNamedFramebufferuiv(GLuint framebuffer, GLenum buffer,
+                                         GLint drawbuffer, const GLuint *value)
+    { VN_GLCALL( glClearNamedFramebufferuiv(framebuffer, buffer, drawbuffer, value); ) }
+
+    inline void ClearNamedFramebufferfv(GLuint framebuffer, GLenum buffer,
+                                        GLint drawbuffer, const GLfloat *value)
+    { VN_GLCALL( glClearNamedFramebufferfv(framebuffer, buffer, drawbuffer, value); ) }
+
+    inline void ClearNamedFramebufferfi(GLuint framebuffer, GLenum buffer,
+                                        GLint drawbuffer, GLfloat depth, GLint stencil)
+    { VN_GLCALL( glClearNamedFramebufferfi(framebuffer, buffer, drawbuffer, depth, stencil); ) }
+
+ 
+    inline GLenum CheckNamedFramebufferStatus(GLuint framebuffer, GLenum target)
+    {
+        GLenum status;
+        VN_GLCALL( status = glCheckNamedFramebufferStatus(framebuffer, target); )
+        return status;
+    }
     // ---------------------------------------------------------------------------------------
 
 
@@ -532,6 +556,14 @@ namespace gl
 
     inline void BlendFunci( GLuint buf, GLenum sfactor, GLenum dfactor )
     { VN_GLCALL( glBlendFunci(buf, sfactor, dfactor); ) }
+
+
+    inline void DebugMessageControl(GLenum source, GLenum type, GLenum severity,
+                                    GLsizei count, const GLuint *ids, GLboolean enabled)
+    { VN_GLCALL( glDebugMessageControl(source, type, severity, count, ids, enabled); ) }
+
+    inline void DebugMessageCallback(GLDEBUGPROC callback, const void *userParam)
+    { VN_GLCALL( glDebugMessageCallback(callback, userParam); ) }
 
 };
 

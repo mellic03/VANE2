@@ -7,8 +7,14 @@ using namespace vane;
 gfxlib_cpu::WindowImpl::WindowImpl(Platform *platform, const char *name, int x, int y, int w, int h)
 :   mPlatform(platform)
 {
-    mSdlWin = SDL_CreateWindow(name, 1024, 1024, SDL_WINDOW_OPENGL);
+    mSdlWin = SDL_CreateWindow(name, 1024, 1024, 0);
     if (mSdlWin == NULL)
+    {
+        VLOG_FATAL("{}", SDL_GetError());
+    }
+
+    mSdlSurf = SDL_GetWindowSurface(mSdlWin);
+    if (mSdlSurf == NULL)
     {
         VLOG_FATAL("{}", SDL_GetError());
     }
@@ -29,7 +35,7 @@ gfxlib_cpu::WindowImpl::~WindowImpl()
 
 void gfxlib_cpu::WindowImpl::update()
 {
-
+    SDL_UpdateWindowSurface(mSdlWin);
 }
 
 

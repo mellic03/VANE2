@@ -4,29 +4,39 @@
 
 #include <SDL3/SDL.h>
 #include <vector>
+#include <set>
 #include <filesystem>
 
-static std::vector<vane::gfxlib_gl::WindowImpl*> cull_list_;
+static std::set<vane::WindowImplType*> cull_set_;
 
 
 vane::Platform::Platform()
 :   mRunning(true)
 {
-    {
-        namespace fs = std::filesystem;
-        fs::current_path(fs::path(SDL_GetBasePath()));
-    }
+    std::filesystem::current_path(std::filesystem::path(SDL_GetBasePath()));
 
     if (false == SDL_Init(SDL_INIT_VIDEO))
-    {
         VLOG_FATAL("{}", SDL_GetError());
-        exit(1);
-    }
-    VLOG_INFO("SDL3 Initialized");
 
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,  24))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    VLOG_INFO("SDL3 Initialized");
 }
 
 
@@ -41,17 +51,8 @@ void vane::Platform::shutdown()
     VLOG_INFO("Shutdown initiated");
 
     for (auto *winptr: mWindows)
-    {
-        cull_list_.push_back(winptr);
-    }
-
-    while (!cull_list_.empty())
-    {
-        auto *winptr = cull_list_.back();
-                       cull_list_.pop_back();
-        mWindows.erase(winptr);
         delete winptr;
-    }
+    mWindows.clear();
 
     mRunning = false;
 
@@ -67,6 +68,13 @@ void vane::Platform::update()
         return;
     }
 
+    for (auto *winptr: cull_set_)
+    {
+        mWindows.erase(winptr);
+        delete winptr;
+    }
+    cull_set_.clear();
+
     for (auto *winptr: mWindows)
         winptr->update();
 
@@ -77,7 +85,10 @@ void vane::Platform::update()
     while (SDL_PollEvent(&e))
     {
         if (e.type == SDL_EVENT_QUIT)
+        {
             this->shutdown();
+            break;
+        }
 
         if (!SDL_GetWindowFromEvent(&e))
             continue;
@@ -88,20 +99,12 @@ void vane::Platform::update()
         for (auto *iodev: mIoDevices)
             iodev->updateEvent(e);
     }
-
-    while (!cull_list_.empty())
-    {
-        auto *winptr = cull_list_.back();
-                       cull_list_.pop_back();
-        mWindows.erase(winptr);
-        delete winptr;
-    }
 }
 
 
 vane::vaneid_t vane::Platform::createWindow(const char *name, int w, int h)
 {
-    auto *win = new gfxlib_gl::WindowImpl(
+    auto *win = new WindowImplType(
         this, name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h
     );
     mWindows.insert(win);
@@ -119,11 +122,11 @@ vane::VaneStat vane::Platform::destroyWindow(vane::vaneid_t sdlWinId)
 }
 
 
-vane::VaneStat vane::Platform::destroyWindow_ptr(gfxlib_gl::WindowImpl *winptr)
+vane::VaneStat vane::Platform::destroyWindow_ptr(WindowImplType *winptr)
 {
     if (mWindows.contains(winptr))
     {
-        cull_list_.push_back(winptr);
+        cull_set_.insert(winptr);
         return VaneStat::OK;
     }
 
@@ -132,7 +135,7 @@ vane::VaneStat vane::Platform::destroyWindow_ptr(gfxlib_gl::WindowImpl *winptr)
 }
 
 
-vane::gfxlib_gl::WindowImpl *vane::Platform::getWindow(vaneid_t sdlWinId)
+vane::WindowImplType *vane::Platform::getWindow(vaneid_t sdlWinId)
 {
     for (auto *win: mWindows)
         if (win->mSdlWinID == sdlWinId)

@@ -45,6 +45,18 @@ public:
             VLOG_WARN("Attempted to read top of empty stack");
     }
 
+    void remove(int idx)
+    {
+        if (!(0<=idx && idx<Capacity))
+        {
+            VLOG_WARN("Index out of bounds");
+            return;
+        }
+
+        std::swap(mData[idx], this->top());
+        this->pop();
+    }
+
     DataType &operator[](size_t idx)
     {
         if (0<=idx && idx<Capacity)
