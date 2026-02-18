@@ -13,6 +13,6 @@ namespace vane
 
 namespace vane
 {
-    using PlatformWindowType = gpu_vk::WindowImpl;
+    using WindowImplType = gpu_vk::WindowImpl;
 }
 

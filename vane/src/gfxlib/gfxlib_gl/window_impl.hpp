@@ -8,9 +8,6 @@ namespace vane
     {
         struct WindowImpl
         {
-            static constexpr size_t MAX_WINDOWS = 8;
-            static inline int32_t numWindows_ = 0;
-
             Platform     *mPlatform;
             SDL_Window   *mSdlWin;
             SDL_GLContext mSdlGlCtx;
@@ -27,6 +24,6 @@ namespace vane
 
 namespace vane
 {
-    using PlatformWindowType = gpu_gl::WindowImpl;
+    using WindowImplType = gpu_gl::WindowImpl;
 }
 

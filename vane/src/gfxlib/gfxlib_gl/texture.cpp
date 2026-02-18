@@ -1,4 +1,4 @@
-#include "gpu_gl.hpp"
+#include "gl_bindings.hpp"
 
 
 static GLuint create_texture(int w, int h, void *data)

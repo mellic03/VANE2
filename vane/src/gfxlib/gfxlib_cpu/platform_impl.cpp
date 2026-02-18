@@ -1,12 +1,11 @@
 #include "platform_impl.hpp"
-#include "gpu_gl.hpp"
 #include "vane/log.hpp"
 
 #include <SDL3/SDL.h>
 #include <vector>
 #include <filesystem>
 
-static std::vector<vane::gpu_gl::WindowImpl*> cull_list_;
+static std::vector<vane::WindowImplType*> cull_list_;
 
 
 vane::Platform::Platform()
@@ -20,13 +19,9 @@ vane::Platform::Platform()
     if (false == SDL_Init(SDL_INIT_VIDEO))
     {
         VLOG_FATAL("{}", SDL_GetError());
-        exit(1);
     }
-    VLOG_INFO("SDL3 Initialized");
 
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    VLOG_INFO("SDL3 Initialized");
 }
 
 
@@ -90,39 +85,7 @@ void vane::Platform::update()
         {
             winptr->updateEvent(e);
         }
-
-        // SDL_Window *eWin = SDL_GetWindowFromEvent(&e);
-        // if (e.type == SDL_EVENT_QUIT)
-        // {
-        //     if (winptr) destroyWindow(e.window.windowID);
-        //     else        this->shutdown();
-        // }
-
-        // else if (e.type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)
-        // {
-        //     destroyWindow(e.window.windowID);
-        // }
-
-        // else if (e.type == SDL_EVENT_KEY_UP)
-        // {
-        //     if (e.key.key == SDLK_ESCAPE)
-        //     {
-        //         destroyWindow(e.window.windowID);
-        //     }
-        // }
     }
-
-    // for (int i=0; i<WindowImpl::MAX_WINDOWS; i++)
-    // {
-    //     auto &desc = windows_[i];
-    //     if (desc.isInUse())
-    //     {
-    //         SDL_GL_MakeCurrent(desc.sdlWin, desc.sdlGlCtx);
-    //         gl::ClearColor(1.0f, 0.5f, 0.0f, 1.0f);
-    //         gl::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //         SDL_GL_SwapWindow(desc.sdlWin);
-    //     }
-    // }
 
     while (!cull_list_.empty())
     {
@@ -136,7 +99,7 @@ void vane::Platform::update()
 
 vane::vaneid_t vane::Platform::createWindow(const char *name, int w, int h)
 {
-    auto *win = new gpu_gl::WindowImpl(
+    auto *win = new WindowImplType(
         this, name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h
     );
     mWindows.insert(win);
@@ -159,7 +122,7 @@ vane::VaneStat vane::Platform::destroyWindow(vane::vaneid_t sdlWinId)
 }
 
 
-vane::VaneStat vane::Platform::destroyWindow_ptr(gpu_gl::WindowImpl *winptr)
+vane::VaneStat vane::Platform::destroyWindow_ptr(WindowImplType *winptr)
 {
     if (mWindows.contains(winptr))
     {
@@ -172,7 +135,7 @@ vane::VaneStat vane::Platform::destroyWindow_ptr(gpu_gl::WindowImpl *winptr)
 }
 
 
-vane::gpu_gl::WindowImpl *vane::Platform::getWindow(vaneid_t sdlWinId)
+vane::WindowImplType *vane::Platform::getWindow(vaneid_t sdlWinId)
 {
     for (auto *win: mWindows)
         if (win->mSdlWinID == sdlWinId)

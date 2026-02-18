@@ -1,5 +1,5 @@
 #include "platform_impl.hpp"
-#include "gpu_gl.hpp"
+#include "gl_bindings.hpp"
 #include "vane/log.hpp"
 
 using namespace vane;

@@ -12,4 +12,4 @@ export THIRDPARTY_INSTALL_PREFIX="${VANE_THIRDPARTY_DIR}/install"
 # export THIRDPARTY_VK_VERSION="1.4.304.0"
 export THIRDPARTY_VK_VERSION="1.4.341.1"
 
-source "${VANE_THIRDPARTY_DIR}/repo/vulkan/${THIRDPARTY_VK_VERSION}/setup-env.sh"
+# source "${VANE_THIRDPARTY_DIR}/repo/vulkan/${THIRDPARTY_VK_VERSION}/setup-env.sh"

@@ -35,7 +35,7 @@ if [[ "$opt_clean" == "1" ]]; then
 fi
 
 mkdir -p "${VANE_BUILD_DIR}" && cd "${VANE_BUILD_DIR}"
-cmake ../vane -DVANE_GPULIB_$opt_gpulib=1
+cmake ../vane -DVANE_GFXLIB_$opt_gpulib=1
 make -j$(nproc)
 
 if [[ "$opt_run" == "1" ]]; then
