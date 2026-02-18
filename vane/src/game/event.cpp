@@ -1,7 +1,7 @@
 #include "event.hpp"
 
 
-void vane::EventSource::notify(const vane::Object &obj, int32_t event)
+void vane::EventSource::notify(const GameObject &obj, int32_t event)
 {
     EventSink *curr = mHead;
     while (curr != NULL)

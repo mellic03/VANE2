@@ -14,24 +14,24 @@ gfxlib_gl::WindowImpl::WindowImpl(Platform *platform, const char *name, int x, i
 {
     mSdlWin = SDL_CreateWindow(name, 1024, 1024, SDL_WINDOW_OPENGL);
     if (mSdlWin == NULL)
-        VLOG_FATAL("{}", SDL_GetError());
+        VLOG_FATAL("SDL_CreateWindow: {}", SDL_GetError());
     mSdlWinID = SDL_GetWindowID(mSdlWin);
 
     mSdlGlCtx = SDL_GL_CreateContext(mSdlWin);
     if (mSdlGlCtx == nullptr)
-        VLOG_FATAL("{}", SDL_GetError());
+        VLOG_FATAL("SDL_GL_CreateContext: {}", SDL_GetError());
 
     if (!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress))
         VLOG_FATAL("gladLoadGLLoader failure");
 
     if (!SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx))
-        VLOG_ERROR("{}", SDL_GetError());
+        VLOG_ERROR("SDL_GL_MakeCurrent: {}", SDL_GetError());
 
-    if (!SDL_GL_SetSwapInterval(0))
-        VLOG_ERROR("{}", SDL_GetError());
+    // if (!SDL_GL_SetSwapInterval(0))
+    //     VLOG_ERROR("SDL_GL_SetSwapInterval: {}", SDL_GetError());
 
     if (!SDL_SetWindowRelativeMouseMode(mSdlWin, false))
-        VLOG_ERROR("{}", SDL_GetError());
+        VLOG_ERROR("SDL_SetWindowRelativeMouseMode: {}", SDL_GetError());
 
     static bool is_first = true;
     if (is_first)

@@ -1,20 +1,48 @@
 #pragma once
 
-#include <glm/glm.hpp>
+#include "gameobject.hpp"
 
 
 namespace vane
 {
-    class Object;
+    class iInputComponent;
+    class KbInputComponent;
     class PhysicsComponent;
     class GraphicsComponent;
 }
 
 
-class vane::PhysicsComponent
+class vane::iInputComponent: public iComponent
 {
 public:
-    void update(Object &obj);
+    using iComponent::iComponent;
+    virtual ~iInputComponent() {  }
+};
+
+
+class vane::KbInputComponent: public iInputComponent
+{
+public:
+    static int64_t msgTypeID() { static int64_t value = ComponentMessage::newMessageTypeID(); return value; }
+
+    using iInputComponent::iInputComponent;
+    virtual ~KbInputComponent() {  }
+    virtual void update() override;
+    virtual void recvmsg(const vane::ComponentMessage &msg) override;
+
+private:
+};
+
+
+
+class vane::PhysicsComponent: public iComponent
+{
+public:
+    static int64_t msgTypeID() { static int64_t value = ComponentMessage::newMessageTypeID(); return value; }
+
+    using iComponent::iComponent;
+    virtual void update() override;
+    virtual void recvmsg(const ComponentMessage &msg) override;
 
 private:
     float mInvMass = 0.01f;
@@ -22,10 +50,14 @@ private:
 
 
 
-class vane::GraphicsComponent
+class vane::GraphicsComponent: public iComponent
 {
 public:
-    void update(Object &obj);
+    static int64_t msgTypeID() { static int64_t value = ComponentMessage::newMessageTypeID(); return value; }
+
+    using iComponent::iComponent;
+    virtual void update() override;
+    virtual void recvmsg(const ComponentMessage &msg) override;
 
 private:
     int mModelId = 3;

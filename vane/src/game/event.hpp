@@ -1,6 +1,6 @@
 #pragma once
 
-#include "object.hpp"
+#include "gameobject.hpp"
 
 namespace vane
 {
@@ -15,7 +15,7 @@ private:
     vane::EventSink *mHead;
     
 protected:
-    void notify(const Object&, int32_t event);
+    void notify(const GameObject&, int32_t event);
 
 public:
     EventSource(): mHead(nullptr) {  };
@@ -34,14 +34,14 @@ private:
 public:
     EventSink(): mNext(nullptr) {  }
     virtual ~EventSink() {  }
-    virtual void onNotify(const Object&, int32_t event) = 0;
+    virtual void onNotify(const GameObject&, int32_t event) = 0;
 
 };
 
 // class Achievements: public Observer
 // {
 // public:
-//     virtual void onNotify(const Object &entity, int32_t event)
+//     virtual void onNotify(const GameObject &entity, int32_t event)
 //     {
 //         switch (event)
 //         {
