@@ -4,36 +4,36 @@
 
 namespace vane
 {
-    class EventSource;
-    class EventSink;
+    class EventEmitter;
+    class EventListener;
 }
 
 
-class vane::EventSource
+class vane::EventEmitter
 {
 private:
-    vane::EventSink *mHead;
+    vane::EventListener *mHead;
     
 protected:
     void notify(const GameObject&, int32_t event);
 
 public:
-    EventSource(): mHead(nullptr) {  };
-    void addObserver(EventSink*);
-    void removeObserver(EventSink*);
+    EventEmitter(): mHead(nullptr) {  };
+    void listen(EventListener*);
+    void forget(EventListener*);
 
 };
 
 
-class vane::EventSink
+class vane::EventListener
 {
 private:
-    friend class vane::EventSource;
-    vane::EventSink *mNext;
+    friend class vane::EventEmitter;
+    vane::EventListener *mNext;
 
 public:
-    EventSink(): mNext(nullptr) {  }
-    virtual ~EventSink() {  }
+    EventListener(): mNext(nullptr) {  }
+    virtual ~EventListener() {  }
     virtual void onNotify(const GameObject&, int32_t event) = 0;
 
 };

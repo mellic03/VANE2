@@ -1,141 +1,71 @@
 #pragma once
 
-#include <glm/glm.hpp>
+#include "interface/icomponent.hpp"
+#include "vane/dsa/linkedlist.hpp"
+#include "vane/transform.hpp"
+
+#include <type_traits>
+
 
 namespace vane
 {
-    class GameObject;
-    class Entity;
+    class GameObject: public Transformable
+    {
+    private:
+        dsa::LinkedList<iComponent> mComponents;
 
-    class iComponent;
-    class iHwIoComponent;
+    public:
+        GameObject() {  };
 
-    // struct ComponentMessage
-    // {
-    //     int32_t type;
-    //     int32_t subtype;
-    //     void *data;
-    
-    //     static int32_t newMessageTypeID()
-    //     {
-    //         static int32_t value = 0;
-    //         return value++;
-    //     }
-    // };
+        void update();
+        void sendmsg(iComponent *origin, const void *msg, size_t msgsz);
+
+        template <typename T>
+        void sendmsg(iComponent *origin, const T &msg);
+
+        template <typename T>
+        void addComponent();
+
+    };
+}
+
+inline void vane::GameObject::update()
+{
+    for (iComponent *C: mComponents)
+    {
+        C->update();
+    }
 }
 
 
-// class vane::iComponent
-// {
-// protected:
-//     friend class vane::GameObject;
-//     vane::GameObject *mObject;
-//     vane::iComponent *mNext;
-
-// public:
-//     iComponent(GameObject *obj): mObject(obj), mNext(nullptr) {  }
-//     virtual ~iComponent() {  };
-//     virtual void update() = 0;
-//     virtual void recvmsg(const void *msg, size_t msgsz) = 0;
-// };
-
-
-
-class vane::GameObject
+inline void vane::GameObject::sendmsg(iComponent *origin, const void *msg, size_t msgsz)
 {
-public:
-    glm::vec3 mAcc, mVel, mPos;
-
-    GameObject();
-    void update();
-    void sendmsg(iComponent *origin, const void *msg, size_t msgsz);
-
-    template <typename T>
-    void sendmsg(iComponent *origin, const T &msg)
+    for (iComponent *C: mComponents)
     {
-        sendmsg(origin, (const void*)msg, sizeof(T));
-    }
-
-    template <typename T>
-    inline void addComponent()
-    {
-        static_assert(
-            std::is_base_of_v<iComponent, T>,
-            "T must be derivative of iComponent"
-        );
-
-        auto *comp = static_cast<iComponent*>(new T(this));
-        comp->mNext = mComponentList.head;
-        mComponentList.head = comp;
-    }
-
-private:
-    struct iComponentList
-    {
-        iComponent *head;
-
-        struct iterator
+        if (C != origin)
         {
-            iComponent *mC;
-
-            iterator(iComponent *C): mC(C) {  };
-            iterator(const iterator &I): mC(I.mC) {  };
-
-            iterator &operator++() { mC = mC->mNext; return *this; };
-            iterator operator++(int){ return iterator(mC->mNext); };
-
-            bool operator == ( const iterator &rhs ) { return mC == rhs.mC; };
-            bool operator != ( const iterator &rhs ) { return mC != rhs.mC; };
-            iComponent *&operator*() { return mC; };
-        };
-
-        iterator begin() { return iterator(this->head); };
-        iterator end()   { return iterator(nullptr); };
-    };
-
-    iComponentList mComponentList;
-};
+            C->recvmsg(msg, msgsz);
+        }
+    }
+}
 
 
-
-// class vane::CharacterObject: public vane::GameObject
-// {
-// public:
-//     glm::vec3 mPos, mVel, mAcc;
-//     virtual void update() override;
-
-// private:
-
-// };
+template <typename T>
+inline void vane::GameObject::sendmsg(iComponent *origin, const T &msg)
+{
+    sendmsg(origin, (const void*)msg, sizeof(T));
+}
 
 
-// class vane::PhysicsComponent
-// {
-// public:
-//     void update(Object &obj);
+template <typename T>
+inline void vane::GameObject::addComponent()
+{
+    static_assert(
+        std::is_base_of_v<iComponent, T>,
+        "T must be derivative of iComponent"
+    );
 
-// private:
-//     float mInvMass = 0.01f;
-// };
-
-
-// class vane::GraphicsComponent
-// {
-// public:
-//     void update(Object &obj);
-
-// private:
-//     int mModelId = 3;
-// };
-
-
-// class vane::Object
-// {
-// public:
-//     glm::vec3 mPos, mVel, mAcc;
-//     virtual void update();
-
-// private:
-//     PhysicsComponent  mPhysics;
-//     GraphicsComponent mGraphics;
-// };
+    mComponents.insert(
+        static_cast<iComponent*>(new T(this))
+    );
+}

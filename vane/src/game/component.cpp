@@ -1,12 +1,12 @@
 #include "component.hpp"
+#include "gameobject.hpp"
 #include "vane/log.hpp"
 #include "vane/util/vanetypeid.hpp"
 
 
-
 void vane::KeybdIoComponent::update()
 {
-    printf("[KeybdIoComponent::update]\n");
+    // printf("[KeybdIoComponent::update]\n");
 }
 
 void vane::KeybdIoComponent::recvmsg(const void *msg, size_t msgsz)
@@ -16,9 +16,10 @@ void vane::KeybdIoComponent::recvmsg(const void *msg, size_t msgsz)
 
 
 
+
 void vane::MouseIoComponent::update()
 {
-    printf("[MouseIoComponent::update]\n");
+    // printf("[MouseIoComponent::update]\n");
 }
 
 void vane::MouseIoComponent::recvmsg(const void *msg, size_t msgsz)
@@ -29,15 +30,33 @@ void vane::MouseIoComponent::recvmsg(const void *msg, size_t msgsz)
 
 
 
+void vane::GraphicsComponent::update()
+{
+    // printf("[GraphicsComponent::update]\n");
+
+}
+
+void vane::GraphicsComponent::recvmsg(const void *msg, size_t msgsz)
+{
+
+}
+
+
+
+
 void vane::PhysicsComponent::update()
 {
-    printf("[PhysicsComponent::update]\n");
 
-    // static constexpr glm::vec3 G(0.0f, -9.81f, 0.0f);
+    static constexpr glm::vec3 G(0.0f, -9.81f, 0.0f);
+    static glm::vec3 dPos(0.0f);
 
-    // mObject->mAcc = G;
-    // mObject->mVel += mObject->mAcc;
-    // mObject->mPos += mObject->mVel;
+    float dt = 1.0f / 100.0f;
+
+    mAcc  = G;
+    mVel += dt*mAcc;
+    dPos  = dt*mVel;
+
+    mObject->translate(dPos);
 }
 
 void vane::PhysicsComponent::recvmsg(const void *msg, size_t msgsz)
@@ -57,18 +76,3 @@ void vane::PhysicsComponent::recvmsg(const void *msg, size_t msgsz)
     //         break;
     // }
 }
-
-
-
-void vane::GraphicsComponent::update()
-{
-    printf("[GraphicsComponent::update]\n");
-
-}
-
-void vane::GraphicsComponent::recvmsg(const void *msg, size_t msgsz)
-{
-
-}
-
-

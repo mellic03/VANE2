@@ -1,9 +1,9 @@
 #include "event.hpp"
 
 
-void vane::EventSource::notify(const GameObject &obj, int32_t event)
+void vane::EventEmitter::notify(const GameObject &obj, int32_t event)
 {
-    EventSink *curr = mHead;
+    EventListener *curr = mHead;
     while (curr != NULL)
     {
         curr->onNotify(obj, event);
@@ -12,29 +12,29 @@ void vane::EventSource::notify(const GameObject &obj, int32_t event)
 }
 
 
-void vane::EventSource::addObserver(EventSink *obsv)
+void vane::EventEmitter::listen(EventListener *el)
 {
-    obsv->mNext = mHead;
-    mHead = obsv;
+    el->mNext = mHead;
+    mHead = el;
 }
 
 
-void vane::EventSource::removeObserver(EventSink *obsv)
+void vane::EventEmitter::forget(EventListener *el)
 {
-    if (mHead == obsv)
+    if (mHead == el)
     {
-        mHead = obsv->mNext;
-        obsv->mNext = nullptr;
+        mHead = el->mNext;
+        el->mNext = nullptr;
         return;
     }
 
-    EventSink *curr = mHead;
+    EventListener *curr = mHead;
     while (curr != nullptr)
     {
-        if (curr->mNext == obsv)
+        if (curr->mNext == el)
         {
-            curr->mNext = obsv->mNext;
-            obsv->mNext = nullptr;
+            curr->mNext = el->mNext;
+            el->mNext = nullptr;
             return;
         }
 
@@ -43,7 +43,7 @@ void vane::EventSource::removeObserver(EventSink *obsv)
 }
 
 
-// void vane::EventSource::notify(const vane::Object &obj, int32_t event)
+// void vane::EventEmitter::notify(const vane::Object &obj, int32_t event)
 // {
 //     for (int i=0; i<mEventSinks.size(); i++)
 //     {
@@ -51,18 +51,18 @@ void vane::EventSource::removeObserver(EventSink *obsv)
 //     }
 // }
 
-// void vane::EventSource::addEventSink(EventSink *obsv)
+// void vane::EventEmitter::addEventSink(EventListener *listener)
 // {
-//     mEventSinks.push(obsv);
+//     mEventSinks.push(listener);
 // }
 
-// void vane::EventSource::removeEventSink(EventSink *obsv)
+// void vane::EventEmitter::removeEventSink(EventListener *listener)
 // {
-//     static inplace_stack<EventSink*, MAX_EventSinkS> temp;
+//     static inplace_stack<EventListener*, MAX_EventSinkS> temp;
 
 //     for (int i=0; i<mEventSinks.size(); i++)
 //     {
-//         if (mEventSinks[i] == obsv)
+//         if (mEventSinks[i] == listener)
 //         {
 //             mEventSinks.remove(i);
 //             return;

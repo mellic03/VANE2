@@ -15,8 +15,6 @@ target_include_directories(
 target_sources(
     vane_gamelib PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/component.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/container.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/event.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/gameobject.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/world.cpp"
 )
