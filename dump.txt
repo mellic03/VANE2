@@ -1,0 +1,2262 @@
+[0;32m[INFO][0m SDL3 Initialized
+[0;32m[INFO][0m Device supports up to OpenGL 4.5
+[0;32m[INFO][0m Compiled screenquad shader
+[0;32m[INFO][0m Created window 2
+[0;32m[INFO][0m Enabled OpenGL debug messages
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+API, ERROR, HIGH, 1: GL_INVALID_OPERATION in glDrawArrays
+OpenGL Error: invalid operation
+[0;32m[INFO][0m Shutdown initiated
+[0;32m[INFO][0m Destroyed window 2
+[0;32m[INFO][0m Shutdown complete

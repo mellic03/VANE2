@@ -1,13 +1,12 @@
-#include "platform_impl.hpp"
+#include "platform.hpp"
 #include "gl_bindings.hpp"
 #include "vane/log.hpp"
 
-#include <SDL3/SDL.h>
 #include <vector>
 #include <set>
 #include <filesystem>
 
-static std::set<vane::WindowImplType*> cull_set_;
+static std::set<vane::PlatformWindow*> cull_set_;
 
 
 vane::Platform::Platform()
@@ -18,13 +17,13 @@ vane::Platform::Platform()
     if (false == SDL_Init(SDL_INIT_VIDEO))
         VLOG_FATAL("{}", SDL_GetError());
 
+    if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE))
+        VLOG_ERROR("{}", SDL_GetError());
+
     if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4))
         VLOG_ERROR("{}", SDL_GetError());
 
     if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5))
-        VLOG_ERROR("{}", SDL_GetError());
-
-    if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE))
         VLOG_ERROR("{}", SDL_GetError());
 
     if (!SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1))
@@ -104,7 +103,7 @@ void vane::Platform::update()
 
 vane::vaneid_t vane::Platform::createWindow(const char *name, int w, int h)
 {
-    auto *win = new WindowImplType(
+    auto *win = new PlatformWindow(
         this, name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h
     );
     mWindows.insert(win);
@@ -122,7 +121,7 @@ vane::VaneStat vane::Platform::destroyWindow(vane::vaneid_t sdlWinId)
 }
 
 
-vane::VaneStat vane::Platform::destroyWindow_ptr(WindowImplType *winptr)
+vane::VaneStat vane::Platform::destroyWindow_ptr(PlatformWindow *winptr)
 {
     if (mWindows.contains(winptr))
     {
@@ -135,7 +134,7 @@ vane::VaneStat vane::Platform::destroyWindow_ptr(WindowImplType *winptr)
 }
 
 
-vane::WindowImplType *vane::Platform::getWindow(vaneid_t sdlWinId)
+vane::PlatformWindow *vane::Platform::getWindow(vaneid_t sdlWinId)
 {
     for (auto *win: mWindows)
         if (win->mSdlWinID == sdlWinId)

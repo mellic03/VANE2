@@ -2,14 +2,12 @@
 
 layout (location=0) out vec4 fsout_frag_color;
 
-layout(set=0, binding=1) uniform sampler2D un_textures[];
-
 in FS_in {
     layout (location=0) vec2 texcoord;
 } fsin;
 
-
 void main()
 {
-    fsout_frag_color = texture(un_textures[0], fsin.texcoord);
+    vec2 uv = fsin.texcoord;
+    fsout_frag_color = vec4(uv.x, uv.y, 0.0, 1.0);
 }

@@ -1,15 +1,16 @@
-#include "platform_impl.hpp"
+#include "platform.hpp"
 #include "gl_bindings.hpp"
 #include "vane/log.hpp"
 
 extern void vaneEnableOpenGlDebugOutput();
 extern GLuint vaneCreateFramebuffer();
-static GLuint test_fbo_;
+extern GLuint vaneCompileScreenQuadProgram();
+static GLuint screenquad_program_;
 
 using namespace vane;
 
 
-gfxlib_gl::WindowImpl::WindowImpl(Platform *platform, const char *name, int x, int y, int w, int h)
+PlatformWindow::PlatformWindow(Platform *platform, const char *name, int x, int y, int w, int h)
 :   mPlatform(platform)
 {
     mSdlWin = SDL_CreateWindow(name, 1024, 1024, SDL_WINDOW_OPENGL);
@@ -27,31 +28,33 @@ gfxlib_gl::WindowImpl::WindowImpl(Platform *platform, const char *name, int x, i
     if (!SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx))
         VLOG_ERROR("SDL_GL_MakeCurrent: {}", SDL_GetError());
 
+    gl::CreateVertexArrays(1, &mVAO);
+
     // if (!SDL_GL_SetSwapInterval(0))
     //     VLOG_ERROR("SDL_GL_SetSwapInterval: {}", SDL_GetError());
 
-    if (!SDL_SetWindowRelativeMouseMode(mSdlWin, false))
-        VLOG_ERROR("SDL_SetWindowRelativeMouseMode: {}", SDL_GetError());
+    // if (!SDL_SetWindowRelativeMouseMode(mSdlWin, false))
+    //     VLOG_ERROR("SDL_SetWindowRelativeMouseMode: {}", SDL_GetError());
 
     static bool is_first = true;
     if (is_first)
     {
+        is_first = false;
         GLint major, minor;
         gl::GetIntegerv(GL_MAJOR_VERSION, &major);
         gl::GetIntegerv(GL_MINOR_VERSION, &minor);
         VLOG_INFO("Device supports up to OpenGL {}.{}", major, minor);
-        is_first = false;
+        screenquad_program_ = vaneCompileScreenQuadProgram();
     }
 
     VLOG_INFO("Created window {}", mSdlWinID);
 
     vaneEnableOpenGlDebugOutput();
-    test_fbo_ = vaneCreateFramebuffer();
+    mFBO = vaneCreateFramebuffer();
 }
 
 
-
-gfxlib_gl::WindowImpl::~WindowImpl()
+PlatformWindow::~PlatformWindow()
 {
     if (!SDL_GL_DestroyContext(mSdlGlCtx))
     {
@@ -63,36 +66,19 @@ gfxlib_gl::WindowImpl::~WindowImpl()
 }
 
 
-#include <glm/glm.hpp>
-// extern uint32_t compute_shader_init();
-void gfxlib_gl::WindowImpl::update()
+void PlatformWindow::update()
 {
-    // static bool first = true;
-    // static uint32_t prog = 0;
-    // if (first)
-    // {
-    //     first = false;
-    //     prog = compute_shader_init();
-    // }
-    // gl::UseProgram(prog);
-    // gl::DispatchCompute(8, 8, 1);
-
     SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx);
 
-    // glm::vec4 rgba(0.5f, 1.0f, 0.25f, 1.0f);
-    // glm::vec4 dpth(0.5f, 1.0f, 0.25f, 1.0f);
-    // gl::BindFramebuffer(GL_FRAMEBUFFER, test_fbo_);
-    // gl::ClearNamedFramebufferfv(test_fbo_, GL_COLOR, 0, &(rgba[0]));
-    // gl::ClearNamedFramebufferfv(test_fbo_, GL_DEPTH, 0, &(dpth[0]));
-
-    gl::ClearColor(0.5f, 0.75f, 0.25f, 1.0f);
-    gl::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    gl::BindVertexArray(mVAO);
+    gl::UseProgram(screenquad_program_);
+    gl::DrawArrays(GL_TRIANGLES, 0, 3);
 
     SDL_GL_SwapWindow(mSdlWin);
 }
 
 
-void gfxlib_gl::WindowImpl::updateEvent(SDL_Event &e)
+void PlatformWindow::updateEvent(SDL_Event &e)
 {
     if (e.type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)
     {

@@ -1,74 +1,74 @@
 #include "component.hpp"
 #include "vane/log.hpp"
+#include "vane/util/vanetypeid.hpp"
 
-void vane::KbInputComponent::update()
+
+
+void vane::KeybdIoComponent::update()
 {
-    static glm::vec3 impulse;
-
-    if (0 || 1)
-    {
-        impulse = glm::vec3(0.0f, 2.523f, 0.0f);
-        ComponentMessage msg = {
-            .type    = PhysicsComponent::msgTypeID(),
-            .subtype = PhysicsComponent::CMD_IMPULSE,
-            .data    = (void*)&impulse
-        };
-        mObject->sendmsg(this, msg);
-    }
+    printf("[KeybdIoComponent::update]\n");
 }
 
-void vane::KbInputComponent::recvmsg(const ComponentMessage &msg)
+void vane::KeybdIoComponent::recvmsg(const void *msg, size_t msgsz)
 {
-    if (msg.type != msgTypeID())
-    {
-        return;
-    }
 
-    VLOG_INFO("KbInputComponent::recvmsg type={}, data={:#x}", msg.type, (uintptr_t)(msg.data));
 }
+
+
+
+void vane::MouseIoComponent::update()
+{
+    printf("[MouseIoComponent::update]\n");
+}
+
+void vane::MouseIoComponent::recvmsg(const void *msg, size_t msgsz)
+{
+
+}
+
 
 
 
 void vane::PhysicsComponent::update()
 {
-    static constexpr glm::vec3 G(0.0f, -9.81f, 0.0f);
+    printf("[PhysicsComponent::update]\n");
 
-    mObject->mAcc = G;
-    mObject->mVel += mObject->mAcc;
-    mObject->mPos += mObject->mVel;
+    // static constexpr glm::vec3 G(0.0f, -9.81f, 0.0f);
+
+    // mObject->mAcc = G;
+    // mObject->mVel += mObject->mAcc;
+    // mObject->mPos += mObject->mVel;
 }
 
-void vane::PhysicsComponent::recvmsg(const ComponentMessage &msg)
+void vane::PhysicsComponent::recvmsg(const void *msg, size_t msgsz)
 {
-    if (msg.type != msgTypeID())
-    {
-        return;
-    }
+    // if (msg.type != vaneTypeID<PhysicsComponent>())
+    // {
+    //     return;
+    // }
 
-    switch (msg.subtype)
-    {
-        case PhysicsComponent::CMD_DUMMY:
-            break;
+    // switch (msg.subtype)
+    // {
+    //     case PhysicsComponent::CMD_DUMMY:
+    //         break;
 
-        case PhysicsComponent::CMD_IMPULSE:
-            mObject->mVel += *static_cast<glm::vec3*>(msg.data);
-            break;
-    }
+    //     case PhysicsComponent::CMD_IMPULSE:
+    //         mObject->mVel += *static_cast<glm::vec3*>(msg.data);
+    //         break;
+    // }
 }
 
 
 
 void vane::GraphicsComponent::update()
 {
+    printf("[GraphicsComponent::update]\n");
 
 }
 
-void vane::GraphicsComponent::recvmsg(const ComponentMessage &msg)
+void vane::GraphicsComponent::recvmsg(const void *msg, size_t msgsz)
 {
-    if (msg.type != msgTypeID())
-    {
-        return;
-    }
+
 }
 
 

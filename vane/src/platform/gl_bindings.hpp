@@ -262,7 +262,22 @@ namespace gl
 
     inline void NamedFramebufferRenderbuffer( GLuint framebuffer, GLenum attachment,
                                         GLenum renderbuffertarget, GLuint renderbuffer )
-    { glNamedFramebufferRenderbuffer(framebuffer, attachment, renderbuffertarget, renderbuffer); }
+    { VN_GLCALL( glNamedFramebufferRenderbuffer(framebuffer, attachment, renderbuffertarget, renderbuffer); ) }
+
+
+
+    inline void ObjectLabel(GLenum identifier, GLuint name, GLsizei length, const char *label)
+    { VN_GLCALL( glObjectLabel(identifier, name, length, label); ) }
+
+    inline void ObjectPtrLabel(void *ptr, GLsizei length, const char *label)
+    { VN_GLCALL( glObjectPtrLabel(ptr, length, label); ) }
+
+    inline void GetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, char *label)
+    { VN_GLCALL( glGetObjectLabel(identifier, name, bufSize, length, label); ) }
+
+    inline void GetObjectPtrLabel(void *ptr, GLsizei bufSize, GLsizei *length, char *label)
+    { VN_GLCALL( glGetObjectPtrLabel(ptr, bufSize, length, label); ) }
+
 
 
     inline void *MapBuffer( GLenum target, GLenum access )
@@ -310,7 +325,7 @@ namespace gl
 
     inline void TexSubImage2D( GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width,
                             GLsizei height, GLenum format, GLenum type, const void *pixels )
-    { glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels); }
+    { VN_GLCALL( glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels); ) }
 
     inline void TexImage3D( GLenum target, GLint level, GLint internalformat, GLsizei w, GLsizei h,
                         GLsizei d, GLint border, GLenum format, GLenum type, const void *data )

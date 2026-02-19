@@ -1,32 +1,36 @@
 #include <cstdio>
 
-// #include "gfxlib/gfxlib.hpp"
-#include "platform/platform_impl.hpp"
+#include "platform/platform.hpp"
 #include "iolib/iolib.hpp"
 #include "vane/log.hpp"
-#include "vane/dsa/bump_allocator.hpp"
 #include "vane/util/metric.hpp"
 
 #include "game/gameobject.hpp"
 #include "game/component.hpp"
+#include "game/world.hpp"
+
+// #include "vane/dsa/bump_allocator.hpp"
+// BumpAllocator BA(64 * metric::MEGA);
+// SDL_GL_SetAttribute(SDL_GL_SHARE_WITH_CURRENT_CONTEXT, 1)
 
 
 int main(int argc, char **argv)
 {
     using namespace vane;
-    // BumpAllocator BA(64 * metric::MEGA);
+
+    vane::World world;
 
     GameObject player;
-    player.addComponent<KbInputComponent>();
+    player.addComponent<KeybdIoComponent>();
+    player.addComponent<MouseIoComponent>();
     player.addComponent<PhysicsComponent>();
     player.addComponent<GraphicsComponent>();
 
     auto *plat = new vane::Platform();
-    auto *kb = plat->createIoDevice<iolib::Keyboard>();
-    auto *ms = plat->createIoDevice<iolib::Mouse>();
+    auto *kb = plat->addIoDevice<iolib::Keyboard>();
+    auto *ms = plat->addIoDevice<iolib::Mouse>();
 
-    auto winId = plat->createWindow("Test Program", 512, 512);
-    if (winId == VANEID_NONE)
+    if (VANEID_NONE == plat->createWindow("Window 1", 512, 512))
     {
         VLOG_FATAL("Failed to create window");
         return 1;

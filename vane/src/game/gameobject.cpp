@@ -1,37 +1,34 @@
 #include "gameobject.hpp"
+#include <cstdio>
 
 
 vane::GameObject::GameObject()
-:   mCompHead(nullptr),
-    mAcc(0.0f), mVel(0.0f), mPos(0.0f)
+:   mAcc(0.0f), mVel(0.0f), mPos(0.0f)
 {
+    mComponentList.head = nullptr;
 
 }
 
 
 void vane::GameObject::update()
 {
-    iComponent *comp = mCompHead;
-    while (comp)
+    for (iComponent *C: mComponentList)
     {
-        comp->update();
-        comp = comp->mNext;
+        C->update();
     }
 }
 
 
-void vane::GameObject::sendmsg(iComponent *origin, const ComponentMessage &msg)
+void vane::GameObject::sendmsg(iComponent *origin, const void *msg, size_t msgsz)
 {
-    iComponent *comp = mCompHead;
-    while (comp)
+    for (iComponent *C: mComponentList)
     {
-        if (comp != origin)
+        if (C != origin)
         {
-            comp->recvmsg(msg);
+            C->recvmsg(msg, msgsz);
         }
-
-        comp = comp->mNext;
     }
 }
+
 
 

@@ -22,8 +22,8 @@ target_include_directories(
 target_sources(
     vane_platformlib PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/gl_validation.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/platform_impl.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/window_impl.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/platform.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/window.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/shader.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/texture.cpp"
 )

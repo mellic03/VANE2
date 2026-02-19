@@ -1,50 +1,65 @@
 #pragma once
 
-#include "gameobject.hpp"
+#include "interface/icomponent.hpp"
 
 
 namespace vane
 {
-    class iInputComponent;
-    class KbInputComponent;
+    class iHwIoComponent;
+    class KeybdIoComponent;
+    class MouseIoComponent;
+
     class PhysicsComponent;
     class GraphicsComponent;
 }
 
 
-class vane::iInputComponent: public iComponent
+
+class vane::iHwIoComponent: public iComponent
 {
 public:
     using iComponent::iComponent;
-    virtual ~iInputComponent() {  }
+    virtual ~iHwIoComponent() {  };
 };
 
 
-class vane::KbInputComponent: public iInputComponent
+class vane::KeybdIoComponent: public iHwIoComponent
 {
 public:
-    static int32_t msgTypeID() { static int32_t value = ComponentMessage::newMessageTypeID(); return value; }
-
-    using iInputComponent::iInputComponent;
-    virtual ~KbInputComponent() {  }
+    using iHwIoComponent::iHwIoComponent;
+    virtual ~KeybdIoComponent() {  };
     virtual void update() override;
-    virtual void recvmsg(const vane::ComponentMessage &msg) override;
+    virtual void recvmsg(const void*, size_t) override;
 
 private:
+
 };
+
+
+class vane::MouseIoComponent: public iHwIoComponent
+{
+public:
+    using iHwIoComponent::iHwIoComponent;
+    virtual ~MouseIoComponent() {  };
+    virtual void update() override;
+    virtual void recvmsg(const void*, size_t) override;
+
+private:
+
+};
+
 
 
 
 class vane::PhysicsComponent: public iComponent
 {
 public:
-    static int32_t msgTypeID() { static int32_t value = ComponentMessage::newMessageTypeID(); return value; }
     static constexpr int32_t CMD_DUMMY   = 0x00;
     static constexpr int32_t CMD_IMPULSE = 0x03;
 
     using iComponent::iComponent;
     virtual void update() override;
-    virtual void recvmsg(const ComponentMessage &msg) override;
+    virtual void recvmsg(const void*, size_t) override;
 
 private:
     float mInvMass = 0.01f;
@@ -55,11 +70,9 @@ private:
 class vane::GraphicsComponent: public iComponent
 {
 public:
-    static int32_t msgTypeID() { static int32_t value = ComponentMessage::newMessageTypeID(); return value; }
-
     using iComponent::iComponent;
     virtual void update() override;
-    virtual void recvmsg(const ComponentMessage &msg) override;
+    virtual void recvmsg(const void*, size_t) override;
 
 private:
     int mModelId = 3;

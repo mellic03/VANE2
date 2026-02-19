@@ -1,13 +1,11 @@
 #pragma once
 
-#include <unordered_set>
-
+#include "gameobject.hpp"
+#include <vector>
 
 namespace vane
 {
     class World;
-    class Object;
-    // class GameObject;
 }
 
 
@@ -18,7 +16,7 @@ public:
     void update();
 
 private:
-    std::unordered_set<vane::Object*> mObjects;
+    std::vector<GameObject> mObjects;
     // vane::GameObject *mRoot;
 };
 

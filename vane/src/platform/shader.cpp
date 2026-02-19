@@ -28,6 +28,66 @@ void rerere()
 }
 
 
+#include <glm/glm.hpp>
+
+// GLuint vaneCreateScreenQuadVAO()
+// {
+//     struct Vertex
+//     {
+//         glm::vec3 pos;
+//         glm::vec3 nrm;
+//         glm::vec2 tex;
+//         Vertex() {  };
+//         Vertex(int x, int y): pos(float(x), float(y), 0.0f) {  };
+//     };
+
+//     /*
+//            0        1
+//         [-1,-1]  [+1,-1]
+//            2        3
+//         [-1,+1]  [+1,+1]
+//     */
+
+//     static constexpr uint32_t numVtx = 4;
+//     static constexpr uint32_t numIdx = 6;
+
+//     Vertex vertices[numVtx] = {
+//         Vertex(-1, -1), Vertex(+1, -1),
+//         Vertex(-1, +1), Vertex(+1, +1)
+//     };
+
+//     uint32_t indices[numIdx] = {
+//         0, 1, 2, 1, 3, 2
+//     };
+
+//     GLuint vao, vbo, ibo;
+
+//     gl::CreateBuffers(1, &vbo);	
+//     gl::NamedBufferStorage(vbo, sizeof(Vertex)*numVtx, vertices, GL_DYNAMIC_STORAGE_BIT);
+
+//     gl::CreateBuffers(1, &ibo);
+//     gl::NamedBufferStorage(ibo, sizeof(uint32_t)*numIdx, indices, GL_DYNAMIC_STORAGE_BIT);
+
+//     gl::CreateVertexArrays(1, &vao);
+
+//     gl::VertexArrayVertexBuffer(vao, 0, vbo, 0, sizeof(Vertex));
+//     gl::VertexArrayElementBuffer(vao, ibo);
+
+//     gl::EnableVertexArrayAttrib(vao, 0);
+//     gl::EnableVertexArrayAttrib(vao, 1);
+//     gl::EnableVertexArrayAttrib(vao, 2);
+
+//     gl::VertexArrayAttribFormat(vao, 0, 3, GL_FLOAT, GL_FALSE, offsetof(Vertex, pos));
+//     gl::VertexArrayAttribFormat(vao, 1, 3, GL_FLOAT, GL_FALSE, offsetof(Vertex, nrm));
+//     gl::VertexArrayAttribFormat(vao, 2, 2, GL_FLOAT, GL_FALSE, offsetof(Vertex, tex));
+
+//     gl::VertexArrayAttribBinding(vao, 0, 0);
+//     gl::VertexArrayAttribBinding(vao, 1, 0);
+//     gl::VertexArrayAttribBinding(vao, 2, 0);
+// }
+
+
+
 
 static GLuint vaneCreateColorTexture(int width, int height, void *data)
 {
@@ -94,6 +154,95 @@ uint32_t compute_shader_init()
     return (uint32_t)prog;
 }
 
+
+
+static bool check_shader(GLuint shader)
+{
+    GLint length;
+    gl::GetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+
+    if (length > 0)
+    {
+        char *message = new char[length];
+        gl::GetShaderInfoLog(shader, length, &length, message);
+        printf("[checkShaderError] %s\n", message);
+        delete[] message;
+        return true;
+    }
+
+    return false;
+}
+
+
+static void compile_shader(GLuint shader_id, const std::string &filepath)
+{
+    std::string buf = vane::file::loadRaw(filepath);
+    const char *src = buf.c_str();
+
+    gl::ShaderSource(shader_id, 1, &src, NULL);
+    gl::CompileShader(shader_id);
+
+    GLint result;
+    gl::GetShaderiv(shader_id, GL_COMPILE_STATUS, &result);
+
+    if (result == GL_FALSE)
+    {
+        if (check_shader(shader_id))
+        {
+            VLOG_ERROR("Failed to compile shader");
+        }
+    }
+}
+
+
+GLuint vaneCompileScreenQuadProgram()
+{
+    GLuint prog = gl::CreateProgram();
+    GLuint vert = gl::CreateShader(GL_VERTEX_SHADER);
+    GLuint frag = gl::CreateShader(GL_FRAGMENT_SHADER);
+
+    compile_shader(vert, "data/shader/quad.vert");
+    compile_shader(frag, "data/shader/quad.frag");
+
+    gl::AttachShader(prog, vert);
+    gl::AttachShader(prog, frag);
+    gl::LinkProgram(prog);
+    
+    gl::ValidateProgram(prog);
+    gl::DeleteShader(vert);
+    gl::DeleteShader(frag);
+
+    VLOG_INFO("Compiled screenquad shader");
+
+    return prog;
+}
+
+
+// GLuint vaneCompileScreenQuadProgram()
+// {
+//     GLuint prog = gl::CreateProgram();
+//     GLuint vert = gl::CreateShader(GL_VERTEX_SHADER);
+//     GLuint frag = gl::CreateShader(GL_FRAGMENT_SHADER);
+
+//     std::string vstr = vane::file::loadRaw("data/shader/quad.vs");
+//     std::string fstr = vane::file::loadRaw("data/shader/quad.fs");
+//     const char *vsrc = vstr.c_str();
+//     const char *fsrc = fstr.c_str();
+
+//     gl::ShaderSource(vert, 1, &vsrc, NULL);
+//     gl::ShaderSource(frag, 1, &fsrc, NULL);
+
+//     gl::CompileShader(vert);
+//     gl::CompileShader(frag);
+
+//     gl::AttachShader(prog, vert);
+//     gl::AttachShader(prog, frag);
+//     gl::LinkProgram(prog);
+
+//     VLOG_INFO("Compiled screenquad shader");
+
+//     return prog;
+// }
 
 // #include <vane/core/log.hpp>
 
