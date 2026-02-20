@@ -48,9 +48,9 @@ void vane::PlatformSDL3::pollevents()
             return;
         }
 
-        for (auto *iodev: mIoDevices)
+        for (auto &iodev: mIoDevices)
         {
-            iodev->onEvent(e);
+            iodev.get()->onEvent(e);
         }
     }
 }

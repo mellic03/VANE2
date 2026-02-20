@@ -6,6 +6,7 @@
 #include "vane/message.hpp"
 #include "vane/util/funcptr.hpp"
 #include <vector>
+#include <memory>
 #include <set>
 
 
@@ -57,7 +58,7 @@ protected:
     RxSampleEndpoint<1> mOpAuthRx_;
     TxMsgEndpoint       mOpStatTx_;
     OpState             mOpStat_;
-    std::set<IoDevice*> mIoDevices;
+    std::vector<std::unique_ptr<IoDevice>> mIoDevices;
 
     bool _getOpAuth(OpCtrl*);
     void _setOpStat(OpState);
@@ -67,6 +68,7 @@ protected:
     void _iodev_flush();
 
 public:
+
     iPlatform() {  }
     virtual ~iPlatform() {  }
     virtual void pollevents() = 0;

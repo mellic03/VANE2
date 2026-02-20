@@ -68,9 +68,9 @@ inline void vane::iPlatform::update()
         return;
     }
 
-    for (auto *iodev: mIoDevices)
+    for (auto &iodev: mIoDevices)
     {
-        iodev->onUpdate();
+        iodev.get()->onUpdate();
     }
 
     this->pollevents();
@@ -84,15 +84,14 @@ template <typename T, typename... Args>
 inline T *vane::iPlatform::iodev_create(Args... args)
 {
     static_assert( std::is_base_of_v<IoDevice, T>,
-                    "T must be derivative of vane::iPlatform::IoDevice" );
+                   "T must be derivative of vane::IoDevice" );
 
-    auto *obj = new T(this, args...);
-    auto *iodev = static_cast<IoDevice*>(obj);
-          iodev->typeid_ = vane_typeid<T>();
-          iodev->kill_   = false;
-    mIoDevices.insert(iodev);
+    T *iodev = new T(this, args...);
+       iodev->typeid_ = vane_typeid<T>();
+       iodev->kill_   = false;
+    mIoDevices.push_back(std::unique_ptr<IoDevice>(iodev));
 
-    return obj;
+    return iodev;
 }
 
 
@@ -105,27 +104,22 @@ inline vane::VaneStat vane::iPlatform::iodev_delete(IoDevice *iodev)
 
 inline void vane::iPlatform::_iodev_killall()
 {
-    for (IoDevice *iodev: mIoDevices)
+    for (auto &iodev: mIoDevices)
     {
-        iodev->kill_ = true;
+        iodev.get()->kill_ = true;
     }
 }
 
 inline void vane::iPlatform::_iodev_flush()
 {
-    for (auto it=mIoDevices.begin(); it!=mIoDevices.end();)
+    for (int i=mIoDevices.size()-1; i>=0; i--)
     {
-        IoDevice *iodev = *it;
+        IoDevice *iodev = mIoDevices[i].get();
 
         if (iodev->kill_)
         {
-            it = mIoDevices.erase(it);
-            delete iodev;
-        }
-
-        else
-        {
-            ++it;
+            std::swap(mIoDevices[i], mIoDevices.back());
+            mIoDevices.pop_back();
         }
     }
 }

@@ -12,7 +12,9 @@ add_executable(
     ${PROJECT_NAME} "${CMAKE_SOURCE_DIR}/vane/test/main.cpp"
 )
 target_include_directories(
-    ${PROJECT_NAME} PUBLIC "${VANE_INCLUDE_DIR}"
+    ${PROJECT_NAME} PUBLIC
+    "${VANE_INCLUDE_DIR}"
+    "$ENV{THIRDPARTY_INSTALL_PREFIX}/include"
 )
 target_compile_features(
     ${PROJECT_NAME} PUBLIC cxx_std_23

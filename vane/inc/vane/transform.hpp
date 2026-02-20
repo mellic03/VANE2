@@ -11,7 +11,6 @@ struct VaneTransform;
 class Transformable;
 
 
-
 struct VaneTransform
 {
 private:
