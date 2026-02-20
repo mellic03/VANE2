@@ -54,3 +54,4 @@ cp $VANE_BUILD_DIR/vane ./
 if [[ "$opt_run" == "1" ]]; then
     ./vane
 fi
+

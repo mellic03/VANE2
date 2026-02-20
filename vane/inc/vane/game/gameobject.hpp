@@ -1,6 +1,6 @@
 #pragma once
 
-#include "interface/icomponent.hpp"
+#include "icomponent.hpp"
 #include "vane/dsa/linkedlist.hpp"
 #include "vane/transform.hpp"
 

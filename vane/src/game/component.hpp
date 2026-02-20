@@ -1,6 +1,6 @@
 #pragma once
 
-#include "interface/icomponent.hpp"
+#include "vane/game/icomponent.hpp"
 #include <glm/glm.hpp>
 
 

@@ -1,21 +1,16 @@
 #pragma once
 
-#include "vane/iodev.hpp"
+#include "vane/platform.hpp"
+#include "vane/timer.hpp"
+
 #include <SDL3/SDL.h>
 #include <glm/glm.hpp>
 
 
-namespace vane::iolib
-{
-    class Keyboard;
-    class Mouse;
-}
-
-
-class vane::iolib::Keyboard: public vane::IoDevice
+class KeyboardIoDevice: public vane::IoDevice
 {
 public:
-    Keyboard(Platform*);
+    KeyboardIoDevice(vane::Platform*);
     virtual void update() final;
     virtual void updateEvent(const SDL_Event&) final {  };
     bool keyWasPressed(SDL_Scancode);
@@ -23,20 +18,21 @@ public:
     bool keyWasTapped(SDL_Scancode);
 
 private:
+    vane::MsTimer mTimer;
     bool *mCurrDown;
     bool *mPrevDown;
 };
 
 
 
-class vane::iolib::Mouse: public vane::IoDevice
+class MouseIoDevice: public vane::IoDevice
 {
 public:
     enum class Button: int {
         NONE, LEFT, MID, RIGHT, EXTRA1, EXTRA2, NUM_BUTTONS
     };
 
-    Mouse(Platform*);
+    MouseIoDevice(vane::Platform*);
     virtual void update() final;
     virtual void updateEvent(const SDL_Event&) final;
 
@@ -53,19 +49,3 @@ private:
     int  mClicks[int(Button::NUM_BUTTONS)];
 };
 
-// struct MouseState
-// {
-//     bool l, m, r;
-//     float x, y;
-// };
-
-// // struct MouseData
-// // {
-// //     bool left, mid, right;
-
-// //     struct {
-// //         int8_t left, mid, right;
-// //     } dir;
-    
-// //     float x, y;
-// // };

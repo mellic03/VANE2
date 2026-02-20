@@ -1,6 +1,6 @@
 #include <cstdio>
 
-#include "platform/platform.hpp"
+#include "vane/platform.hpp"
 #include "iolib/iolib.hpp"
 #include "vane/log.hpp"
 #include "vane/util/metric.hpp"
@@ -14,9 +14,39 @@
 // SDL_GL_SetAttribute(SDL_GL_SHARE_WITH_CURRENT_CONTEXT, 1)
 
 
+#include "vane/dsa/message.hpp"
+
+struct RxPort: public vane::RxMsgEndpoint
+{
+    virtual void recvmsg(const void *msg, size_t msgsz) final
+    {
+        printf("[RxPort::recvmsg] 0x%lx, %lu\n", (size_t)msg, msgsz);
+    }
+};
+
+void testfn()
+{
+    vane::TxMsgEndpoint txer;
+    RxPort rxers[8];
+
+    for (int i=0; i<8; i++)
+    {
+        txer.rxopen(&rxers[i]);
+    }
+
+    for (int i=0; i<4; i++)
+    {
+        printf("i==%d\n", i);
+        txer.sendmsg_bcast(nullptr, 16*i);
+    }
+}
+
 int main(int argc, char **argv)
 {
     using namespace vane;
+
+    testfn();
+    return 1;
 
     vane::World world;
 

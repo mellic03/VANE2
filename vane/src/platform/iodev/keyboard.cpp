@@ -1,11 +1,9 @@
-#include "iolib.hpp"
+#include "devices.hpp"
 #include <cstring>
 
-using namespace vane;
 
-
-iolib::Keyboard::Keyboard(Platform *plat)
-:   vane::IoDevice(plat, 1000),
+KeyboardIoDevice::KeyboardIoDevice(vane::Platform *plat)
+:   vane::IoDevice(plat),
     mCurrDown(new bool[SDL_SCANCODE_COUNT]),
     mPrevDown(new bool[SDL_SCANCODE_COUNT])
 {
@@ -13,7 +11,8 @@ iolib::Keyboard::Keyboard(Platform *plat)
     std::memset(mPrevDown, false, SDL_SCANCODE_COUNT*sizeof(bool));
 }
 
-void iolib::Keyboard::update()
+
+void KeyboardIoDevice::update()
 {
     memcpy(mPrevDown, mCurrDown, SDL_SCANCODE_COUNT*sizeof(bool));
 
@@ -24,17 +23,18 @@ void iolib::Keyboard::update()
     }
 }
 
-bool iolib::Keyboard::keyWasPressed(SDL_Scancode i)
+
+bool KeyboardIoDevice::keyWasPressed(SDL_Scancode i)
 {
     return !mPrevDown[i] && mCurrDown[i];
 }
 
-bool iolib::Keyboard::keyWasReleased(SDL_Scancode i)
+bool KeyboardIoDevice::keyWasReleased(SDL_Scancode i)
 {
     return mPrevDown[i] && !mCurrDown[i];
 }
 
-bool iolib::Keyboard::keyWasTapped(SDL_Scancode i)
+bool KeyboardIoDevice::keyWasTapped(SDL_Scancode i)
 {
     return i & false;
 }

@@ -16,5 +16,4 @@ target_sources(
     vane_utillib PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/file.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/log.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/timer.cpp"
 )

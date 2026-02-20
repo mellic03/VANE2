@@ -4,7 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${default}",
-                "${workspaceFolder}/vane/include/",
+                "${workspaceFolder}/vane/inc/",
                 "${workspaceFolder}/external/install/include/"
             ],
             "defines": [

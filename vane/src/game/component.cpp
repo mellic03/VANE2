@@ -1,5 +1,5 @@
 #include "component.hpp"
-#include "gameobject.hpp"
+#include "vane/game/gameobject.hpp"
 #include "vane/log.hpp"
 // #include "vane/type.hpp"
 

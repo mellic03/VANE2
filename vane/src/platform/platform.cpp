@@ -1,4 +1,4 @@
-#include "platform.hpp"
+#include "vane/platform.hpp"
 #include "gl_bindings.hpp"
 #include "vane/log.hpp"
 
@@ -101,7 +101,7 @@ void vane::Platform::update()
 }
 
 
-vane::vaneid_t vane::Platform::createWindow(const char *name, int w, int h)
+vaneid_t vane::Platform::createWindow(const char *name, int w, int h)
 {
     auto *win = new PlatformWindow(
         this, name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h
@@ -111,7 +111,7 @@ vane::vaneid_t vane::Platform::createWindow(const char *name, int w, int h)
 }
 
 
-vane::VaneStat vane::Platform::destroyWindow(vane::vaneid_t sdlWinId)
+vane::VaneStat vane::Platform::destroyWindow(vaneid_t sdlWinId)
 {
     for (auto *winptr: mWindows)
         if (winptr->mSdlWinID == sdlWinId)

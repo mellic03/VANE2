@@ -13,4 +13,5 @@ target_include_directories(
 target_sources(
     vane_dsalib PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/bump_allocator.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/message.cpp"
 )

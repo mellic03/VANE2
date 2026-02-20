@@ -1,11 +1,11 @@
 #include "world.hpp"
-#include "event.hpp"
 
 
 vane::World::World()
 {
 
 }
+
 
 void vane::World::update()
 {

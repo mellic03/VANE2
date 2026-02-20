@@ -1,45 +1,28 @@
-cmake_minimum_required(VERSION 3.28) # Essential for non-experimental module support
-
-# file(READ "${CMAKE_SOURCE_DIR}/version.txt" VANE_VERSION)
-# add_definitions(-DVANE_VERSION="${VANE_VERSION}")
-# message("${VANE_VERSION}")
+cmake_minimum_required(VERSION 3.28)
 
 project(vane CXX)
+add_subdirectory("${CMAKE_SOURCE_DIR}/src")
 
-# if(DEFINED VANE_GFXLIB_CPU)
-#     add_compile_definitions(VANE_GFXLIB_CPU)
-#     add_subdirectory("$ENV{VANE_SOURCE_DIR}/gfxlib/gfxlib_cpu")
-# elseif(DEFINED VANE_GFXLIB_VK)
-#     add_compile_definitions(VANE_GFXLIB_VK)
-#     add_subdirectory("$ENV{VANE_SOURCE_DIR}/gfxlib/gfxlib_vk")
-# elseif(DEFINED VANE_GFXLIB_GL)
-#     add_compile_definitions(VANE_GFXLIB_GL)
-#     add_subdirectory("$ENV{VANE_SOURCE_DIR}/gfxlib/gfxlib_gl")
-# else()
-#     message(FATAL_ERROR "Must define VANE_GFXLIB_CPU, VANE_GFXLIB_GL or VANE_GFXLIB_VK>")
-# endif()
 
-add_subdirectory("$ENV{VANE_SOURCE_DIR}/platform")
-add_subdirectory("$ENV{VANE_SOURCE_DIR}/iolib")
-add_subdirectory("$ENV{VANE_SOURCE_DIR}/util")
-add_subdirectory("$ENV{VANE_SOURCE_DIR}/dsa")
-add_subdirectory("$ENV{VANE_SOURCE_DIR}/game")
-
-add_executable(
-    ${PROJECT_NAME} "$ENV{VANE_SOURCE_DIR}/main.cpp"
-)
 target_include_directories(
-    ${PROJECT_NAME} PUBLIC "$ENV{VANE_INCLUDE_DIR}"
+    ${PROJECT_NAME} PRIVATE
+    "$ENV{VANE_INCLUDE_DIR}"
+    "$ENV{THIRDPARTY_INSTALL_PREFIX}/include"
 )
-target_compile_features(
-    ${PROJECT_NAME} PUBLIC cxx_std_23
+target_sources(
+    ${PROJECT_NAME} PRIVATE
+    "${CMAKE_SOURCE_DIR}/src/file.cpp"
+    "${CMAKE_SOURCE_DIR}/src/log.cpp"
 )
+
+add_subdirectory("${CMAKE_SOURCE_DIR}/src/platform")
+add_subdirectory("${CMAKE_SOURCE_DIR}/src/iolib")
+add_subdirectory("${CMAKE_SOURCE_DIR}/src/util")
+add_subdirectory("${CMAKE_SOURCE_DIR}/src/dsa")
+add_subdirectory("${CMAKE_SOURCE_DIR}/src/game")
+
 target_link_libraries(
-    ${PROJECT_NAME} PUBLIC
-    vane_platformlib
-    vane_iolib
-    vane_utillib
-    vane_dsalib
-    vane_gamelib
+    ${PROJECT_NAME} PUBLIC SDL3::SDL3
 )
+
 
