@@ -2,11 +2,16 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <cstring>
+#include "vane/log.hpp"
 
 namespace vane
 {
     class RxMsgEndpoint;
     class TxMsgEndpoint;
+
+    template <size_t N>
+    class RxSampleEndpoint;
 }
 
 
@@ -41,3 +46,52 @@ public:
 
 };
 
+
+
+
+template <size_t N>
+class vane::RxSampleEndpoint: public vane::RxMsgEndpoint
+{
+private:
+alignas(max_align_t)
+    uint8_t data_[N];
+    size_t  size_;
+    bool    ready_;
+
+public:
+    RxSampleEndpoint(): size_(0), ready_(false) {  };
+
+    virtual void recvmsg(const void *msg, size_t msgsz) final
+    {
+        if (msgsz > N)
+        {
+            VLOG_ERROR("RxSamplePort msgsz > N");
+            return;
+        }
+        std::memcpy(data_, msg, msgsz);
+        size_  = msgsz;
+        ready_ = true;
+    }
+
+    // size_t read(void *buf, size_t bufsz)
+    // {
+    //     size_t sz = vane_min(size_, bufsz);
+
+    //     if (sz > 0)
+    //     {
+    //         memcpy(buf, data_, sz);
+    //         size_ = 0;
+    //     }
+
+    //     return sz;
+    // }
+
+    void *get()
+    {
+        if (!ready_)
+            return nullptr;
+        ready_ = false;
+        return static_cast<void*>(data_);
+    }
+
+};

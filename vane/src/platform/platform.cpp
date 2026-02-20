@@ -3,17 +3,14 @@
 #include <filesystem>
 
 
-vane::OpState PlatformSDL3_init()
+vane::PlatformSDL3::PlatformSDL3()
 {
     using namespace vane;
 
     std::filesystem::current_path(std::filesystem::path(SDL_GetBasePath()));
 
     if (false == SDL_Init(SDL_INIT_VIDEO))
-    {
         VLOG_FATAL("{}", SDL_GetError());
-        return OpState::Invalid;
-    }
 
     if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE))
         VLOG_ERROR("{}", SDL_GetError());
@@ -33,25 +30,29 @@ vane::OpState PlatformSDL3_init()
     if (!SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8))
         VLOG_ERROR("{}", SDL_GetError());
 
-    VLOG_INFO("SDL3 Initialized");
+    _setOpStat(OpState::Running);
 
-    return OpState::Running;
+    VLOG_INFO("PlatformSDL3 initialized");
 }
 
 
-bool PlatformSDL3_poll(vane::Platform &plat, vane::PlatformEventType *e)
+void vane::PlatformSDL3::pollevents()
 {
-    if (SDL_PollEvent(e))
+    SDL_Event e;
+
+    while (SDL_PollEvent(&e))
     {
-        if (e->type == SDL_EVENT_QUIT)
+        if (e.type == SDL_EVENT_QUIT)
         {
-            plat.shutdown();
+            this->shutdown();
+            return;
         }
 
-        return true;
+        for (auto *iodev: mIoDevices)
+        {
+            iodev->onEvent(e);
+        }
     }
-
-    return false;
 }
 
 
@@ -120,7 +121,7 @@ bool PlatformSDL3_poll(vane::Platform &plat, vane::PlatformEventType *e)
 
 // vaneid_t vane::Platform::createWindow(const char *name, int w, int h)
 // {
-//     auto *win = new PlatformWindow(
+//     auto *win = new WindowSDL3(
 //         this, name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, w, h
 //     );
 //     mWindows.insert(win);
@@ -138,7 +139,7 @@ bool PlatformSDL3_poll(vane::Platform &plat, vane::PlatformEventType *e)
 // }
 
 
-// vane::VaneStat vane::Platform::destroyWindow_ptr(PlatformWindow *winptr)
+// vane::VaneStat vane::Platform::destroyWindow_ptr(WindowSDL3 *winptr)
 // {
 //     if (mWindows.contains(winptr))
 //     {
@@ -151,7 +152,7 @@ bool PlatformSDL3_poll(vane::Platform &plat, vane::PlatformEventType *e)
 // }
 
 
-// vane::PlatformWindow *vane::Platform::getWindow(vaneid_t sdlWinId)
+// vane::WindowSDL3 *vane::Platform::getWindow(vaneid_t sdlWinId)
 // {
 //     for (auto *win: mWindows)
 //         if (win->mSdlWinID == sdlWinId)
@@ -175,8 +176,8 @@ static GLuint screenquad_program_;
 using namespace vane;
 
 
-PlatformWindow::PlatformWindow(Platform *plat, const char *name, int width, int height)
-:   Platform::IoDevice(plat)
+WindowSDL3::WindowSDL3(iPlatform *plat, const char *name, int width, int height)
+:   IoDevice(plat)
 {
     mSdlWin = SDL_CreateWindow(name, width, height, SDL_WINDOW_OPENGL);
     if (mSdlWin == NULL)
@@ -213,9 +214,9 @@ PlatformWindow::PlatformWindow(Platform *plat, const char *name, int width, int 
 }
 
 
-PlatformWindow::~PlatformWindow()
+WindowSDL3::~WindowSDL3()
 {
-    printf("[PlatformWindow::~PlatformWindow] %d\n", mSdlWinID);
+    printf("[WindowSDL3::~WindowSDL3] %d\n", mSdlWinID);
 
     if (!SDL_GL_DestroyContext(mSdlGlCtx))
     {
@@ -227,7 +228,7 @@ PlatformWindow::~PlatformWindow()
 }
 
 
-void PlatformWindow::onUpdate()
+void WindowSDL3::onUpdate()
 {
     SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx);
 
@@ -239,7 +240,7 @@ void PlatformWindow::onUpdate()
 }
 
 
-void PlatformWindow::onEvent(const PlatformEventType &e)
+void WindowSDL3::onEvent(const PlatformEventType &e)
 {
     if (!SDL_GetWindowFromEvent(&e))
     {

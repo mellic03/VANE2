@@ -4,48 +4,57 @@
 #include <filesystem>
 
 
-inline vane::Platform::Platform(const Platform::Impl &impl)
-:   m_impl(impl),
-    m_opstat(OpState::Starting)
+// inline vane::iPlatform::iPlatform(const Platform::Impl &impl)
+// :   m_impl(impl),
+//     m_opstat(OpState::Starting)
+// {
+//     // if (!opAuthTx.rxopen(&mOpAuthIn))
+//     // {
+//     //     VLOG_ERROR("Failed to connect mOpAuthIn");
+//     // }
+
+//     // if (!mOpStatOut.rxopen(&opStateRx))
+//     // {
+//     //     VLOG_ERROR("Failed to connect mOpStatOut");
+//     // }
+
+//     m_opstat = m_impl.init();
+
+//     VLOG_INFO("Platform initialized");
+// }
+
+inline bool vane::iPlatform::_getOpAuth(OpCtrl *ctrl)
 {
-    // if (!opAuthTx.rxopen(&mOpAuthIn))
-    // {
-    //     VLOG_ERROR("Failed to connect mOpAuthIn");
-    // }
+    // mOpAuthRx_.
+    return false;
+}
 
-    // if (!mOpStatOut.rxopen(&opStateRx))
-    // {
-    //     VLOG_ERROR("Failed to connect mOpStatOut");
-    // }
-
-    m_opstat = m_impl.init();
-
-    VLOG_INFO("Platform initialized");
+inline void vane::iPlatform::_setOpStat(OpState stat)
+{
+    // static OpState
+    std::memcpy(&mOpStat_, &stat, sizeof(OpState));
+    static uint64_t buf[4];
+    memcpy(buf, static_cast<void*>(&stat), sizeof(OpState));
+    mOpStatTx_.sendmsg_bcast(buf, sizeof(OpState));
 }
 
 
-inline bool vane::Platform::active()
-{
-    return (m_opstat < OpState::Stopped);
-}
-
-
-inline void vane::Platform::shutdown()
+inline void vane::iPlatform::shutdown()
 {
     VLOG_INFO("Shutdown initiated");
 
-    m_opstat = OpState::Stopping;
+    _setOpStat(OpState::Stopping);
 
     _iodev_killall();
     _iodev_flush();
 
-    m_opstat = OpState::Stopped;
+    _setOpStat(OpState::Stopped);
 
     VLOG_INFO("Shutdown complete");
 }
 
 
-inline void vane::Platform::update()
+inline void vane::iPlatform::update()
 {
     // OpCtrl opAuthIn;
     // if (mOpAuthIn.read(&opAuthIn))
@@ -64,17 +73,7 @@ inline void vane::Platform::update()
         iodev->onUpdate();
     }
 
-    PlatformEventType e;
-
-    while (m_impl.poll(*this, &e))
-    {
-        for (auto *iodev: mIoDevices)
-        {
-            iodev->onEvent(e);
-        }
-
-        _iodev_flush();
-    }
+    this->pollevents();
 
     _iodev_flush();
 }
@@ -82,10 +81,10 @@ inline void vane::Platform::update()
 
 
 template <typename T, typename... Args>
-inline T *vane::Platform::iodev_create(Args... args)
+inline T *vane::iPlatform::iodev_create(Args... args)
 {
     static_assert( std::is_base_of_v<IoDevice, T>,
-                    "T must be derivative of vane::Platform::IoDevice" );
+                    "T must be derivative of vane::iPlatform::IoDevice" );
 
     auto *obj = new T(this, args...);
     auto *iodev = static_cast<IoDevice*>(obj);
@@ -97,14 +96,14 @@ inline T *vane::Platform::iodev_create(Args... args)
 }
 
 
-inline vane::VaneStat vane::Platform::iodev_delete(IoDevice *iodev)
+inline vane::VaneStat vane::iPlatform::iodev_delete(IoDevice *iodev)
 {
     iodev->kill_ = true;
     return VaneStat::OK;
 }
 
 
-inline void vane::Platform::_iodev_killall()
+inline void vane::iPlatform::_iodev_killall()
 {
     for (IoDevice *iodev: mIoDevices)
     {
@@ -112,7 +111,7 @@ inline void vane::Platform::_iodev_killall()
     }
 }
 
-inline void vane::Platform::_iodev_flush()
+inline void vane::iPlatform::_iodev_flush()
 {
     for (auto it=mIoDevices.begin(); it!=mIoDevices.end();)
     {

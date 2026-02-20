@@ -53,7 +53,6 @@ void TxMsgEndpoint::sendmsg_ucast(uint32_t dest, const void *msg, size_t msgsz)
     }
 }
 
-
 // void vane::EventEmitter::notify(const GameObject &obj, int32_t event)
 // {
 //     EventListener *curr = mHead;

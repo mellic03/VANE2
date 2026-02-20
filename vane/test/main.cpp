@@ -13,15 +13,10 @@ int main(int argc, char **argv)
 {
     using namespace vane;
 
-    Platform::Impl impl = {
-        .init = PlatformSDL3_init,
-        .poll = PlatformSDL3_poll
-    };
-
-    Platform plat(impl);
+    PlatformSDL3 plat;
     // tx_opctrl.sendmsg_bcast(OpCtrl::Terminate);
 
-    auto *win0 = plat.iodev_create<vane::PlatformWindow>("Window 1", 1024, 1024);
+    auto *win0 = plat.iodev_create<vane::WindowSDL3>("Window 1", 1024, 1024);
     // auto *kb = plat->addIoDevice<iolib::Keyboard>();
     // auto *ms = plat->addIoDevice<iolib::Mouse>();
 

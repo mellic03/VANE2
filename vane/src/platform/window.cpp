@@ -10,7 +10,7 @@
 // using namespace vane;
 
 
-// PlatformWindow::PlatformWindow(Platform *plat, const char *name, int width, int height)
+// WindowSDL3::WindowSDL3(Platform *plat, const char *name, int width, int height)
 // :   Platform::IoDevice(plat)
 // {
 //     mSdlWin = SDL_CreateWindow(name, width, height, SDL_WINDOW_OPENGL);
@@ -48,9 +48,9 @@
 // }
 
 
-// PlatformWindow::~PlatformWindow()
+// WindowSDL3::~WindowSDL3()
 // {
-//     printf("[PlatformWindow::~PlatformWindow] %d\n", mSdlWinID);
+//     printf("[WindowSDL3::~WindowSDL3] %d\n", mSdlWinID);
 
 //     if (!SDL_GL_DestroyContext(mSdlGlCtx))
 //     {
@@ -62,7 +62,7 @@
 // }
 
 
-// void PlatformWindow::onUpdate()
+// void WindowSDL3::onUpdate()
 // {
 //     SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx);
 
@@ -74,7 +74,7 @@
 // }
 
 
-// void PlatformWindow::onEvent(const PlatformEventType &e)
+// void WindowSDL3::onEvent(const PlatformEventType &e)
 // {
 //     if (!SDL_GetWindowFromEvent(&e))
 //     {
