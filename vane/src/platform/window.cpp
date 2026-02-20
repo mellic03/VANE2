@@ -1,4 +1,4 @@
-#include "platform.hpp"
+#include "vane/platform/platform_SDL3.hpp"
 #include "gl_bindings.hpp"
 #include "vane/log.hpp"
 
@@ -10,10 +10,10 @@ static GLuint screenquad_program_;
 using namespace vane;
 
 
-PlatformWindow::PlatformWindow(Platform *platform, const char *name, int x, int y, int w, int h)
-:   mPlatform(platform)
+PlatformWindow::PlatformWindow(Platform *plat, const char *name, int width, int height)
+:   Platform::IoDevice(plat)
 {
-    mSdlWin = SDL_CreateWindow(name, 1024, 1024, SDL_WINDOW_OPENGL);
+    mSdlWin = SDL_CreateWindow(name, width, height, SDL_WINDOW_OPENGL);
     if (mSdlWin == NULL)
         VLOG_FATAL("SDL_CreateWindow: {}", SDL_GetError());
     mSdlWinID = SDL_GetWindowID(mSdlWin);
@@ -36,16 +36,10 @@ PlatformWindow::PlatformWindow(Platform *platform, const char *name, int x, int 
     // if (!SDL_SetWindowRelativeMouseMode(mSdlWin, false))
     //     VLOG_ERROR("SDL_SetWindowRelativeMouseMode: {}", SDL_GetError());
 
-    static bool is_first = true;
-    if (is_first)
-    {
-        is_first = false;
-        GLint major, minor;
-        gl::GetIntegerv(GL_MAJOR_VERSION, &major);
-        gl::GetIntegerv(GL_MINOR_VERSION, &minor);
-        VLOG_INFO("Device supports up to OpenGL {}.{}", major, minor);
-        screenquad_program_ = vaneCompileScreenQuadProgram();
-    }
+    gl::GetIntegerv(GL_MAJOR_VERSION, &mGlVersionMajor);
+    gl::GetIntegerv(GL_MINOR_VERSION, &mGlVersionMinor);
+    VLOG_INFO("Context supports OpenGL {}.{}", mGlVersionMajor, mGlVersionMinor);
+    screenquad_program_ = vaneCompileScreenQuadProgram();
 
     VLOG_INFO("Created window {}", mSdlWinID);
 
@@ -56,6 +50,8 @@ PlatformWindow::PlatformWindow(Platform *platform, const char *name, int x, int 
 
 PlatformWindow::~PlatformWindow()
 {
+    printf("[PlatformWindow::~PlatformWindow] %d\n", mSdlWinID);
+
     if (!SDL_GL_DestroyContext(mSdlGlCtx))
     {
         VLOG_ERROR("Failure destroying SDL_GLContext");
@@ -66,7 +62,7 @@ PlatformWindow::~PlatformWindow()
 }
 
 
-void PlatformWindow::update()
+void PlatformWindow::onUpdate()
 {
     SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx);
 
@@ -78,18 +74,28 @@ void PlatformWindow::update()
 }
 
 
-void PlatformWindow::updateEvent(SDL_Event &e)
+void PlatformWindow::onEvent(const PlatformEventType &e)
 {
+    if (!SDL_GetWindowFromEvent(&e))
+    {
+        return;
+    }
+
+    if (e.window.windowID != mSdlWinID)
+    {
+        return;
+    }
+
     if (e.type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)
     {
-        mPlatform->destroyWindow_ptr(this);
+        mPlatform->iodev_delete(this);
     }
 
     else if (e.type == SDL_EVENT_KEY_UP)
     {
         if (e.key.key == SDLK_ESCAPE)
         {
-            mPlatform->destroyWindow_ptr(this);
+            mPlatform->iodev_delete(this);
         }
     }
 }

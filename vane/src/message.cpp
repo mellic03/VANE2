@@ -14,8 +14,12 @@ RxMsgEndpoint *TxMsgEndpoint::rxopen(RxMsgEndpoint *rxer)
     return nullptr;
 }
 
+#include <cstdio>
+
 void TxMsgEndpoint::sendmsg_bcast(const void *msg, size_t msgsz)
 {
+    printf("[sendmsg_bcast] msgsz=%lu\n", msgsz);
+
     for (int i=0; i<m_rxidx; i++)
     {
         RxMsgEndpoint *rxer = m_rxers[i];

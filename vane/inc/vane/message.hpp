@@ -31,8 +31,13 @@ private:
 
 public:
     RxMsgEndpoint *rxopen(RxMsgEndpoint *rxer);
+
     void sendmsg_bcast(const void *msg, size_t msgsz);
     void sendmsg_mcast(uint32_t mask, const void *msg, size_t msgsz);
     void sendmsg_ucast(uint32_t dest, const void *msg, size_t msgsz);
+
+    template <typename T>
+    void sendmsg_bcast(const T &p) { sendmsg_bcast(&p, sizeof(T)); }
+
 };
 

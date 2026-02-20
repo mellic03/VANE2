@@ -13,7 +13,8 @@ namespace vane
     {
         OK = 0,
         ERROR,
-        INVALID
+        INVALID,
+        NO_ACTION
     };
 }
 
@@ -31,15 +32,15 @@ namespace vane::detail
 }
 
 template <typename T>
+constexpr const vaneid_t VaneTypeID = vane::detail::vane_typeid_impl<T>::value;
+
+template <typename T>
 inline vaneid_t vane_typeid()
 {
     static const vaneid_t id = vane::detail::vane_typeid_curr_++;
     return id;
 }
 
-
-// template <typename T>
-// constexpr const vaneid_t VaneTypeID = vane::detail::vane_typeid_impl<T>::value;
 
 // template <typename T>
 // inline vaneid_t VaneTypeID()

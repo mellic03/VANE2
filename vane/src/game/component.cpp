@@ -4,28 +4,26 @@
 // #include "vane/type.hpp"
 
 
-void vane::KeybdIoComponent::update()
-{
-    // printf("[KeybdIoComponent::update]\n");
-}
+// void vane::KeybdIoComponent::update()
+// {
+//     // printf("[KeybdIoComponent::update]\n");
+// }
 
-void vane::KeybdIoComponent::recvmsg(const void *msg, size_t msgsz)
-{
+// void vane::KeybdIoComponent::recvmsg(const void *msg, size_t msgsz)
+// {
 
-}
-
-
+// }
 
 
-void vane::MouseIoComponent::update()
-{
-    // printf("[MouseIoComponent::update]\n");
-}
+// void vane::MouseIoComponent::update()
+// {
+//     // printf("[MouseIoComponent::update]\n");
+// }
 
-void vane::MouseIoComponent::recvmsg(const void *msg, size_t msgsz)
-{
+// void vane::MouseIoComponent::recvmsg(const void *msg, size_t msgsz)
+// {
 
-}
+// }
 
 
 

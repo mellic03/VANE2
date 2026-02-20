@@ -7,26 +7,27 @@ set_target_properties(glad PROPERTIES
     INTERFACE_INCLUDE_DIRECTORIES "$ENV{THIRDPARTY_INSTALL_PREFIX}/include"
 )
 
-add_library(vane_platformlib STATIC)
+
+add_library(vane_platformlib OBJECT)
 target_compile_features(
     vane_platformlib PUBLIC cxx_std_23
 )
-target_link_libraries(
-    vane_platformlib PUBLIC SDL3::SDL3 glad OpenGL::GL OpenGL::GLU
-)
 target_include_directories(
     vane_platformlib PRIVATE
-    "$ENV{VANE_INCLUDE_DIR}"
+    "${VANE_INCLUDE_DIR}"
     "$ENV{THIRDPARTY_INSTALL_PREFIX}/include"
 )
 target_sources(
     vane_platformlib PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/iodev/keyboard.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/iodev/mouse.cpp"
+    # "${CMAKE_CURRENT_SOURCE_DIR}/iodev/keyboard.cpp"
+    # "${CMAKE_CURRENT_SOURCE_DIR}/iodev/mouse.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/gl_validation.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/platform.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/window.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/shader.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/texture.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/time.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/window.cpp"
 )
-
+target_link_libraries(
+    vane_platformlib PRIVATE SDL3::SDL3 glad OpenGL::GL OpenGL::GLU
+)

@@ -1,96 +1,92 @@
 #pragma once
 
+#include "vane/log.hpp"
 #include "vane/time.hpp"
 #include "vane/type.hpp"
+#include "vane/util/funcptr.hpp"
+#include "vane/rxSamplePort.hpp"
+#include <vector>
+#include <set>
 
-#include <cstdint>
-#include <unordered_set>
 
 namespace vane
 {
-    using PlatformEventType = int;
-
     class Platform;
-    class PlatformWindow;
+
+    enum class OpControl: uint8_t
+    {
+        None       = 0,
+        Initialize = 1,
+        Terminate  = 2
+    };
+
+    enum class OpState: uint8_t
+    {
+        Invalid  = 0,
+        Starting,
+        Running,
+        Stopping,
+        Stopped
+    };
 }
 
 
 class vane::Platform
 {
 public:
+    struct Impl
+    {
+        OpState (*init)(void);
+        bool (*poll)(Platform&, PlatformEventType*);
+    };
+
     class IoDevice
     {
     protected:
         vane::Platform *mPlatform;
     private:
+        friend class vane::Platform;
         time::PeriodicTimer timer_;
         vaneid_t typeid_;
+        bool     kill_;
 
     public:
-        IoDevice(Platform *p): mPlatform(p), timer_(time::NsTime(0)) {  }
+        IoDevice(Platform *p)
+        :   mPlatform(p), timer_(time::NsTime(0)) {  }
+
         virtual ~IoDevice() {  }
         virtual void onUpdate() = 0;
         virtual void onEvent(const PlatformEventType&) = 0;
     };
 
-private:
-    bool mRunning;
-    std::unordered_set<IoDevice*> mIoDevices;
-    std::unordered_set<PlatformWindow*> mWindows;
 
-public:
-    Platform();
+    Platform(const Platform::Impl&, TxMsgEndpoint&);
 
-    bool running();
+    bool active();
     void shutdown();
     void update();
 
-    vaneid_t createWindow(const char *name, int w, int h);
-    VaneStat destroyWindow(vaneid_t);
-    VaneStat destroyWindow_ptr(PlatformWindow*);
-    PlatformWindow *getWindow(vaneid_t);
+    template <typename IoDevType, typename... Args>
+    IoDevType *iodev_create(Args... args);
+    VaneStat   iodev_delete(IoDevice *iodev);
 
-    template <typename T, typename... Args>
-    T *iodev_create(Args... args);
+private:
+    struct ThisState {
+        static constexpr int ALIVE = 2;
+        static constexpr int DYING = 1;
+        static constexpr int DEAD  = 0;
+    };
 
-    template <typename T>
-    T *iodev_get();
+    Platform::Impl      m_impl;
+    OpState             m_opstat;
+    RxSamplePort<8>     m_opctl;
+    std::set<IoDevice*> mIoDevices;
+
+    void _shutdown();
+    void _iodev_killall();
+    void _iodev_flush();
+
 };
-
-
-
-template <typename T, typename... Args>
-T *vane::Platform::iodev_create(Args... args)
-{
-    IoDevice *iodev;
-
-    static_assert(
-        std::is_base_of_v<IoDevice, T>,
-        "T must be derivative of vane::Platform::IoDevice"
-    );
-
-    iodev = static_cast<IoDevice*>(new T(this, args...));
-    iodev->typeid_ = vane_typeid<T>;
-    mIoDevices.insert(iodev);
-
-    return iodev;
-}
-
-
-template <typename T>
-T *vane::Platform::iodev_get()
-{
-    static_assert(
-        std::is_base_of_v<IoDevice, T>,
-        "T must be derivative of vane::Platform::IoDevice"
-    );
-
-    for (auto *iodev: mIoDevices)
-    {
-    }
-
-}
-
 
 
 // struct vane::PlatformWindow
@@ -112,3 +108,4 @@ T *vane::Platform::iodev_get()
 //     void updateEvent(SDL_Event&);
 // };
 
+#include "platform.inl"

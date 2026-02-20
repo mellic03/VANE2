@@ -4,6 +4,10 @@
 
 namespace vane::time
 {
+    struct HzTime;
+    struct MsTime;
+    struct NsTime;
+
     struct HzTime
     {
         uint64_t v_;

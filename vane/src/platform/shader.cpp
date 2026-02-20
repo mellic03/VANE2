@@ -1,5 +1,5 @@
 #include "gl_bindings.hpp"
-#include "vane/util/file.hpp"
+#include "vane/file.hpp"
 #include "vane/log.hpp"
 #include <fstream>
 
