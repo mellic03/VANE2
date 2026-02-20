@@ -1,7 +1,7 @@
 #include "component.hpp"
 #include "gameobject.hpp"
 #include "vane/log.hpp"
-#include "vane/util/vanetypeid.hpp"
+// #include "vane/type.hpp"
 
 
 void vane::KeybdIoComponent::update()
