@@ -3,9 +3,10 @@
 #include "vane/platform/platform_SDL3.hpp"
 #include "vane/platform/impl_sdl3.hpp"
 #include <vane/game/gameobject.hpp>
-#include "vane/message.hpp"
 
-static vane::TxMsgEndpoint tx_opctl;
+// #include "vane/message.hpp"
+// static vane::TxMsgEndpoint          tx_opctrl;
+// static RxSamplePortT<vane::OpState> rx_opstat;
 
 
 int main(int argc, char **argv)
@@ -17,13 +18,10 @@ int main(int argc, char **argv)
         .poll = PlatformSDL3_poll
     };
 
-    Platform plat(impl, tx_opctl);
-
-    // tx_opctl.rxopen()
-    tx_opctl.sendmsg_bcast(OpControl::Terminate);
+    Platform plat(impl);
+    // tx_opctrl.sendmsg_bcast(OpCtrl::Terminate);
 
     auto *win0 = plat.iodev_create<vane::PlatformWindow>("Window 1", 1024, 1024);
-
     // auto *kb = plat->addIoDevice<iolib::Keyboard>();
     // auto *ms = plat->addIoDevice<iolib::Mouse>();
 

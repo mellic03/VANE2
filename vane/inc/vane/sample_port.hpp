@@ -14,9 +14,8 @@ template <size_t N>
 class RxSamplePort: public vane::RxMsgEndpoint
 {
 private:
-    alignas(max_align_t)
-    size_t  size_;
-    uint8_t data_[N];
+    size_t size_;
+    alignas(max_align_t) uint8_t data_[N];
 
 public:
     RxSamplePort(): size_(0) {  };
@@ -49,24 +48,49 @@ public:
 };
 
 
-// template <typename T>
-// class RxSamplePortT: public vane::RxMsgEndpoint
-// {
-// private:
-//     T data_[1];
+template <typename T>
+class RxSamplePortT: public vane::RxMsgEndpoint
+{
+private:
+    bool ready_;
+    T data_[1];
 
-// public:
-//     virtual void recvmsg(const void *msg, size_t msgsz) final
-//     {
-//         if (msgsz == sizeof(T))
-//             std::memcpy(data_, msg, msgsz);
-//         else
-//             VLOG_ERROR("RxSamplePort msgsz != sizeof(T)");
-//     }
+public:
+    RxSamplePortT(): ready_(false) {  };
+
+    virtual void recvmsg(const void *msg, size_t msgsz) final
+    {
+        if (msgsz != sizeof(T))
+        {
+            VLOG_ERROR("RxSamplePortT msgsz != sizeof(T)");
+            return;
+        }
+
+        std::memcpy(data_, msg, sizeof(T));
+        ready_ = true;
+    }
+
+    bool read(T *data)
+    {
+        if (!ready_)
+            return false;
+
+        ready_ = false;
+        memcpy(data, data_, sizeof(T));
+        return true;
+    }
+};
 
 
-//     T &data() { return data_[0]; }
 
-// };
 
+template <typename T>
+class TxSamplePort: public vane::TxMsgEndpoint
+{
+public:
+    void write(const T &data)
+    {
+        sendmsg_bcast<T>(data);
+    }
+};
 

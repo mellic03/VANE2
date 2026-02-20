@@ -4,16 +4,22 @@
 #include <filesystem>
 
 
-inline vane::Platform::Platform(const Platform::Impl &impl, TxMsgEndpoint &txer)
+inline vane::Platform::Platform(const Platform::Impl &impl)
 :   m_impl(impl),
     m_opstat(OpState::Starting)
 {
-    if (!txer.rxopen(&m_opctl))
-    {
-        VLOG_ERROR("failure connecting rx/tx for opctl");
-    }
+    // if (!opAuthTx.rxopen(&mOpAuthIn))
+    // {
+    //     VLOG_ERROR("Failed to connect mOpAuthIn");
+    // }
+
+    // if (!mOpStatOut.rxopen(&opStateRx))
+    // {
+    //     VLOG_ERROR("Failed to connect mOpStatOut");
+    // }
 
     m_opstat = m_impl.init();
+
     VLOG_INFO("Platform initialized");
 }
 
@@ -28,6 +34,8 @@ inline void vane::Platform::shutdown()
 {
     VLOG_INFO("Shutdown initiated");
 
+    m_opstat = OpState::Stopping;
+
     _iodev_killall();
     _iodev_flush();
 
@@ -39,11 +47,11 @@ inline void vane::Platform::shutdown()
 
 inline void vane::Platform::update()
 {
-    static uint8_t msgbuf[1];
-    if (m_opctl.read(msgbuf, sizeof(msgbuf)))
-    {
-        printf("m_opctl: 0x%x\n", msgbuf[0]);
-    }
+    // OpCtrl opAuthIn;
+    // if (mOpAuthIn.read(&opAuthIn))
+    // {
+    //     printf("opAuthIn: 0x%x\n", opAuthIn);
+    // }
 
     if (mIoDevices.empty())
     {
