@@ -1,5 +1,5 @@
-#include "vane/dsa/bump_allocator.hpp"
-#include "vane/util/align.hpp"
+#include "vane/bump_allocator.hpp"
+#include "vane/align.hpp"
 #include "vane/log.hpp"
 
 

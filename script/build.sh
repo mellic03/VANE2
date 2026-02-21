@@ -48,7 +48,7 @@ cmake -DCMAKE_BUILD_TYPE="${opt_bdtype}" \
 make -j$(nproc)
 
 mkdir -p $VANE_OUTPUT_DIR/data && cd $VANE_OUTPUT_DIR
-cp -r $VANE_ROOT_DIR/vane/data/* ./data/
+cp -r $VANE_ROOT_DIR/vanedata/* ./data/
 # cp $VANE_BUILD_DIR/*.elf ./
 
 # if [[ "$opt_run" == "1" ]]; then

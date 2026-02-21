@@ -1,4 +1,4 @@
-#include "vane/game/gamestate.hpp"
+#include "vane/gamestate.hpp"
 
 using namespace vane;
 

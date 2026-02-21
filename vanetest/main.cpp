@@ -1,12 +1,13 @@
 #include <cstdio>
 
-#include "BigBitch.hpp"
-#include "vane/platform.hpp"
-#include <vane/game/gameobject.hpp>
+#include <vane/media_layer>
+#include "vane/gameobject.hpp"
+#include "vane/port.hpp"
 
 // #include "vane/message.hpp"
 // static vane::TxMsgEndpoint          tx_opctrl;
 // static RxSamplePortT<vane::OpState> rx_opstat;
+static vane::TxSamplePort<vane::OpCtrl> opAuthTx;
 
 
 int main(int argc, char **argv)
@@ -14,9 +15,12 @@ int main(int argc, char **argv)
     using namespace vane;
 
     vane::Platform plat;
+
+    auto woopee = opAuthTx.makeRxEndpoint<vane::RxSamplePort<OpCtrl>>();
+
     // tx_opctrl.sendmsg_bcast(OpCtrl::Terminate);
 
-    auto *win0 = plat.iodev_create<WindowSDL3>("Window 1", 1024, 1024);
+    auto *win0 = plat.makeIoDevice<Window>("Window 1", 1024, 1024);
     // auto *kb = plat->addIoDevice<iolib::Keyboard>();
     // auto *ms = plat->addIoDevice<iolib::Mouse>();
 
@@ -26,7 +30,7 @@ int main(int argc, char **argv)
     // player.addComponent<PhysicsComponent>();
     // player.addComponent<GraphicsComponent>();
 
-    while (plat.active())
+    while (plat.running())
     {
         plat.update();
         // player.update();

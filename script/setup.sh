@@ -4,7 +4,7 @@ set -e
 THIS_DIR=$( cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd $THIS_DIR && source env.sh
 
-INSTALL_PREFIX="${THIRDPARTY_INSTALL_PREFIX}"
+INSTALL_PREFIX="${THIRDPARTY_PREFIX}"
 
 mkdir -p $VANE_THIRDPARTY_DIR/repo
 mkdir -p $INSTALL_PREFIX/{bin,include,lib,share}

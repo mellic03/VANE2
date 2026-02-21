@@ -73,15 +73,21 @@
         "variant": "cpp",
         "filesystem": "cpp",
         "chrono": "cpp",
-        "csignal": "cpp"
+        "csignal": "cpp",
+        "vaneimpl": "cpp",
+        "vaneplatformlayer": "cpp",
+        "vanelayerimpl": "cpp",
+        "media_layer": "cpp",
+        "vanemedialayer": "cpp",
+        "time": "cpp"
     },
-
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/.hg/store/**": true,
         "${workspaceFolder}/build/**": true,
         "${workspaceFolder}/output/**": true,
-        "${workspaceFolder}/external/**": true,
-    }
+        "${workspaceFolder}/external/**": true
+    },
+    "files.participants.timeout": 100
 }

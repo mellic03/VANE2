@@ -1,5 +1,5 @@
-#include "component.hpp"
-#include "vane/game/gameobject.hpp"
+#include "vane/component.hpp"
+#include "vane/gameobject.hpp"
 #include "vane/log.hpp"
 // #include "vane/type.hpp"
 
@@ -44,17 +44,16 @@ void vane::GraphicsComponent::recvmsg(const void *msg, size_t msgsz)
 
 void vane::PhysicsComponent::update()
 {
+    // static constexpr glm::vec3 G(0.0f, -9.81f, 0.0f);
+    // static glm::vec3 dPos(0.0f);
 
-    static constexpr glm::vec3 G(0.0f, -9.81f, 0.0f);
-    static glm::vec3 dPos(0.0f);
+    // float dt = 1.0f / 100.0f;
 
-    float dt = 1.0f / 100.0f;
+    // mAcc  = G;
+    // mVel += dt*mAcc;
+    // dPos  = dt*mVel;
 
-    mAcc  = G;
-    mVel += dt*mAcc;
-    dPos  = dt*mVel;
-
-    mObject->translate(dPos);
+    // mObject->translate(dPos);
 }
 
 void vane::PhysicsComponent::recvmsg(const void *msg, size_t msgsz)
