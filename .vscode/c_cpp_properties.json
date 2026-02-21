@@ -9,7 +9,8 @@
                 "${workspaceFolder}/external/install/include/"
             ],
             "defines": [
-                "VANE_GFXLIB_GL=1"
+                "VANE_PLATFORM_NAME=\"sdl3\"",
+                "VANE_GFXLIB_NAME=\"gl\""
             ],
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c99",
