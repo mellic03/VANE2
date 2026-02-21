@@ -2,6 +2,7 @@
 
 #include <cstdint>
 
+
 namespace vane::time
 {
     struct HzTime;
@@ -32,6 +33,14 @@ namespace vane::time
         NsTime(const MsTime&);
     };
 
+    HzTime::HzTime(const MsTime &ms): v_(      1000 / ms.v_  ) {  }
+    HzTime::HzTime(const NsTime &ns): v_(1000000000 / ns.v_  ) {  }
+    MsTime::MsTime(const HzTime &hz): v_(      1000 / hz.v_  ) {  }
+    MsTime::MsTime(const NsTime &ns): v_(     ns.v_ / 1000000) {  }
+    NsTime::NsTime(const HzTime &hz): v_(1000000000 / hz.v_  ) {  }
+    NsTime::NsTime(const MsTime &ms): v_(   1000000 * ms.v_  ) {  }
+
+
     struct PeriodicTimer
     {
     private:
@@ -40,8 +49,13 @@ namespace vane::time
 
     public:
         PeriodicTimer(const HzTime &hz): PeriodicTimer(NsTime(hz)) {  }
-        PeriodicTimer(const MsTime &ms): PeriodicTimer(NsTime(ms)) {  }
-        PeriodicTimer(const NsTime &ns);
+
+        PeriodicTimer(const MsTime &ms, const MsTime &offset=0)
+        :   mPeriod(ms), mCurr(offset), mPrev(mCurr) {  }
+
+        PeriodicTimer(const NsTime &ns, const NsTime &offset=0)
+        :   mPeriod(ns), mCurr(offset), mPrev(mCurr) {  }
+
         bool hasExpired();
     };
 

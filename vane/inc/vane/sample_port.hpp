@@ -9,54 +9,65 @@
 template <typename T> T vane_min(T a, T b) { return (a < b) ? a : b; }
 template <typename T> T vane_max(T a, T b) { return (a > b) ? a : b; }
 
-
-template <size_t N>
-class RxSamplePort: public vane::RxMsgEndpoint
+namespace vane
 {
-private:
-    size_t size_;
-    alignas(max_align_t) uint8_t data_[N];
+    // template <size_t N>
+    // class RxSamplePort;
 
-public:
-    RxSamplePort(): size_(0) {  };
+    template <typename T>
+    class RxSamplePort;
+    
+    template <typename T>
+    class TxSamplePort;
+}
 
-    virtual void recvmsg(const void *msg, size_t msgsz) final
-    {
-        if (msgsz < N)
-        {
-            size_ = msgsz;
-            std::memcpy(data_, msg, size_);
-        }
-        else
-        {
-            VLOG_ERROR("RxSamplePort msgsz != sizeof(T)");
-        }
-    }
+// template <size_t N>
+// class RxSamplePort: public vane::RxMsgEndpoint
+// {
+// private:
+//     size_t size_;
+//     alignas(max_align_t) uint8_t data_[N];
 
-    size_t read(void *buf, size_t bufsz)
-    {
-        size_t sz = vane_min(size_, bufsz);
+// public:
+//     RxSamplePort(): size_(0) {  };
 
-        if (sz > 0)
-        {
-            memcpy(buf, data_, sz);
-            size_ = 0;
-        }
+//     virtual void recvmsg(const void *msg, size_t msgsz) final
+//     {
+//         if (msgsz < N)
+//         {
+//             size_ = msgsz;
+//             std::memcpy(data_, msg, size_);
+//         }
+//         else
+//         {
+//             VLOG_ERROR("RxSamplePort msgsz != sizeof(T)");
+//         }
+//     }
 
-        return sz;
-    }
-};
+//     size_t read(void *buf, size_t bufsz)
+//     {
+//         size_t sz = vane_min(size_, bufsz);
+
+//         if (sz > 0)
+//         {
+//             memcpy(buf, data_, sz);
+//             size_ = 0;
+//         }
+
+//         return sz;
+//     }
+// };
 
 
 template <typename T>
-class RxSamplePortT: public vane::RxMsgEndpoint
+class vane::RxSamplePort: public vane::RxMsgEndpoint
 {
 private:
     bool ready_;
     T data_[1];
 
 public:
-    RxSamplePortT(): ready_(false) {  };
+    RxSamplePort(): ready_(false) {  };
 
     virtual void recvmsg(const void *msg, size_t msgsz) final
     {
@@ -79,18 +90,33 @@ public:
         memcpy(data, data_, sizeof(T));
         return true;
     }
+
+    bool ready() const
+    {
+        return ready_;
+    }
+
+    T *data()
+    {
+        ready_ = false;
+        return &data_[0];
+    }
+
 };
 
 
 
 
 template <typename T>
-class TxSamplePort: public vane::TxMsgEndpoint
+class vane::TxSamplePort: public vane::TxMsgEndpoint
 {
 public:
-    void write(const T &data)
+    void write(const T *data)
     {
-        sendmsg_bcast<T>(data);
+        for (auto &rxer: m_rxers)
+        {
+            rxer->recvmsg(data, sizeof(T));
+        }
     }
 };
 

@@ -5,7 +5,7 @@ target_compile_features(
     vane_dsalib PUBLIC cxx_std_23
 )
 target_include_directories(
-    vane_dsalib PRIVATE ${VANE_INCLUDE_DIR}
+    vane_dsalib PRIVATE ${VANE_INCPATH}
 )
 target_sources(
     vane_dsalib PRIVATE

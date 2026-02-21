@@ -1,7 +1,7 @@
 #include <cstdio>
 
-#include "vane/platform/platform_SDL3.hpp"
-#include "vane/platform/impl_sdl3.hpp"
+#include "BigBitch.hpp"
+#include "vane/platform.hpp"
 #include <vane/game/gameobject.hpp>
 
 // #include "vane/message.hpp"
@@ -13,10 +13,10 @@ int main(int argc, char **argv)
 {
     using namespace vane;
 
-    PlatformSDL3 plat;
+    vane::Platform plat;
     // tx_opctrl.sendmsg_bcast(OpCtrl::Terminate);
 
-    auto *win0 = plat.iodev_create<vane::WindowSDL3>("Window 1", 1024, 1024);
+    auto *win0 = plat.iodev_create<WindowSDL3>("Window 1", 1024, 1024);
     // auto *kb = plat->addIoDevice<iolib::Keyboard>();
     // auto *ms = plat->addIoDevice<iolib::Mouse>();
 

@@ -5,6 +5,7 @@
             "includePath": [
                 "${default}",
                 "${workspaceFolder}/vane/inc/",
+                "${workspaceFolder}/vane/inc_p/",
                 "${workspaceFolder}/external/install/include/"
             ],
             "defines": [

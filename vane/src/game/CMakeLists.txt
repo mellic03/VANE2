@@ -6,7 +6,7 @@ target_compile_features(
 )
 target_include_directories(
     vane_gamelib PRIVATE
-    "${VANE_INCLUDE_DIR}"
+    "${VANE_INCPATH}"
     "$ENV{THIRDPARTY_INSTALL_PREFIX}/include"
 )
 target_sources(

@@ -1,10 +1,13 @@
 #!/bin/bash
 
 export VANE_SCRIPT_DIR=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)
-export VANE_PROJECT_ROOT=$(cd ${VANE_SCRIPT_DIR}/../ && pwd)
-export VANE_THIRDPARTY_DIR="${VANE_PROJECT_ROOT}/external"
-export VANE_BUILD_DIR="${VANE_PROJECT_ROOT}/build"
-export VANE_OUTPUT_DIR="${VANE_PROJECT_ROOT}/output"
+export VANE_ROOT_DIR=$(cd ${VANE_SCRIPT_DIR}/../ && pwd)
+export VANE_THIRDPARTY_DIR="${VANE_ROOT_DIR}/external"
+export VANE_SRCPATH="${VANE_ROOT_DIR}/vane/src"
+export VANE_INCPATH="${VANE_ROOT_DIR}/vane/inc"
+export VANE_INCLUDE_P_DIR="${VANE_ROOT_DIR}/vane/inc_p"
+export VANE_BUILD_DIR="${VANE_ROOT_DIR}/build"
+export VANE_OUTPUT_DIR="${VANE_ROOT_DIR}/output"
 
 export THIRDPARTY_INSTALL_PREFIX="${VANE_THIRDPARTY_DIR}/install"
 

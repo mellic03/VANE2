@@ -80,6 +80,8 @@
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/.hg/store/**": true,
-        "${workspaceFolder}/external/**": true
+        "${workspaceFolder}/build/**": true,
+        "${workspaceFolder}/output/**": true,
+        "${workspaceFolder}/external/**": true,
     }
 }

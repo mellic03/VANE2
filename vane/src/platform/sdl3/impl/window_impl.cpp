@@ -1,6 +1,6 @@
-// #include "vane/platform/platform_SDL3.hpp"
-// #include "gl_bindings.hpp"
-// #include "vane/log.hpp"
+// #include <SDL3/SDL.h>
+// #include "vane/platform.hpp"
+// #include "../gl_bindings.hpp"
 
 // extern void vaneEnableOpenGlDebugOutput();
 // extern GLuint vaneCreateFramebuffer();
@@ -10,8 +10,35 @@
 // using namespace vane;
 
 
-// WindowSDL3::WindowSDL3(Platform *plat, const char *name, int width, int height)
-// :   Platform::IoDevice(plat)
+// struct Window::Impl
+// {
+// public:
+//     Impl(Window *win, const char *name, int w, int h);
+//     ~Impl();
+//     void onUpdate();
+//     void onEvent(void*);
+
+// private:
+//     Platform     *mPlatform;
+//     Window       *mWindow;
+
+//     SDL_Window   *mSdlWin;
+//     SDL_GLContext mSdlGlCtx;
+//     SDL_WindowID  mSdlWinID;
+
+//     int32_t mGlVersionMajor;
+//     int32_t mGlVersionMinor;
+
+//     // Should be seperated out
+//     // --------------------------
+//     uint32_t mFBO;
+//     uint32_t mVAO;
+//     // --------------------------
+// };
+
+
+// Window::Impl::Impl(Window *win, const char *name, int width, int height)
+// :   mPlatform(win->mPlatform), mWindow(win)
 // {
 //     mSdlWin = SDL_CreateWindow(name, width, height, SDL_WINDOW_OPENGL);
 //     if (mSdlWin == NULL)
@@ -28,41 +55,30 @@
 //     if (!SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx))
 //         VLOG_ERROR("SDL_GL_MakeCurrent: {}", SDL_GetError());
 
-//     gl::CreateVertexArrays(1, &mVAO);
-
-//     // if (!SDL_GL_SetSwapInterval(0))
-//     //     VLOG_ERROR("SDL_GL_SetSwapInterval: {}", SDL_GetError());
-
-//     // if (!SDL_SetWindowRelativeMouseMode(mSdlWin, false))
-//     //     VLOG_ERROR("SDL_SetWindowRelativeMouseMode: {}", SDL_GetError());
-
 //     gl::GetIntegerv(GL_MAJOR_VERSION, &mGlVersionMajor);
 //     gl::GetIntegerv(GL_MINOR_VERSION, &mGlVersionMinor);
 //     VLOG_INFO("Context supports OpenGL {}.{}", mGlVersionMajor, mGlVersionMinor);
-//     screenquad_program_ = vaneCompileScreenQuadProgram();
-
 //     VLOG_INFO("Created window {}", mSdlWinID);
+
+
+//     gl::CreateVertexArrays(1, &mVAO);
+//     screenquad_program_ = vaneCompileScreenQuadProgram();
 
 //     vaneEnableOpenGlDebugOutput();
 //     mFBO = vaneCreateFramebuffer();
 // }
 
 
-// WindowSDL3::~WindowSDL3()
+// Window::Impl::~Impl()
 // {
-//     printf("[WindowSDL3::~WindowSDL3] %d\n", mSdlWinID);
-
 //     if (!SDL_GL_DestroyContext(mSdlGlCtx))
-//     {
 //         VLOG_ERROR("Failure destroying SDL_GLContext");
-//     }
-
 //     SDL_DestroyWindow(mSdlWin);
 //     VLOG_INFO("Destroyed window {}", mSdlWinID);
 // }
 
 
-// void WindowSDL3::onUpdate()
+// void Window::Impl::onUpdate()
 // {
 //     SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx);
 
@@ -74,28 +90,28 @@
 // }
 
 
-// void WindowSDL3::onEvent(const PlatformEventType &e)
+// void Window::ImplonEvent(void *ptr)
 // {
-//     if (!SDL_GetWindowFromEvent(&e))
-//     {
+//     SDL_Event *e = (SDL_Event*)ptr;
+
+//     if (!SDL_GetWindowFromEvent(e))
 //         return;
-//     }
 
-//     if (e.window.windowID != mSdlWinID)
-//     {
+//     if (e->window.windowID != mSdlWinID)
 //         return;
-//     }
 
-//     if (e.type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)
-//     {
-//         mPlatform->iodev_delete(this);
-//     }
+//     if (e->type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)
+//         mPlatform->iodev_delete(mWindow);
 
-//     else if (e.type == SDL_EVENT_KEY_UP)
-//     {
-//         if (e.key.key == SDLK_ESCAPE)
-//         {
-//             mPlatform->iodev_delete(this);
-//         }
-//     }
+//     if ((e->type == SDL_EVENT_KEY_UP) && (e->key.key == SDLK_ESCAPE))
+//         mPlatform->iodev_delete(mWindow);
 // }
+
+
+
+// vane::Window::Window(Platform *plat, const char *name, int w, int h)
+// :   IoDevice(plat), m_impl(new Impl(this, name, w, h)) {  }
+// vane::Window::~Window() {  }
+// void vane::Window::onUpdate()  { m_impl->onUpdate(); }
+// void vane::Window::onEvent(void *ptr) { m_impl->onEvent(ptr); }
+
