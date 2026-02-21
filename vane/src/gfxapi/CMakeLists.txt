@@ -13,6 +13,6 @@ target_sources(
     "${CMAKE_CURRENT_SOURCE_DIR}/texture.cpp"
 )
 target_link_libraries(
-    vane_gfxapi PUBLIC glad OpenGL::GL OpenGL::GLU vane_core
+    vane_gfxapi PUBLIC OpenGL::GL OpenGL::GLU vane_core
 )
 

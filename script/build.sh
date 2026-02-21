@@ -41,17 +41,15 @@ fi
 mkdir -p "${VANE_BUILD_DIR}" && cd "${VANE_BUILD_DIR}"
 
 cmake -DCMAKE_BUILD_TYPE="${opt_bdtype}" \
-      -DVANE_PLATFORM_NAME="sdl3" \
-      -DVANE_GFXLIB_NAME="gl" \
       ../ 
 
 make -j$(nproc)
 
 mkdir -p $VANE_OUTPUT_DIR/data && cd $VANE_OUTPUT_DIR
-cp -r $VANE_ROOT_DIR/vanedata/* ./data/
+cp -r $VANE_ROOT_DIR/vane/data/* ./data/
 # cp $VANE_BUILD_DIR/*.elf ./
 
-# if [[ "$opt_run" == "1" ]]; then
-#     ./game
-# fi
+if [[ "$opt_run" == "1" ]]; then
+    $VANE_OUTPUT_DIR/vanegame
+fi
 

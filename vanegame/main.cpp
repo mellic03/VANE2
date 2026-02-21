@@ -2,6 +2,7 @@
 
 #include <vane/media_layer>
 #include "vane/gameobject.hpp"
+#include "vane/component.hpp"
 #include "vane/port.hpp"
 
 // #include "vane/message.hpp"
@@ -15,16 +16,12 @@ int main(int argc, char **argv)
     using namespace vane;
 
     vane::Platform plat;
-
-    auto woopee = opAuthTx.makeRxEndpoint<vane::RxSamplePort<OpCtrl>>();
-
-    // tx_opctrl.sendmsg_bcast(OpCtrl::Terminate);
-
     auto *win0 = plat.makeIoDevice<Window>("Window 1", 1024, 1024);
     // auto *kb = plat->addIoDevice<iolib::Keyboard>();
     // auto *ms = plat->addIoDevice<iolib::Mouse>();
 
-    // GameObject player;
+    GameObject player;
+    player.addComponent<GraphicsComponent>();
     // player.addComponent<KeybdIoComponent>();
     // player.addComponent<MouseIoComponent>();
     // player.addComponent<PhysicsComponent>();
@@ -33,7 +30,7 @@ int main(int argc, char **argv)
     while (plat.running())
     {
         plat.update();
-        // player.update();
+        player.update();
 
         // if (kb->keyWasPressed(SDL_SCANCODE_E))
         //     printf("E PRESSED\n");

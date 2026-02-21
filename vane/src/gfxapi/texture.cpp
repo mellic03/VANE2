@@ -1,4 +1,4 @@
-#include "gfxapi/gl.hpp"
+#include "vane/gl.hpp"
 
 
 static GLuint create_texture(int w, int h, void *data)

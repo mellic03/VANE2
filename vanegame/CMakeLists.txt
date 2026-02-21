@@ -1,4 +1,4 @@
-project(testgame)
+project(vanegame)
 
 # set(CMAKE_EXECUTABLE_SUFFIX_CXX ".elf")
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/output)

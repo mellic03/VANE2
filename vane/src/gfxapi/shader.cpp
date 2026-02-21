@@ -1,4 +1,4 @@
-#include "gfxapi/gl.hpp"
+#include "vane/gl.hpp"
 #include "vane/file.hpp"
 #include "vane/log.hpp"
 #include <fstream>

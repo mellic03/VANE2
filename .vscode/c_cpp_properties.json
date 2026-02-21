@@ -13,8 +13,7 @@
                 "${workspaceFolder}/vane/src/platform/h"
             ],
             "defines": [
-                "VANE_PLATFORM_NAME=\"sdl3\"",
-                "VANE_GFXLIB_NAME=\"gl\""
+                "MACRO_NAME=\"value\""
             ],
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c99",
