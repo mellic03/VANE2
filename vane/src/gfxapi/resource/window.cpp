@@ -78,3 +78,7 @@ void WindowGl::onEvent(void *ptr)
 }
 
 
+void WindowGl::setFramebufferSrc(const std::shared_ptr<Framebuffer> &fb)
+{
+    mFramebuffer = fb;
+}

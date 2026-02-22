@@ -81,9 +81,9 @@ public:
     virtual ~WindowGl();
     virtual void setFramebufferSrc(const std::shared_ptr<Framebuffer>&) final;
 
-
     void onUpdate();
     void onEvent(void*);
+
 
 private:
     SDL_Window   *mSdlWin;
@@ -95,7 +95,7 @@ private:
 
     // Should be seperated out
     // --------------------------
-    std::unique_ptr<FramebufferGl> mFramebuffer;
+    std::shared_ptr<FramebufferGl>   mFramebuffer;
     std::unique_ptr<ShaderProgramGl> mQuadProgram;
     uint32_t mVAO;
     // --------------------------

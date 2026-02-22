@@ -72,14 +72,14 @@ public:
 
 class vane::gfxapi::ShaderProgram
 {
-protected:
+public:
     virtual ~ShaderProgram() {  }
 };
 
 
 class vane::gfxapi::ComputeProgram
 {
-protected:
+public:
     virtual ~ComputeProgram() {  }
 };
 
