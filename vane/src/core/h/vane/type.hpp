@@ -38,7 +38,7 @@ namespace vane
 
 namespace vane::detail
 {
-    inline static size_t vane_typeid_curr_;
+    inline static size_t vane_typeid_curr_ = 1;
 
     template <typename T>
     struct vane_typeid_impl

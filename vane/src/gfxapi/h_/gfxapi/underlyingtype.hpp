@@ -1,17 +1,21 @@
 #pragma once
 
-#include "vane/gfxapi_gl.hpp"
+#include "vane/gfxapi.hpp"
 
 
 namespace vane::gfxapi
 {
-    template<typename T>
-    struct as_underlying { using type = T; };
+    // template<typename T>
+    // struct as_underlying { using type = T; };
 
-    template<typename T>
-    struct as_underlying<T>::type toUnderlyingType(const T&);
+    // template<typename T>
+    // struct as_underlying<T>::type toUnderlyingType(T);
 
-    template<typename T>
-    T fromUnderlyingType(const struct as_underlying<T>::type&);
+    // template<typename T>
+    // T fromUnderlyingType(as_underlying<T>::type);
+
+    GLenum toUnderlyingType(TextureFormat from);
+    TextureFormat fromUnderlyingType(GLenum from);
+
 }
 

@@ -1,6 +1,8 @@
 #include <vane.hpp>
 #include <filesystem>
 
+#include "vane/gfxapi.hpp"
+
 using namespace vane;
 
 
@@ -34,6 +36,10 @@ vane::Platform::Platform()
 
     setOpStat(OpState::Running);
     VLOG_INFO("Initialized PlatformSDL3");
+
+
+    mGfxApi = gfxapi::getGfxApi();
+
 }
 
 
@@ -45,20 +51,16 @@ bool vane::Platform::running()
 
 void Platform::update()
 {
+    if (mObjects.empty())
+    {
+        this->shutdown();
+    }
+
+    ObjectManager::update();
     // mOpStatTx.write(&mOpStat);
     // mOpAuthRx.read(&mOpAuth);
     // mOpStatTx.bind(mOpAuthRx);
 
-    if (mIoDevices.empty())
-    {
-        this->shutdown();
-        return;
-    }
-
-    for (auto &iodev: mIoDevices)
-    {
-        iodev->onUpdate();
-    }
 
     SDL_Event e;
     while (SDL_PollEvent(&e))
@@ -69,21 +71,13 @@ void Platform::update()
             return;
         }
 
-        for (auto &iodev: mIoDevices)
+        for (auto &obj: mObjects)
         {
-            iodev->onEvent((void*)(&e));
+            obj->onEvent((void*)(&e));
         }
     }
 
-    // flushIoDevices();
-    for (int i=mIoDevices.size()-1; i>=0; i--)
-    {
-        if (mIoDevices[i]->kill_)
-        {
-            std::swap(mIoDevices[i], mIoDevices.back());
-            mIoDevices.pop_back();
-        }
-    }
+
 }
 
 
@@ -92,7 +86,7 @@ void vane::Platform::shutdown()
     setOpStat(OpState::Stopping);
     VLOG_INFO("Shutdown initiated");
 
-    mIoDevices.clear();
+    mObjects.clear();
 
     setOpStat(OpState::Stopped);
     VLOG_INFO("Shutdown complete");

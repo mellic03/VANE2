@@ -488,30 +488,8 @@ namespace gl
 
 
 
-
-
-    VANE_INLINE void CreateTextures( GLenum target, GLsizei n, GLuint *textures )
-    { VN_GLCALL( glCreateTextures(target, n, textures); ) }
-
-    VANE_INLINE void CreateFramebuffers( GLsizei n, GLuint *framebuffers )
-    { VN_GLCALL( glCreateFramebuffers(n, framebuffers); ) }
-
-    VANE_INLINE void CreateRenderbuffers( GLsizei n, GLuint *framebuffers )
-    { VN_GLCALL( glCreateRenderbuffers(n, framebuffers); ) }
-
-    VANE_INLINE void CreateVertexArrays(GLsizei n, GLuint *arrays)
-    { VN_GLCALL( glCreateVertexArrays(n, arrays); ) }
-
-    VANE_INLINE void CreateBuffers(GLsizei n, GLuint *buffers)
-    { VN_GLCALL( glCreateBuffers(n, buffers); ) }
-
-    VANE_INLINE GLuint CreateProgram()
-    { VN_GLCALL( return glCreateProgram(); ) }
-
-    VANE_INLINE GLuint CreateShader(GLenum type)
-    { VN_GLCALL( return glCreateShader(type); ) }
-
     // OpenGL 4.6 AZDO functions
+    // ---------------------------------------------------------------------------------------
     VANE_INLINE void CreateTextures( GLenum target, GLsizei n, GLuint *textures )
     { VN_GLCALL( glCreateTextures(target, n, textures); ) }
 
@@ -602,6 +580,7 @@ namespace gl
         VN_GLCALL( status = glCheckNamedFramebufferStatus(framebuffer, target); )
         return status;
     }
+    // ---------------------------------------------------------------------------------------
 
 };
 

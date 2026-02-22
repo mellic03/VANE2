@@ -1,17 +1,11 @@
+#include "gfxapi/gfxapi_gl.hpp"
 #include "gfxapi/underlyingtype.hpp"
-#include "gfxapi/gl.hpp"
 #include "vane/log.hpp"
 
 using namespace vane::gfxapi;
 
 
-template<>
-struct as_underlying<TextureFormat> { using type = GLenum; };
-
-
-
-template <>
-GLenum vane::gfxapi::toUnderlyingType(const TextureFormat &from)
+GLenum vane::gfxapi::toUnderlyingType(TextureFormat from)
 {
     switch (from)
     {
@@ -23,13 +17,12 @@ GLenum vane::gfxapi::toUnderlyingType(const TextureFormat &from)
         case TextureFormat::RGBA_F32: return GL_RGBA32F;
         default:
             VLOG_ERROR("toUnderlyingType<GLenum, gfxapi::TextureFormat> unknown conversion");
-            break;
+            return GL_INVALID_ENUM;
     }
 }
 
 
-template <>
-TextureFormat vane::gfxapi::fromUnderlyingType<TextureFormat>(const GLenum &from)
+TextureFormat vane::gfxapi::fromUnderlyingType(GLenum from)
 {
     switch (from)
     {
@@ -41,7 +34,7 @@ TextureFormat vane::gfxapi::fromUnderlyingType<TextureFormat>(const GLenum &from
         case GL_RGBA32F:  return TextureFormat::RGBA_F32;
         default:
             VLOG_ERROR("toUnderlyingType<GLenum, gfxapi::TextureFormat> unknown conversion");
-            break;
+            return TextureFormat::RED_U8;
     }
 }
 

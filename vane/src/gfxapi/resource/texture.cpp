@@ -1,13 +1,12 @@
-#include "vane/gfxapi_gl.hpp"
-#include "vane/log.hpp"
-#include "gfxapi/gl.hpp"
+#include "gfxapi/gfxapi_gl.hpp"
 #include "gfxapi/underlyingtype.hpp"
+#include "vane/log.hpp"
 
 using namespace vane::gfxapi;
 
 
-vane::gfxapi::Texture::Texture(GfxApi &api, int w, int h, const void *data)
-:   GfxResource(api)
+vane::gfxapi::TextureGl::TextureGl(GfxApiGl &api, int w, int h, const void *data)
+:   GfxResourceGl(api)
 {
     mTextureFormat = TextureFormat::RGB_U8;
     auto internalformat = toUnderlyingType(mTextureFormat);
@@ -27,7 +26,7 @@ vane::gfxapi::Texture::Texture(GfxApi &api, int w, int h, const void *data)
 }
 
 
-const TextureFormat &Texture::getTextureFormat() const { return mTextureFormat; }
-void Texture::setTextureFormat(const TextureFormat &fmt) { mTextureFormat = fmt; }
+TextureFormat TextureGl::getTextureFormat() { return mTextureFormat; }
+void TextureGl::setTextureFormat(TextureFormat fmt) { mTextureFormat = fmt; }
 
 

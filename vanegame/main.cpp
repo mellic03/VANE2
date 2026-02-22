@@ -1,6 +1,7 @@
 #include <cstdio>
 
 #include <vane.hpp>
+#include <vane/gfxapi.hpp>
 #include "vane/gameobject.hpp"
 #include "vane/component.hpp"
 #include "vane/port.hpp"
@@ -16,7 +17,11 @@ int main(int argc, char **argv)
     using namespace vane;
 
     vane::Platform plat;
-    auto *win0 = plat.makeIoDevice<Window>("Window 1", 1024, 1024);
+
+    // auto *ree = vane::gfxapi::getGfxApi();
+    // ree->donothing();
+
+    // auto *win0 = plat.add<Window>("Window 1", 1024, 1024);
     // auto *kb = plat->addIoDevice<iolib::Keyboard>();
     // auto *ms = plat->addIoDevice<iolib::Mouse>();
 
