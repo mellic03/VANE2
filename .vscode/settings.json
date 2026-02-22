@@ -77,9 +77,9 @@
         "vaneimpl": "cpp",
         "vaneplatformlayer": "cpp",
         "vanelayerimpl": "cpp",
-        "media_layer": "cpp",
         "vanemedialayer": "cpp",
-        "time": "cpp"
+        "time": "cpp",
+        "vane": "cpp"
     },
     "files.watcherExclude": {
         "**/.git/objects/**": true,

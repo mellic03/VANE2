@@ -1,4 +1,4 @@
-#include <vane/media_layer>
+#include <vane.hpp>
 #include "vane/log.hpp"
 
 extern void vaneEnableOpenGlDebugOutput();

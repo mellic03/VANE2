@@ -1,6 +1,6 @@
 #include <cstdio>
 
-#include <vane/media_layer>
+#include <vane.hpp>
 #include "vane/gameobject.hpp"
 #include "vane/component.hpp"
 #include "vane/port.hpp"

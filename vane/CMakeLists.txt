@@ -1,6 +1,4 @@
 
-project(vane)
-
 find_package(SDL3 REQUIRED)
 find_package(OpenGL REQUIRED)
 

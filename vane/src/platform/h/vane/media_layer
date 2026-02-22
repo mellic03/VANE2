@@ -1,8 +1,0 @@
-#pragma once
-
-#include <SDL3/SDL.h>
-#include "vane/gl.hpp"
-
-#include "iodevice.hpp"
-#include "window.hpp"
-#include "platform.hpp"

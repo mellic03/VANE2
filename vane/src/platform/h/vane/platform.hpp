@@ -2,6 +2,7 @@
 
 #include "time.hpp"
 #include "vane/port.hpp"
+#include "vane/type.hpp"
 #include <type_traits>
 #include <memory>
 
