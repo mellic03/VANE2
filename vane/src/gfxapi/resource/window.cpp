@@ -33,7 +33,7 @@ Window::Window(GfxApi &api, const char *name, int width, int height)
     VLOG_INFO("Context supports OpenGL {}.{}", GLVersion.major, GLVersion.minor);
 
     vaneEnableOpenGlDebugOutput();
-    SDL_HideWindow(sdlWin);
+    // SDL_HideWindow(sdlWin);
     
     mSdlWin   = (void*)sdlWin;
     mSdlGlCtx = (void*)sdlGlCtx;
@@ -77,6 +77,26 @@ void Window::onEvent(void *ptr)
         return;
 
     if (e->window.windowID != mSdlWinID)
+        return;
+
+    // if (e->type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)
+    //     mPlatform->freeIoDevice(this);
+
+    // if ((e->type == SDL_EVENT_KEY_UP) && (e->key.key == SDLK_ESCAPE))
+        // mPlatform->freeIoDevice(this);
+}
+
+void Window_onEventCallback(void *obj, void *arg)
+{
+    using namespace vane;
+
+    auto *w = (gfxapi::Window*)obj;
+    auto *e = (SDL_Event*)arg;
+
+    if (!SDL_GetWindowFromEvent(e))
+        return;
+
+    if (e->window.windowID != w->mSdlWinID)
         return;
 
     // if (e->type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)

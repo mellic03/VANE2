@@ -8,7 +8,11 @@
 using namespace vane::gfxapi;
 
 
-ShaderProgram::Shader::Shader(GpuProgram &prog, GLuint id, const char *filepath)
+GpuProgram::GpuProgram(GfxApi &api)
+:   GfxResource(api, gl::CreateProgram()) {  }
+
+
+GpuProgram::Shader::Shader(GpuProgram &prog, GLuint id, const char *filepath)
 :   mProg(prog), mId(id), mOkay(false)
 {
     std::string str = vane::file::loadRaw(std::string(filepath));
@@ -16,7 +20,6 @@ ShaderProgram::Shader::Shader(GpuProgram &prog, GLuint id, const char *filepath)
 
     gl::ShaderSource(mId, 1, &src, NULL);
     gl::CompileShader(mId);
-
 
     GLint result, length;
     gl::GetShaderiv(mId, GL_COMPILE_STATUS, &result);
@@ -30,7 +33,6 @@ ShaderProgram::Shader::Shader(GpuProgram &prog, GLuint id, const char *filepath)
     
         gl::GetShaderInfoLog(mId, length, &length, msg.get());
         VLOG_ERROR("[Shader::Shader] {}\n", msg.get());
-
 
         mOkay = false;
     }
