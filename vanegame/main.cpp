@@ -12,13 +12,31 @@
 static vane::TxSamplePort<vane::OpCtrl> opAuthTx;
 
 
+struct LmaoType: public vane::ObjectManager::Object
+{
+    std::shared_ptr<vane::gfxapi::Window> mWindow;
+
+    using Object::Object;
+    // LmaoType(std::shared_ptr<vane::gfxapi::Window> win)
+    // :   mWindow(win) {  };
+    virtual void onUpdate() final { mWindow->onUpdate(); }
+    virtual void onEvent(void *p) final { mWindow->onEvent(p); }
+};
+
+
 int main(int argc, char **argv)
 {
     using namespace vane;
 
     vane::Platform plat;
 
-    // auto *ree = vane::gfxapi::getGfxApi();
+    auto gfx = vane::gfxapi::getGfxApi();
+    auto fb  = gfx->createFramebuffer();
+         fb->setTextureDst(gfx->createTexture(1024, 1024, nullptr));
+
+    auto *lmao = plat.createObject<LmaoType>();
+          lmao->mWindow = gfx->getMainWindow();
+
     // ree->donothing();
 
     // auto *win0 = plat.add<Window>("Window 1", 1024, 1024);

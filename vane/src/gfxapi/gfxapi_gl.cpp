@@ -10,6 +10,12 @@ GfxApi *vane::gfxapi::getGfxApi()
     return static_cast<GfxApi*>(&api);
 }
 
+GfxApiGl::GfxApiGl()
+:   mBaseApi(static_cast<GfxApi&>(*this)),
+    mMainWindow(createWindowGl("Main Window", 1024, 1024))
+{
+
+}
 
 // Framebuffer &GfxApiGl::createFramebuffer()
 // {
@@ -24,21 +30,74 @@ GfxApi *vane::gfxapi::getGfxApi()
 //     return static_cast<Texture&>(fb);
 // }
 
+WindowPtr GfxApiGl::getMainWindow()
+{
+    return mMainWindow;
+}
 
-std::unique_ptr<Window> GfxApiGl::createWindow(const char *name, int w, int h)
-{ return std::make_unique<WindowGl>(*this, name, w, h); }
 
-std::unique_ptr<Framebuffer> GfxApiGl::createFramebuffer()
-{ return std::make_unique<FramebufferGl>(*this); }
 
-std::unique_ptr<Texture> GfxApiGl::createTexture(int w, int h, const void *data)
-{ return std::make_unique<TextureGl>(*this, w, h, data); }
+WindowGlPtr GfxApiGl::createWindowGl(const char *name, int w, int h)
+{
+    // return WindowTypeGl(new WindowGl(*this, name, w, h));
+    mWindows.push_back(std::make_shared<WindowGl>(*this, name, w, h));
+    return mWindows.back();
+}
 
-std::unique_ptr<ShaderProgram> GfxApiGl::createShaderProgram(const char *vertpath, const char *fragpath)
-{ return std::make_unique<ShaderProgramGl>(*this, vertpath, fragpath); }
+FramebufferGlPtr GfxApiGl::createFramebufferGl()
+{
+    // return FramebufferTypeGl(new FramebufferGl(*this));
+    mFramebuffers.push_back(std::make_shared<FramebufferGl>(*this));
+    return mFramebuffers.back();
+}
 
-std::unique_ptr<ComputeProgram> GfxApiGl::createComputeProgram(const char *comppath)
-{ return std::make_unique<ComputeProgramGl>(*this, comppath); }
+TextureGlPtr GfxApiGl::createTextureGl(int w, int h, const void *data)
+{
+    // return TextureTypeGl(new TextureGl(*this, w, h, data));
+    mTextures.push_back(std::make_shared<TextureGl>(*this, w, h, data));
+    return mTextures.back();
+}
+
+ShaderProgramGlPtr GfxApiGl::createShaderProgramGl(const char *vertpath, const char *fragpath)
+{
+    // return ShaderProgramTypeGl(new ShaderProgramGl(*this, vertpath, fragpath));
+    mShaderPrograms.push_back(std::make_shared<ShaderProgramGl>(*this, vertpath, fragpath));
+    return mShaderPrograms.back();
+}
+
+ComputeProgramGlPtr GfxApiGl::createComputeProgramGl(const char *comppath)
+{
+    // return ComputeProgramTypeGl(new ComputeProgramGl(*this, comppath));
+    mComputePrograms.push_back(std::make_shared<ComputeProgramGl>(*this, comppath));
+    return mComputePrograms.back();
+}
+
+
+
+WindowPtr GfxApiGl::createWindow(const char *name, int w, int h)
+{
+    return createWindowGl(name, w, h);
+}
+
+FramebufferPtr GfxApiGl::createFramebuffer()
+{
+    return createFramebufferGl();
+}
+
+TexturePtr GfxApiGl::createTexture(int w, int h, const void *data)
+{
+    return createTextureGl(w, h, data);
+}
+
+ShaderProgramPtr GfxApiGl::createShaderProgram(const char *vertpath, const char *fragpath)
+{
+    return createShaderProgramGl(vertpath, fragpath);
+}
+
+ComputeProgramPtr GfxApiGl::createComputeProgram(const char *comppath)
+{
+    return createComputeProgramGl(comppath);
+}
 
 
 

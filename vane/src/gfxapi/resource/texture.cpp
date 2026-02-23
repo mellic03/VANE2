@@ -5,7 +5,7 @@
 using namespace vane::gfxapi;
 
 
-vane::gfxapi::TextureGl::TextureGl(GfxApiGl &api, int w, int h, const void *data)
+TextureGl::TextureGl(GfxApiGl &api, int w, int h, const void *data)
 :   GfxResourceGl(api)
 {
     mTextureFormat = TextureFormat::RGB_U8;
@@ -23,6 +23,12 @@ vane::gfxapi::TextureGl::TextureGl(GfxApiGl &api, int w, int h, const void *data
     // gl::TextureStorage2D(mId, 1, GL_DEPTH_COMPONENT24, w, h);
     // gl::TextureSubImage2D(mId, 0, 0, 0, w, h, GL_DEPTH_COMPONENT, GL_FLOAT, data);
 
+}
+
+
+TextureGl::~TextureGl()
+{
+    gl::DeleteTextures(1, &mId);
 }
 
 

@@ -11,13 +11,13 @@ target_include_directories(
 )
 target_sources(
     vane_gfxapi PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/debugmsg.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/gfxapi_gl.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/underlyingtype.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/resource/framebuffer.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/resource/shader.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/resource/texture.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/resource/window.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/debugmsg.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/gfxapi_gl.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/underlyingtype.cpp"
 )
 target_link_libraries(
     vane_gfxapi PUBLIC OpenGL::GL OpenGL::GLU vane_core

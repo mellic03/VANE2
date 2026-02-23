@@ -2,14 +2,13 @@
 #include "gfxapi/underlyingtype.hpp"
 #include "vane/log.hpp"
 
+extern void vaneEnableOpenGlDebugOutput();
+
 using namespace vane::gfxapi;
 
 
-WindowGl::WindowGl(GfxApiGl &api, const char *name, int width, int height)
-:   GfxResourceGl(api),
-    mFramebuffer(api.create<FramebufferGl>()),
-    mQuadProgram(api.create<ShaderProgramGl>("data/shader/quad.vert", "data/shader/quad.frag"))
-    // mQuadProgram(api.create<ComputeProgramGl>("data/shader/particles.comp"))
+WindowGlRaii::WindowGlRaii(GfxApiGl &api, const char *name, int width, int height)
+:   GfxResourceGl(api)
 {
     mSdlWin = SDL_CreateWindow(name, width, height, SDL_WINDOW_OPENGL);
     if (mSdlWin == NULL)
@@ -26,15 +25,23 @@ WindowGl::WindowGl(GfxApiGl &api, const char *name, int width, int height)
     if (!SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx))
         VLOG_ERROR("SDL_GL_MakeCurrent: {}", SDL_GetError());
 
+    vaneEnableOpenGlDebugOutput();
+
     gl::GetIntegerv(GL_MAJOR_VERSION, &mGlVersionMajor);
     gl::GetIntegerv(GL_MINOR_VERSION, &mGlVersionMinor);
     VLOG_INFO("Context supports OpenGL {}.{}", mGlVersionMajor, mGlVersionMinor);
     VLOG_INFO("Created window {}", mSdlWinID);
 
-    gl::CreateVertexArrays(1, &mVAO);
-    // screenquad_program_ = vaneCompileScreenQuadProgram();
+}
 
-    // vaneEnableOpenGlDebugOutput();
+
+WindowGl::WindowGl(GfxApiGl &api, const char *name, int width, int height)
+:   WindowGlRaii(api, name, width, height),
+    mFramebuffer(api.createFramebufferGl()),
+    mQuadProgram(api.createShaderProgramGl("data/shader/quad.vert", "data/shader/quad.frag"))
+{
+    gl::CreateVertexArrays(1, &mVAO);
+    
     // mFBO = vaneCreateFramebuffer();
 }
 
@@ -80,5 +87,11 @@ void WindowGl::onEvent(void *ptr)
 
 void WindowGl::setFramebufferSrc(const std::shared_ptr<Framebuffer> &fb)
 {
-    mFramebuffer = fb;
+    mFramebuffer = std::dynamic_pointer_cast<FramebufferGl>(fb);
+}
+
+
+void WindowGl::makeCurrent()
+{
+
 }

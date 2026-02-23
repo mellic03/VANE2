@@ -23,24 +23,23 @@ ShaderProgramGl::Shader::Shader(GpuProgramGl &prog, GLuint id, const char *filep
 
     if (result == GL_FALSE)
     {
-        std::unique_ptr<char> msg(new char[length]);
-    
         gl::GetShaderiv(mId, GL_INFO_LOG_LENGTH, &length);
+        std::unique_ptr<char> msg(new char[length]);
+
         assert((length > 0));
-
+    
         gl::GetShaderInfoLog(mId, length, &length, msg.get());
-        VLOG_ERROR("[Shader::Shader] %s\n", msg.get());
+        VLOG_ERROR("[Shader::Shader] {}\n", msg.get());
 
-        mOkay = true;
+
+        mOkay = false;
     }
-
     else
     {
         gl::AttachShader(mProg.mId, mId);
-        mOkay = false;
+        mOkay = true;
     }
 }
-
 
 
 ShaderProgramGl::ShaderProgramGl(GfxApiGl &api, const char *vertpath, const char *fragpath)
@@ -62,6 +61,11 @@ ShaderProgramGl::ShaderProgramGl(GfxApiGl &api, const char *vertpath, const char
     gl::DeleteShader(mFrag.mId);
 }
 
+
+ShaderProgramGl::~ShaderProgramGl()
+{
+    gl::DeleteProgram(mId);
+}
 
 
 

@@ -11,12 +11,19 @@ namespace vane::gfxapi
 {
     class GfxApiGl;
     class GfxResourceGl;
+    class WindowGlRaii;
     class WindowGl;
     class FramebufferGl;
     class TextureGl;
     class GpuProgramGl;
     class ShaderProgramGl;
     class ComputeProgramGl;
+
+    using WindowGlPtr         = std::shared_ptr<WindowGl>;
+    using FramebufferGlPtr    = std::shared_ptr<FramebufferGl>;
+    using TextureGlPtr        = std::shared_ptr<TextureGl>;
+    using ShaderProgramGlPtr  = std::shared_ptr<ShaderProgramGl>;
+    using ComputeProgramGlPtr = std::shared_ptr<ComputeProgramGl>;
 }
 
 
@@ -25,23 +32,33 @@ namespace vane::gfxapi
 class vane::gfxapi::GfxApiGl: public gfxapi::GfxApi
 {
 private:
+
     GfxApi &mBaseApi;
-    std::vector<std::unique_ptr<WindowGl>>         mWindows;
-    std::vector<std::unique_ptr<FramebufferGl>>    mFramebuffers;
-    std::vector<std::unique_ptr<TextureGl>>        mTextures;
-    std::vector<std::unique_ptr<GpuProgramGl>>     mGpuPrograms;
-    std::vector<std::unique_ptr<ShaderProgramGl>>  mShaderPrograms;
-    std::vector<std::unique_ptr<ComputeProgramGl>> mComputePrograms;
+    WindowGlPtr mMainWindow;
+
+    std::vector<WindowGlPtr>         mWindows;
+    std::vector<FramebufferGlPtr>    mFramebuffers;
+    std::vector<TextureGlPtr>        mTextures;
+    std::vector<ShaderProgramGlPtr>  mShaderPrograms;
+    std::vector<ComputeProgramGlPtr> mComputePrograms;
+
 
 public:
-    GfxApiGl(): mBaseApi(static_cast<GfxApi&>(*this)) {  };
+    GfxApiGl();
 
-    virtual std::unique_ptr<Window> createWindow(const char *name, int w, int h) final;
-    virtual std::unique_ptr<Framebuffer> createFramebuffer() final;
-    virtual std::unique_ptr<Texture> createTexture(int w, int h, const void *data) final;
-    virtual std::unique_ptr<ShaderProgram> createShaderProgram(const char *v, const char *f) final;
-    virtual std::unique_ptr<ComputeProgram> createComputeProgram(const char *c) final;
+    virtual WindowPtr getMainWindow() final;
 
+    WindowGlPtr         createWindowGl(const char *name, int w, int h);
+    FramebufferGlPtr    createFramebufferGl();
+    TextureGlPtr        createTextureGl(int w, int h, const void *data);
+    ShaderProgramGlPtr  createShaderProgramGl(const char *v, const char *f);
+    ComputeProgramGlPtr createComputeProgramGl(const char *c);
+
+    virtual WindowPtr         createWindow(const char *name, int w, int h) final;
+    virtual FramebufferPtr    createFramebuffer() final;
+    virtual TexturePtr        createTexture(int w, int h, const void *data) final;
+    virtual ShaderProgramPtr  createShaderProgram(const char *vpath, const char *fpath) final;
+    virtual ComputeProgramPtr createComputeProgram(const char *cpath) final;
 
     template <typename T, typename... Args>
     std::unique_ptr<T> create(Args... args)
@@ -69,23 +86,12 @@ public:
 
 
 
-
-class vane::gfxapi::WindowGl: public GfxResourceGl, public gfxapi::Window
+class vane::gfxapi::WindowGlRaii: public GfxResourceGl, public gfxapi::Window
 {
-    friend class GfxApiGl;
-    friend class std::shared_ptr<FramebufferGl>;
-    friend class std::unique_ptr<FramebufferGl>;
-
 public:
-    WindowGl(GfxApiGl&, const char *name, int w, int h);
-    virtual ~WindowGl();
-    virtual void setFramebufferSrc(const std::shared_ptr<Framebuffer>&) final;
+    WindowGlRaii(GfxApiGl&, const char *name, int w, int h);
 
-    void onUpdate();
-    void onEvent(void*);
-
-
-private:
+protected:
     SDL_Window   *mSdlWin;
     SDL_GLContext mSdlGlCtx;
     SDL_WindowID  mSdlWinID;
@@ -93,19 +99,33 @@ private:
     int32_t mGlVersionMajor;
     int32_t mGlVersionMinor;
 
-    // Should be seperated out
-    // --------------------------
-    std::shared_ptr<FramebufferGl>   mFramebuffer;
-    std::unique_ptr<ShaderProgramGl> mQuadProgram;
-    uint32_t mVAO;
-    // --------------------------
+};
 
+
+class vane::gfxapi::WindowGl: public WindowGlRaii
+{
+    friend class GfxApiGl;
+    friend class std::shared_ptr<FramebufferGl>;
+    friend class std::unique_ptr<FramebufferGl>;
+
+    std::shared_ptr<FramebufferGl>   mFramebuffer;
+    std::shared_ptr<ShaderProgramGl> mQuadProgram;
+    uint32_t mVAO;
+
+public:
+    WindowGl(GfxApiGl&, const char *name, int w, int h);
+    virtual ~WindowGl();
+    virtual void onUpdate() final;
+    virtual void onEvent(void*) final;
+    virtual void setFramebufferSrc(const std::shared_ptr<Framebuffer>&) final;
+    void makeCurrent();
 };
 
 
 class vane::gfxapi::FramebufferGl: public GfxResourceGl, public Framebuffer
 {
     std::shared_ptr<TextureGl> mOutTex;
+    void _check_status();
 
 public:
     FramebufferGl(GfxApiGl&);
@@ -121,7 +141,7 @@ class vane::gfxapi::TextureGl: public GfxResourceGl, public Texture
 {
 private:
     TextureFormat mTextureFormat;
-    
+
 public:
     TextureGl(GfxApiGl&, int w, int h, const void *data);
     virtual ~TextureGl();
@@ -151,6 +171,7 @@ class vane::gfxapi::ShaderProgramGl: public GpuProgramGl, public ShaderProgram
 public:
     GpuProgramGl::Shader mVert, mFrag;
     ShaderProgramGl(GfxApiGl&, const char *v, const char *f);
+    virtual ~ShaderProgramGl();
 };
 
 
