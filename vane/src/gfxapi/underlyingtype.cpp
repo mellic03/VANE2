@@ -1,5 +1,4 @@
 #include "gfxapi/gfxapi_gl.hpp"
-#include "gfxapi/underlyingtype.hpp"
 #include "vane/log.hpp"
 
 using namespace vane::gfxapi;

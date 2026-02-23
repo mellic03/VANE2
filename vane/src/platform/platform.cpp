@@ -13,32 +13,29 @@ vane::Platform::Platform()
     setOpStat(OpState::Starting);
     VLOG_INFO("Initializing PlatformSDL3");
 
-    if (false == SDL_Init(SDL_INIT_VIDEO))
-        VLOG_FATAL("{}", SDL_GetError());
+    // if (false == SDL_Init(SDL_INIT_VIDEO))
+    //     VLOG_FATAL("{}", SDL_GetError());
 
-    if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE))
-        VLOG_ERROR("{}", SDL_GetError());
+    // if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE))
+    //     VLOG_ERROR("{}", SDL_GetError());
 
-    if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4))
-        VLOG_ERROR("{}", SDL_GetError());
+    // if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4))
+    //     VLOG_ERROR("{}", SDL_GetError());
 
-    if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5))
-        VLOG_ERROR("{}", SDL_GetError());
+    // if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5))
+    //     VLOG_ERROR("{}", SDL_GetError());
 
-    if (!SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1))
-        VLOG_ERROR("{}", SDL_GetError());
+    // if (!SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1))
+    //     VLOG_ERROR("{}", SDL_GetError());
 
-    if (!SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,  24))
-        VLOG_ERROR("{}", SDL_GetError());
+    // if (!SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,  24))
+    //     VLOG_ERROR("{}", SDL_GetError());
 
-    if (!SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8))
-        VLOG_ERROR("{}", SDL_GetError());
+    // if (!SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8))
+    //     VLOG_ERROR("{}", SDL_GetError());
 
     setOpStat(OpState::Running);
     VLOG_INFO("Initialized PlatformSDL3");
-
-
-    mGfxApi = gfxapi::getGfxApi();
 
 }
 

@@ -4,101 +4,32 @@
 using namespace vane::gfxapi;
 
 
-GfxApi *vane::gfxapi::getGfxApi()
+GfxApi::GfxApi()
 {
-    static GfxApiGl api;
-    return static_cast<GfxApi*>(&api);
+    if (false == SDL_Init(SDL_INIT_VIDEO))
+        VLOG_FATAL("{}", SDL_GetError());
+
+    if (false == SDL_Init(SDL_INIT_VIDEO))
+        VLOG_FATAL("{}", SDL_GetError());
+
+    if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 5))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,  24))
+        VLOG_ERROR("{}", SDL_GetError());
+
+    if (!SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8))
+        VLOG_ERROR("{}", SDL_GetError());
 }
-
-GfxApiGl::GfxApiGl()
-:   mBaseApi(static_cast<GfxApi&>(*this)),
-    mMainWindow(createWindowGl("Main Window", 1024, 1024))
-{
-
-}
-
-// Framebuffer &GfxApiGl::createFramebuffer()
-// {
-//     static FramebufferGl fb(*this);
-//     return static_cast<Framebuffer&>(fb);
-// }
-
-
-// Texture &GfxApiGl::createTexture(int w, int h, const void *data)
-// {
-//     static TextureGl fb(*this, w, h, data);
-//     return static_cast<Texture&>(fb);
-// }
-
-WindowPtr GfxApiGl::getMainWindow()
-{
-    return mMainWindow;
-}
-
-
-
-WindowGlPtr GfxApiGl::createWindowGl(const char *name, int w, int h)
-{
-    // return WindowTypeGl(new WindowGl(*this, name, w, h));
-    mWindows.push_back(std::make_shared<WindowGl>(*this, name, w, h));
-    return mWindows.back();
-}
-
-FramebufferGlPtr GfxApiGl::createFramebufferGl()
-{
-    // return FramebufferTypeGl(new FramebufferGl(*this));
-    mFramebuffers.push_back(std::make_shared<FramebufferGl>(*this));
-    return mFramebuffers.back();
-}
-
-TextureGlPtr GfxApiGl::createTextureGl(int w, int h, const void *data)
-{
-    // return TextureTypeGl(new TextureGl(*this, w, h, data));
-    mTextures.push_back(std::make_shared<TextureGl>(*this, w, h, data));
-    return mTextures.back();
-}
-
-ShaderProgramGlPtr GfxApiGl::createShaderProgramGl(const char *vertpath, const char *fragpath)
-{
-    // return ShaderProgramTypeGl(new ShaderProgramGl(*this, vertpath, fragpath));
-    mShaderPrograms.push_back(std::make_shared<ShaderProgramGl>(*this, vertpath, fragpath));
-    return mShaderPrograms.back();
-}
-
-ComputeProgramGlPtr GfxApiGl::createComputeProgramGl(const char *comppath)
-{
-    // return ComputeProgramTypeGl(new ComputeProgramGl(*this, comppath));
-    mComputePrograms.push_back(std::make_shared<ComputeProgramGl>(*this, comppath));
-    return mComputePrograms.back();
-}
-
-
-
-WindowPtr GfxApiGl::createWindow(const char *name, int w, int h)
-{
-    return createWindowGl(name, w, h);
-}
-
-FramebufferPtr GfxApiGl::createFramebuffer()
-{
-    return createFramebufferGl();
-}
-
-TexturePtr GfxApiGl::createTexture(int w, int h, const void *data)
-{
-    return createTextureGl(w, h, data);
-}
-
-ShaderProgramPtr GfxApiGl::createShaderProgram(const char *vertpath, const char *fragpath)
-{
-    return createShaderProgramGl(vertpath, fragpath);
-}
-
-ComputeProgramPtr GfxApiGl::createComputeProgram(const char *comppath)
-{
-    return createComputeProgramGl(comppath);
-}
-
 
 
 

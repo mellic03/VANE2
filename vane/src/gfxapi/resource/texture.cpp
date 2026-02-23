@@ -5,8 +5,8 @@
 using namespace vane::gfxapi;
 
 
-TextureGl::TextureGl(GfxApiGl &api, int w, int h, const void *data)
-:   GfxResourceGl(api)
+Texture::Texture(GfxApi &api, int w, int h, const void *data)
+:   GfxResource(api)
 {
     mTextureFormat = TextureFormat::RGB_U8;
     auto internalformat = toUnderlyingType(mTextureFormat);
@@ -26,13 +26,13 @@ TextureGl::TextureGl(GfxApiGl &api, int w, int h, const void *data)
 }
 
 
-TextureGl::~TextureGl()
+Texture::~Texture()
 {
     gl::DeleteTextures(1, &mId);
 }
 
 
-TextureFormat TextureGl::getTextureFormat() { return mTextureFormat; }
-void TextureGl::setTextureFormat(TextureFormat fmt) { mTextureFormat = fmt; }
+TextureFormat Texture::getTextureFormat() { return mTextureFormat; }
+void Texture::setTextureFormat(TextureFormat fmt) { mTextureFormat = fmt; }
 
 

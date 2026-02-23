@@ -1,14 +1,20 @@
 #pragma once
 
+// #include <SDL3/SDL.h>
 #include <memory>
+#include <vector>
 
 
 namespace vane::gfxapi
 {
+    using IdType = uint32_t;
+
     class GfxApi;
+    class GfxResource;
     class Window;
     class Framebuffer;
     class Texture;
+    class GpuProgram;
     class ShaderProgram;
     class ComputeProgram;
 
@@ -19,8 +25,6 @@ namespace vane::gfxapi
     using ComputeProgramPtr = std::shared_ptr<ComputeProgram>;
 
 
-    extern GfxApi *getGfxApi();
-
     enum class TextureFormat
     {
         RED_U8,
@@ -30,87 +34,137 @@ namespace vane::gfxapi
         RGBA_F16,
         RGBA_F32
     };
-
 }
+
 
 
 
 class vane::gfxapi::GfxApi
 {
+private:
+    friend class Window;
+    friend class Framebuffer;
+    // friend class Texture;
+    // WindowPtr mMainWindow;
+
+    std::vector<WindowPtr>         mWindows;
+    std::vector<FramebufferPtr>    mFramebuffers;
+    std::vector<TexturePtr>        mTextures;
+    std::vector<ShaderProgramPtr>  mShaderPrograms;
+    std::vector<ComputeProgramPtr> mComputePrograms;
+
+
 public:
-    virtual ~GfxApi() {  }
+    GfxApi();
 
-    virtual WindowPtr getMainWindow() = 0;
-
-    virtual WindowPtr         createWindow(const char *name, int w, int h) = 0;
-    virtual FramebufferPtr    createFramebuffer() = 0;
-    virtual TexturePtr        createTexture(int w, int h, const void *data) = 0;
-    virtual ShaderProgramPtr  createShaderProgram(const char *v, const char *f) = 0;
-    virtual ComputeProgramPtr createComputeProgram(const char *c) = 0;
+    // WindowPtr         createWindow(const char *name, int w, int h);
+    // FramebufferPtr    createFramebuffer();
+    // TexturePtr        createTexture(int w, int h, const void *data);
+    // ShaderProgramPtr  createShaderProgram(const char *v, const char *f);
+    // ComputeProgramPtr createComputeProgram(const char *c);
 
 };
 
 
-#include <vane/objmanager.hpp>
-
-class vane::gfxapi::Window
+class vane::gfxapi::GfxResource
 {
 public:
-    virtual ~Window() {  }
-    virtual void onUpdate() = 0;
-    virtual void onEvent(void*) = 0;
-    virtual void setFramebufferSrc(const std::shared_ptr<Framebuffer>&) = 0;
+    GfxApi &mApi;
+    IdType mId;
+
+    GfxResource(GfxApi &api, IdType id=0)
+    :   mApi(api), mId(id) {  };
 
 };
 
 
-class vane::gfxapi::Framebuffer
+
+class vane::gfxapi::Window: public GfxResource
+{
+public:
+    Window(GfxApi&, const char *name, int w, int h);
+    ~Window();
+    void onUpdate();
+    void onEvent(void*);
+    void setFramebuffer(const FramebufferPtr&);
+    FramebufferPtr getFramebuffer();
+
+    void setProgram(const ShaderProgramPtr&);
+    // ShaderProgramPtr getProgram();
+
+    void makeCurrent();
+
+private:
+    void   *mSdlWin; // SDL_Window
+    void   *mSdlGlCtx; // SDL_GLContext
+    IdType  mSdlWinID; // SDL_WindowID
+
+    int32_t mGlVersionMajor;
+    int32_t mGlVersionMinor;
+
+    std::shared_ptr<Framebuffer>   mFramebuffer;
+    std::shared_ptr<ShaderProgram> mQuadProgram;
+    uint32_t mVAO;
+};
+
+
+class vane::gfxapi::Framebuffer: public GfxResource
+{
+    std::shared_ptr<Texture> mOutTex;
+    void _check_status();
+
+public:
+    Framebuffer(GfxApi&);
+    ~Framebuffer();
+    void setTextureDst(const std::shared_ptr<Texture>&);
+
+};
+
+
+class vane::gfxapi::Texture: public GfxResource
 {
 private:
-    struct Impl;
-    Impl *m_impl;
+    TextureFormat mTextureFormat;
 
 public:
-    virtual ~Framebuffer() {  }
-    virtual void setTextureDst(const std::shared_ptr<Texture>&) = 0;
+    Texture(GfxApi&, int w, int h, const void *data);
+    ~Texture();
+
+    TextureFormat getTextureFormat();
+    void setTextureFormat(TextureFormat);
 
 };
 
 
-class vane::gfxapi::Texture
+class vane::gfxapi::GpuProgram: public GfxResource
 {
-private:
-    struct Impl;
-    Impl *m_impl;
-
 public:
-    virtual ~Texture() {  }
-    virtual TextureFormat getTextureFormat() = 0;
-    virtual void setTextureFormat(TextureFormat) = 0;
+    struct Shader {
+        GpuProgram &mProg;
+        IdType     mId;
+        bool       mOkay;
+        Shader(GpuProgram &prog, IdType id, const char *filepath);
+    };
 
+    GpuProgram(GfxApi&);
+    // GpuProgram(GfxApi &api): GfxResource(api, gl::CreateProgram()) {  }
 };
 
 
-
-class vane::gfxapi::ShaderProgram
+class vane::gfxapi::ShaderProgram: public GpuProgram
 {
-private:
-    struct Impl;
-    Impl *m_impl;
-
 public:
-    virtual ~ShaderProgram() {  }
+    GpuProgram::Shader mVert, mFrag;
+    ShaderProgram(GfxApi&, const char *v, const char *f);
+    ~ShaderProgram();
 };
 
 
-class vane::gfxapi::ComputeProgram
+class vane::gfxapi::ComputeProgram: public GpuProgram
 {
-private:
-    struct Impl;
-    Impl *m_impl;
-
 public:
-    virtual ~ComputeProgram() {  }
+    GpuProgram::Shader mComp;
+    ComputeProgram(GfxApi&, const char *c);
 };
 
 

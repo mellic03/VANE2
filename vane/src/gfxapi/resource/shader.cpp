@@ -8,7 +8,7 @@
 using namespace vane::gfxapi;
 
 
-ShaderProgramGl::Shader::Shader(GpuProgramGl &prog, GLuint id, const char *filepath)
+ShaderProgram::Shader::Shader(GpuProgram &prog, GLuint id, const char *filepath)
 :   mProg(prog), mId(id), mOkay(false)
 {
     std::string str = vane::file::loadRaw(std::string(filepath));
@@ -42,8 +42,8 @@ ShaderProgramGl::Shader::Shader(GpuProgramGl &prog, GLuint id, const char *filep
 }
 
 
-ShaderProgramGl::ShaderProgramGl(GfxApiGl &api, const char *vertpath, const char *fragpath)
-:   GpuProgramGl(api),
+ShaderProgram::ShaderProgram(GfxApi &api, const char *vertpath, const char *fragpath)
+:   GpuProgram(api),
     mVert(*this, gl::CreateShader(GL_VERTEX_SHADER), vertpath),
     mFrag(*this, gl::CreateShader(GL_FRAGMENT_SHADER), fragpath)
 {
@@ -62,15 +62,15 @@ ShaderProgramGl::ShaderProgramGl(GfxApiGl &api, const char *vertpath, const char
 }
 
 
-ShaderProgramGl::~ShaderProgramGl()
+ShaderProgram::~ShaderProgram()
 {
     gl::DeleteProgram(mId);
 }
 
 
 
-ComputeProgramGl::ComputeProgramGl(GfxApiGl &api, const char *comppath)
-:   GpuProgramGl(api),
+ComputeProgram::ComputeProgram(GfxApi &api, const char *comppath)
+:   GpuProgram(api),
     mComp(*this, gl::CreateShader(GL_COMPUTE_SHADER), comppath)
 {
     if (mComp.mOkay)

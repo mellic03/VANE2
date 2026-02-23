@@ -29,19 +29,17 @@ int main(int argc, char **argv)
     using namespace vane;
 
     vane::Platform plat;
+    gfxapi::GfxApi gfx;
 
-    auto gfx = vane::gfxapi::getGfxApi();
-    auto fb  = gfx->createFramebuffer();
-         fb->setTextureDst(gfx->createTexture(1024, 1024, nullptr));
+    auto win = std::make_shared<gfxapi::Window>(gfx, "Main Window", 1024, 1024);
+         win->setFramebuffer(std::make_shared<gfxapi::Framebuffer>(gfx));
+         win->getFramebuffer()->setTextureDst(std::make_shared<gfxapi::Texture>(gfx, 1024, 1024, nullptr));
+         win->setProgram(
+            std::make_shared<gfxapi::ShaderProgram>(gfx, "data/shader/quad.vert", "data/shader/quad.frag")
+        );
 
     auto *lmao = plat.createObject<LmaoType>();
-          lmao->mWindow = gfx->getMainWindow();
-
-    // ree->donothing();
-
-    // auto *win0 = plat.add<Window>("Window 1", 1024, 1024);
-    // auto *kb = plat->addIoDevice<iolib::Keyboard>();
-    // auto *ms = plat->addIoDevice<iolib::Mouse>();
+          lmao->mWindow = win;
 
     GameObject player;
     player.addComponent<GraphicsComponent>();

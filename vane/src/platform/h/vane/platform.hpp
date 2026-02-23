@@ -30,8 +30,6 @@ public:
     void shutdown();
 
 private:
-    gfxapi::GfxApi *mGfxApi;
-
     RxSamplePort<OpCtrl>  *mOpAuthRx;
     TxSamplePort<OpState> *mOpStatTx;
     OpCtrl                 mOpAuth;
