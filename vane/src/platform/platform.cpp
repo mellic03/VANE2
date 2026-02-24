@@ -4,8 +4,9 @@
 using namespace vane;
 
 
-vane::Platform::Platform(ioapi::IoApi &io, gfxapi::GfxApi &gfx)
-:   mIo(io), mGfx(gfx)
+// vane::Platform::Platform(IoApi &io, GfxApi &gfx)
+// :   mIo(io), mGfx(gfx)
+vane::Platform::Platform()
 {
     std::filesystem::current_path(std::filesystem::path(SDL_GetBasePath()));
 

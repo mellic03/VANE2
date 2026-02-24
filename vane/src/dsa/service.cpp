@@ -5,7 +5,8 @@ int vane::ServiceManager::typeidx_ = 0;
 
 
 vane::ServiceManager::ServiceManager()
-:   mTypeIdxBase(ServiceManager::typeidx_)
+:   mTypeIdxBase(ServiceManager::typeidx_),
+    mEnabled(true)
 {
 
 }
@@ -30,19 +31,6 @@ void vane::ServiceManager::update()
     for (auto *srv: mServices)
     {
         srv->onUpdate();
-    }
-
-    for (auto *srv: mServices)
-    {
-        while (false == srv->mMessageQueue.empty())
-        {
-            uint32_t msg = srv->mMessageQueue.front();
-                           srv->mMessageQueue.pop();
-            if (msg == SrvMsg::SHUTDOWN)
-                srv->mBrandOfSacrifice = true;
-            else
-                srv->onMsgRecv(msg);
-        }
     }
 
     for (int i=mServices.size()-1; i>=0; i--)

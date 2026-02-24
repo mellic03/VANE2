@@ -38,6 +38,7 @@ detail::RenderEngineBaseRaii::RenderEngineBaseRaii()
 
 struct UboCameraData
 {
+    glm::vec4 mouse;
     glm::vec4 rgba = glm::vec4(0.5f);
     glm::mat4 T;
     glm::mat4 V;
@@ -54,6 +55,7 @@ RenderEngine::RenderEngine(const char *name, int width, int height)
 }
 
 static UboCameraData *camdata_ptr_ = nullptr;
+static glm::vec3 camdata_pos_ = glm::vec3(0.0f);
 
 void RenderEngine::onUpdate()
 {
@@ -63,9 +65,12 @@ void RenderEngine::onUpdate()
 
     m_win->_makeCurrent();
 
+    SDL_GetMouseState(&(camdata_.mouse.x), &(camdata_.mouse.y));
+    camdata_.mouse /= m_win->mSize;
+    camdata_.mouse.y = 1.0f - camdata_.mouse.y;
+    // camdata_.mouse += 
 
-    // SDL_GetMouseState()
-    camdata_.T = glm::mat4(1.0f);
+    camdata_.T = glm::translate(glm::mat4(1.0f), camdata_pos_);
     camdata_.V = glm::lookAt(glm::vec3(0.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     camdata_.P = glm::perspective(glm::radians(80.0f), 1.0f, 0.001f, 100.0f);
     ubo_camera_.sendToGpu();
@@ -76,77 +81,66 @@ void RenderEngine::onUpdate()
     gl::DrawArrays(GL_TRIANGLES, 0, 3);
 
     m_win->_swap();
-
-    // mServiceManager->getService<RenderEngine>
 }
 
 
-void RenderEngine::onShutdown()
+// void RenderEngine::onShutdown()
+// {
+//     delete m_win;
+// }
+
+
+void RenderEngine::onMsgRecv(vane::message msg, void *arg)
 {
-    delete m_win;
-}
-
-
-void RenderEngine::onMsgRecv(srvmsg_t msg)
-{
-    printf("[RenderEngine::onMsgRecv] msg=%d\n", msg);
-
-    switch (msg)
-    {
-        case GfxApiMsg::WIN_MAXIMIZE:
-            break;
-        case GfxApiMsg::WIN_MINIMIZE:
-            break;
-        default:
-            return;
-    }
-
-}
-
-
-
-int RenderEngine::onCmdRecv(int cmd, void *arg)
-{
-    // printf("[RenderEngine::onMsgRecv] msg=%d\n", msg);
     SDL_Event *e = (SDL_Event*)arg;
 
-
-    switch (cmd)
+    // printf("[RenderEngine::onMsgRecv] msg=%d\n", msg);
+    switch (msg)
     {
-        case GfxApiMsg::WIN_EVENT:
+        case message::IO_WIN_EVENT:
         {
+            SDL_Event *e = (SDL_Event*)arg;
             if (e->type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)
-                srvMsgToAll(SrvMsg::SHUTDOWN);
-            
+                srvCmdToAll(command::SRV_SHUTDOWN, nullptr);
             if ((e->type == SDL_EVENT_KEY_UP) && (e->key.key == SDLK_ESCAPE))
-                srvMsgToAll(SrvMsg::SHUTDOWN);
-
-            return 0;
+                srvCmdToAll(command::SRV_SHUTDOWN, nullptr);
+            break;
         }
-        case GfxApiMsg::KEYDOWN_EVENT:
-        {
-            if (!camdata_ptr_)
-                return 1;
 
-            if (e->key.key == SDLK_A)
-                camdata_ptr_->rgba.r *= 0.99f;
+        case message::IO_KEYDOWN_EVENT:
+            if (camdata_ptr_)
+            {
+                if (e->key.key == SDLK_A)  camdata_ptr_->rgba.r *= 0.99f;
+                if (e->key.key == SDLK_D)  camdata_ptr_->rgba.r *= 1.01f;
 
-            if (e->key.key == SDLK_D)
-                camdata_ptr_->rgba.r *= 1.01f;
+                if (e->key.key == SDLK_LEFT)  camdata_pos_.x -= 0.0025f;
+                if (e->key.key == SDLK_RIGHT) camdata_pos_.x += 0.0025f;
 
-            // if (e->type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)
-            //     srvMsgToAll(SrvMsg::SHUTDOWN);
-            
-            // if ((e->type == SDL_EVENT_KEY_UP) && (e->key.key == SDLK_ESCAPE))
-            //     srvMsgToAll(SrvMsg::SHUTDOWN);
-
-            return 0;
-        }
+                if (e->key.key == SDLK_UP)    camdata_pos_.z += 0.0025f;
+                if (e->key.key == SDLK_DOWN)  camdata_pos_.z -= 0.0025f;
+            }
+            break;
 
         default:
-            return 1;
+            break;
     }
+}
 
+
+
+void RenderEngine::onCmdRecv(vane::command cmd, void *arg)
+{
+    switch (cmd)
+    {
+        case command::GFX_ENABLE:
+            break;
+
+        case command::GFX_DISABLE:
+            break;
+
+        default:
+            break;
+    }
 }
 
 

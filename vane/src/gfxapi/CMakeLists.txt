@@ -1,5 +1,5 @@
 
-add_library(vane_gfxapi OBJECT)
+add_library(vane_gfxapi STATIC)
 target_compile_features(
     vane_gfxapi PUBLIC cxx_std_23
 )
@@ -15,6 +15,7 @@ target_sources(
     "${CMAKE_CURRENT_SOURCE_DIR}/framebuffer.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/gfx_api.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/gfx_apictl.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/glad.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/render_graph.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/shader.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/texture.cpp"
@@ -22,6 +23,6 @@ target_sources(
     "${CMAKE_CURRENT_SOURCE_DIR}/window.cpp"
 )
 target_link_libraries(
-    vane_gfxapi PUBLIC OpenGL::GL OpenGL::GLU vane_core vane_dsa
+    vane_gfxapi PUBLIC OpenGL::GL OpenGL::GLU vane_core vane_dsa vane_ioapi
 )
 

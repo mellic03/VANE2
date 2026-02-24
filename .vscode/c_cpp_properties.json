@@ -5,13 +5,14 @@
             "includePath": [
                 "${default}",
                 "${workspaceFolder}/external/install/include/",
+                "${workspaceFolder}/vane/cfg/h",
                 "${workspaceFolder}/vane/src/core/h",
                 "${workspaceFolder}/vane/src/dsa/h",
                 "${workspaceFolder}/vane/src/game/h",
                 "${workspaceFolder}/vane/src/gfxapi/h",
                 "${workspaceFolder}/vane/src/gfxapi/h_",
                 "${workspaceFolder}/vane/src/ioapi/h",
-                "${workspaceFolder}/vane/src/platform/h"
+                "${workspaceFolder}/vane/src/platform/h",
             ],
             "defines": [
                 "MACRO_NAME=\"value\""

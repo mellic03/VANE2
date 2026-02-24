@@ -12,10 +12,9 @@ class GameService: public vane::Service
 {
 public:
     virtual void onUpdate() final {  }
-    virtual void onMsgRecv(vane::srvmsg_t msg) final
+    virtual void onMsgRecv(vane::message msg, void*) final
     {
         using namespace vane::gfxapi;
-
         printf("[GameService::onMsgRecv] msg=%d\n", msg);
     }
 };
@@ -27,12 +26,12 @@ int main(int argc, char **argv)
 {
     using namespace vane;
 
-    ioapi::IoApi   io;
-    gfxapi::GfxApi gfx;
+    // ioapi::IoApi   io;
+    // gfxapi::GfxApi gfx;
 
-    vane::Platform plat();
-    auto *gfx  = plat.registerService<gfxapi::RenderEngine>("Game Name", 1024, 1024);
-    auto *io   = plat.registerService<ioapi::IoApi>();
+    vane::Platform plat;
+    auto *gfx  = plat.registerService<GfxApi>("Game Name", 1024, 1024);
+    auto *io   = plat.registerService<IoApi>();
     auto *game = plat.registerService<GameService>();
 
     GameObject player;

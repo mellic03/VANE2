@@ -1,17 +1,28 @@
 #pragma once
 
+#include <SDL3/SDL.h>
+#include "vane/service.hpp"
+
+namespace vane
+{
+    namespace gfxapi
+    {
+        class RenderEngine;
+        class RenderGraph;
+        class RenderNode;
+
+        namespace detail
+        {
+            class RenderEngineBaseRaii;
+        }
+    }
+
+    using GfxApi = gfxapi::RenderEngine;
+}
+
 #include "vane/gfxapi/framebuffer.hpp"
 #include "vane/gfxapi/shader.hpp"
 #include "vane/gfxapi/texture.hpp"
-
-
-namespace vane::gfxapi
-{
-    namespace detail
-    {
-        class RenderEngineBaseRaii;
-    }
-}
 
 
 
@@ -32,10 +43,11 @@ public:
     struct Window;
 
     RenderEngine(const char *name, int width, int height);
-    virtual void onUpdate() final;
-    virtual void onShutdown() final;
-    virtual void onMsgRecv(srvmsg_t) final;
-    virtual int  onCmdRecv(int, void*) final;
+    virtual void onUpdate();
+    virtual void onEvent(void*) {  };
+    // virtual void onShutdown() final;
+    virtual void onMsgRecv(vane::message, void*) final;
+    virtual void onCmdRecv(vane::command, void*) final;
 
     FramebufferPtr createFramebuffer();
     RenderProgramPtr createRenderProgram(const char *vertpath, const char *fragpath);

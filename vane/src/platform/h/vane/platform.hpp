@@ -1,9 +1,10 @@
 #pragma once
 
-#include "time.hpp"
+#include "vane/ioapi.hpp"
+#include "vane/gfxapi.hpp"
 #include "vane/port.hpp"
-#include "vane/type.hpp"
-#include "vane/service.hpp"
+#include "time.hpp"
+
 #include <type_traits>
 #include <memory>
 
@@ -12,16 +13,6 @@ namespace vane
 {
     class IoDevice;
     class Platform;
-
-    namespace gfxapi
-    {
-        class GfxApi;
-    }
-
-    namespace ioapi
-    {
-        class IoApi;
-    }
 }
 
 
@@ -29,10 +20,8 @@ namespace vane
 class vane::Platform: public vane::ServiceManager
 {
 public:
-    ioapi::IoApi   &mIo;
-    gfxapi::GfxApi &mGfx;
-
-    Platform(ioapi::IoApi&, gfxapi::GfxApi&);
+    // Platform(IoApi&, GfxApi&);
+    Platform();
     bool running();
     void update();
     void shutdown();

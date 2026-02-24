@@ -8,6 +8,7 @@ in FS_in {
 
 layout (std140, binding = 0)
 uniform ubo_CameraData {
+    vec4 mouse;
     vec4 color;
     mat4 T;
     mat4 V;
@@ -18,6 +19,9 @@ uniform ubo_CameraData {
 void main()
 {
     vec2 uv = fsin.texcoord;
-    vec3 color = uboCameraData.color.xyz;
-    fsout_frag_color = vec4(color, 1.0);
+
+    float dist = distance(uv, uboCameraData.mouse.xy);
+    vec3 color = vec3(dist); // uboCameraData.color.xyz;
+
+    fsout_frag_color = uboCameraData.P * uboCameraData.V * uboCameraData.T * vec4(color, 1.0);
 }

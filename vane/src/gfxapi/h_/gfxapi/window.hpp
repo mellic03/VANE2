@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL3/SDL.h>
+#include <glm/glm.hpp>
 #include "vane/gfxapi.hpp"
 
 
@@ -8,6 +9,8 @@ struct vane::gfxapi::RenderEngine::Window
 {
     friend class RenderEngine;
 public:
+    glm::vec4 mSize;
+
     Window(const char *name, int w, int h);
     Window(const Window&) = delete;
     Window &operator=(const Window&) = delete;

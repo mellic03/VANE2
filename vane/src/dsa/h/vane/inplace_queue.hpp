@@ -63,6 +63,12 @@ public:
         return mData[mWtIdx-1];
     }
 
+    DataType pop_front()
+    {
+        DataType value(this->front());  this->pop();
+        return value;
+    }
+
     const int size()       { return mSize; }
     const int size() const { return mSize; }
 

@@ -4,6 +4,7 @@ using namespace vane::gfxapi;
 
 
 RenderEngine::Window::Window(const char *name, int width, int height)
+:   mSize(float(width), float(height), 0.0f, 0.0f)
 {
     mSdlWin = SDL_CreateWindow(name, width, height, SDL_WINDOW_OPENGL);
     if (mSdlWin == NULL)

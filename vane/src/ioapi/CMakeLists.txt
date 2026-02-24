@@ -1,5 +1,5 @@
 
-add_library(vane_ioapi OBJECT)
+add_library(vane_ioapi STATIC)
 target_compile_features(
     vane_ioapi PUBLIC cxx_std_23
 )
@@ -9,11 +9,7 @@ target_include_directories(
 target_sources(
     vane_ioapi PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/ioapi.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/platform.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/time.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/window.cpp"
 )
-
 target_link_libraries(
-    vane_ioapi PUBLIC SDL3::SDL3
+    vane_ioapi PUBLIC SDL3::SDL3 vane_dsa vane_gfxapi
 )

@@ -15,7 +15,7 @@ void vane::detail::vnassert(const char *file, int line, bool cond, const char *c
     std::printf("-------- ASSERT FAIL --------\n");
     std::printf("Assert:  %s\n", condstr);
     std::printf("Message: %s\n", condstr);
-    std::printf("Source:  %s:%s\n", file, line);
+    std::printf("Source:  %s:%d\n", file, line);
     std::abort();
 }
 

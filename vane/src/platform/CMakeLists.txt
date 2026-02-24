@@ -1,5 +1,5 @@
 
-add_library(vane_platform OBJECT)
+add_library(vane_platform STATIC)
 target_compile_features(
     vane_platform PUBLIC cxx_std_23
 )
@@ -8,7 +8,6 @@ target_include_directories(
 )
 target_sources(
     vane_platform PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/ioapi.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/platform.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/time.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/window.cpp"

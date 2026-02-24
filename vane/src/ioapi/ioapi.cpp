@@ -2,33 +2,39 @@
 #include "vane/gfxapi.hpp"
 #include <SDL3/SDL.h>
 
-using namespace vane::ioapi;
+using namespace vane;
 
 
 void IoApi::onUpdate()
 {
-    SDL_Event e;
+    SDL_GetMouseState(&mMouse.x, &mMouse.y);
 
+    SDL_Event e;
     while (SDL_PollEvent(&e))
     {
         if (e.type == SDL_EVENT_QUIT)
         {
-            srvMsgToAll(SrvMsg::SHUTDOWN);
+            srvCmdToAll(command::SRV_SHUTDOWN, nullptr);
             return;
         }
 
         if (SDL_GetWindowFromEvent(&e))
         {
-            srvRunCmd<gfxapi::RenderEngine>(gfxapi::GfxApiMsg::WIN_EVENT, (void*)(&e));
+            srvMsgToSrv<gfxapi::RenderEngine>(message::IO_WIN_EVENT, (void*)(&e));
             // if (auto *gfx = getService<gfxapi::RenderEngine>())
             // {
             //     gfx.on
             // }
         }
 
+        if (e.type == SDL_EVENT_KEY_UP)
+        {
+            srvMsgToSrv<gfxapi::RenderEngine>(message::IO_KEYUP_EVENT, (void*)(&e));
+        }
+
         if (e.type == SDL_EVENT_KEY_DOWN)
         {
-            srvRunCmd<gfxapi::RenderEngine>(gfxapi::GfxApiMsg::KEYDOWN_EVENT, (void*)(&e));
+            srvMsgToSrv<gfxapi::RenderEngine>(message::IO_KEYDOWN_EVENT, (void*)(&e));
         }
     }
 
@@ -41,17 +47,22 @@ void IoApi::onShutdown()
 }
 
 
-void IoApi::onMsgRecv(srvmsg_t msg)
+void IoApi::onMsgRecv(vane::message msg, void *arg)
 {
-    printf("[IoApi::onMsgRecv] msg=%d\n", msg);
-
     switch (msg)
     {
-        case IoApiMsg::NONE:
-            break;
-        case IoApiMsg::UPDATE_MOUSE:
-            SDL_GetMouseState(&mMouse.x, &mMouse.y);
-            break;
+        default:
+            return;
+    }
+
+}
+
+
+
+void IoApi::onCmdRecv(vane::command cmd, void *arg)
+{
+    switch (cmd)
+    {
         default:
             return;
     }

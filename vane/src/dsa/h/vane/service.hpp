@@ -1,5 +1,6 @@
 #pragma once
 
+#include "vanecfg/message.hpp"
 #include "vane/inplace_queue.hpp"
 #include <memory>
 #include <vector>
@@ -7,25 +8,15 @@
 
 namespace vane
 {
-    using srvmsg_t = int32_t;
-
-    struct SrvMsg {
-        static constexpr srvmsg_t INVALID  = 0;
-        static constexpr srvmsg_t PAUSE    = 1;
-        static constexpr srvmsg_t RESUME   = 2;
-        static constexpr srvmsg_t SHUTDOWN = 3;
-    };
-
-
     class Service;
     class ServiceManager;
-
 
     class ServiceManager: public vane::NonCopyable
     {
     private:
         static int typeidx_;
-        const  int mTypeIdxBase;
+        const int mTypeIdxBase;
+        bool mEnabled;
         int _typeIdxToArrayIdx(int typeidx);
 
     protected:
@@ -34,6 +25,9 @@ namespace vane
     public:
         ServiceManager();
         void update();
+        bool running() { return mEnabled; };
+        void enable() { mEnabled = true; }
+        void disable() { mEnabled = false; }
 
         template <typename T, typename... Args>
         T *registerService(Args...);
@@ -44,12 +38,13 @@ namespace vane
         // void deleteService(vane::Service*);
 
         template <typename T>
-        int srvMsgToSrv(srvmsg_t msg);
+        void srvMsgToSrv(vane::message, void*);
+        void srvMsgToAll(vane::message, void*);
 
         template <typename T>
-        int srvRunCmd(int cmd, void *arg);
+        void srvCmdToSrv(vane::command, void*);
+        void srvCmdToAll(vane::command, void*);
 
-        int srvMsgToAll(srvmsg_t msg);
     };
 
 
@@ -61,18 +56,18 @@ namespace vane
         size_t mVaneTypeId;
         int    mTypeIdx;
         ServiceManager *mSrvManager;
-        inplace_queue<srvmsg_t, 64> mMessageQueue;
 
     protected:
         /**
          * @return Number of services messaged
          */
         template <typename T>
-        int srvMsgToSrv(srvmsg_t msg) { return mSrvManager->srvMsgToSrv<T>(msg); }
-        int srvMsgToAll(srvmsg_t msg) { return mSrvManager->srvMsgToAll(msg); }
+        void srvMsgToSrv(vane::message msg, void *arg) { mSrvManager->srvMsgToSrv<T>(msg, arg); }
+        void srvMsgToAll(vane::message msg, void *arg) { mSrvManager->srvMsgToAll(msg, arg); }
 
         template <typename T>
-        int srvRunCmd(int cmd, void *arg) { return mSrvManager->srvRunCmd<T>(cmd, arg); }
+        void srvCmdToSrv(vane::command cmd, void *arg) { mSrvManager->srvCmdToSrv<T>(cmd, arg); }
+        void srvCmdToAll(vane::command cmd, void *arg) { mSrvManager->srvCmdToAll(cmd, arg); }
 
         template <typename T>
         T *getService() { return mSrvManager->getService<T>(); }
@@ -85,8 +80,8 @@ namespace vane
         virtual void onEnable()   {  };
         virtual void onDisable()  {  };
         virtual void onShutdown() {  };
-        virtual void onMsgRecv(srvmsg_t) = 0;
-        virtual int  onCmdRecv(int, void*) { return -1; };
+        virtual void onMsgRecv(vane::message, void*) = 0;
+        virtual void onCmdRecv(vane::command, void*) {  };
 
     };
 
@@ -149,47 +144,51 @@ inline T *vane::ServiceManager::getService()
 
 
 template <typename T>
-inline int vane::ServiceManager::srvMsgToSrv(srvmsg_t msg)
+inline void vane::ServiceManager::srvMsgToSrv(vane::message msg, void *arg)
 {
-    // static_assert(
-    //     std::is_base_of_v<Service, T>,
-    //     "T must be derivative of vane::Service"
-    // );
-
-    const size_t desired_id = srv_typeid<T>();
-    for (auto *srv: mServices)
-    {
-        if (srv->mTypeIdx == desired_id)
-        {
-            srv->mMessageQueue.push(msg);
-            return 1;
-        }
-    }
-
-    return -1;
+    auto *srv = static_cast<Service*>(getService<T>());
+    if (srv == nullptr)
+        return;
+    srv->onMsgRecv(msg, arg);
 }
 
 
-inline int vane::ServiceManager::srvMsgToAll(srvmsg_t msg)
+inline void vane::ServiceManager::srvMsgToAll(vane::message msg, void *arg)
 {
-    int count = 0;
-
     for (auto *srv: mServices)
     {
-        srv->mMessageQueue.push(msg);
-        count += 1;
+        srv->onMsgRecv(msg, arg);
     }
-
-    return count;
 }
 
 
 
 template <typename T>
-inline int vane::ServiceManager::srvRunCmd(int cmd, void *arg)
+inline void vane::ServiceManager::srvCmdToSrv(vane::command cmd, void *arg)
 {
     auto *srv = static_cast<Service*>(getService<T>());
     if (srv == nullptr)
-        return -1;
-    return srv->onCmdRecv(cmd, arg);
+        return;
+    if (cmd == command::SRV_SHUTDOWN)
+        srv->mBrandOfSacrifice = true;
+    else
+        srv->onCmdRecv(cmd, arg);
 }
+
+
+inline void vane::ServiceManager::srvCmdToAll(vane::command cmd, void *arg)
+{
+    if (cmd == command::SRV_SHUTDOWN)
+    {
+        for (auto *srv: mServices)
+            srv->mBrandOfSacrifice = true;
+    }
+
+    for (auto *srv: mServices)
+    {
+        srv->onCmdRecv(cmd, arg);
+    }
+}
+
+
+

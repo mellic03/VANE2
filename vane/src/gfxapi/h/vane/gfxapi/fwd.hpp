@@ -1,6 +1,5 @@
 #pragma once
 
-#include "vane/service.hpp"
 #include "vane/inplace_set.hpp"
 #include <memory>
 #include <vector>
@@ -9,10 +8,6 @@
 namespace vane::gfxapi
 {
     using IdType = uint32_t;
-
-    class RenderEngine;
-    class RenderGraph;
-    class RenderNode;
 
     class Camera;
 

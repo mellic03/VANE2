@@ -3,27 +3,23 @@
 #include "vane/service.hpp"
 
 
-namespace vane::ioapi
+namespace vane
 {
-    struct IoApiMsg: public SrvMsg
-    {
-        static constexpr srvmsg_t NONE         = 256;
-        static constexpr srvmsg_t UPDATE_MOUSE = NONE + 1;
-    };
-
     class IoApi;
 }
 
 
-class vane::ioapi::IoApi: public vane::Service
+class vane::IoApi: public vane::Service
 {
 public:
     virtual void onUpdate() final;
     virtual void onShutdown() final;
-    virtual void onMsgRecv(srvmsg_t) final;
+    virtual void onMsgRecv(vane::message, void*) final;
+    virtual void onCmdRecv(vane::command, void*) final;
 
 private:
     struct MouseInfo {
         float x, y, z, w;
     } mMouse;
 };
+
