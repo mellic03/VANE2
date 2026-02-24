@@ -17,6 +17,11 @@ namespace vane
     {
         class GfxApi;
     }
+
+    namespace ioapi
+    {
+        class IoApi;
+    }
 }
 
 
@@ -24,7 +29,10 @@ namespace vane
 class vane::Platform: public vane::ServiceManager
 {
 public:
-    Platform();
+    ioapi::IoApi   &mIo;
+    gfxapi::GfxApi &mGfx;
+
+    Platform(ioapi::IoApi&, gfxapi::GfxApi&);
     bool running();
     void update();
     void shutdown();

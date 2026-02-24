@@ -10,6 +10,7 @@
                 "${workspaceFolder}/vane/src/game/h",
                 "${workspaceFolder}/vane/src/gfxapi/h",
                 "${workspaceFolder}/vane/src/gfxapi/h_",
+                "${workspaceFolder}/vane/src/ioapi/h",
                 "${workspaceFolder}/vane/src/platform/h"
             ],
             "defines": [

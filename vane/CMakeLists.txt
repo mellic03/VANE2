@@ -13,6 +13,7 @@ add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/core")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/dsa")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/game")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/gfxapi")
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/ioapi")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/src/platform")
 
 add_library(

@@ -27,7 +27,10 @@ int main(int argc, char **argv)
 {
     using namespace vane;
 
-    vane::Platform plat;
+    ioapi::IoApi   io;
+    gfxapi::GfxApi gfx;
+
+    vane::Platform plat();
     auto *gfx  = plat.registerService<gfxapi::RenderEngine>("Game Name", 1024, 1024);
     auto *io   = plat.registerService<ioapi::IoApi>();
     auto *game = plat.registerService<GameService>();

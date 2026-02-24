@@ -15,5 +15,5 @@ target_sources(
 )
 
 target_link_libraries(
-    vane_platform PUBLIC SDL3::SDL3 vane_gfxapi
+    vane_platform PUBLIC vane_gfxapi vane_ioapi
 )
