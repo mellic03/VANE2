@@ -1,4 +1,5 @@
 #include "gfxapi/gfxapi_gl.hpp"
+
 using namespace vane::gfxapi;
 
 
@@ -41,45 +42,35 @@ RenderEngine::Window::~Window()
 }
 
 
-void RenderEngine::Window::onUpdate()
-{
-    SDL_GL_MakeCurrent((SDL_Window*)mSdlWin, (SDL_GLContext)mSdlGlCtx);
-
-    gl::BindVertexArray(mVAO);
-    // gl::UseProgram(mQuadProgram->mId);
-    gl::DrawArrays(GL_TRIANGLES, 0, 3);
-
-    SDL_GL_SwapWindow((SDL_Window*)mSdlWin);
-}
-
-
 void RenderEngine::Window::onEvent(const SDL_Event &e)
 {
-    if (!SDL_GetWindowFromEvent(&e))
-        return;
-
     if (e.window.windowID != mSdlWinID)
         return;
 
-    // if (e->type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)
+    // if (e.type == SDL_EVENT_WINDOW_CLOSE_REQUESTED)
     //     mPlatform->freeIoDevice(this);
 
     // if ((e->type == SDL_EVENT_KEY_UP) && (e->key.key == SDLK_ESCAPE))
-        // mPlatform->freeIoDevice(this);
+    //     mPlatform->freeIoDevice(this);
 }
 
 
 void RenderEngine::Window::_makeCurrent()
 {
     VANE_ASSERT(
-        true == SDL_GL_MakeCurrent((SDL_Window*)mSdlWin, (SDL_GLContext)mSdlGlCtx),
+        true == SDL_GL_MakeCurrent(mSdlWin, mSdlGlCtx),
         "Failed to make SDL/GL context"
     );
 
     VANE_ASSERT(
-        0 == gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress),
+        0 != gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress),
         "Failed to load GLAD"
     );
+}
 
+
+void RenderEngine::Window::_swap()
+{
+    SDL_GL_SwapWindow(mSdlWin);
 }
 

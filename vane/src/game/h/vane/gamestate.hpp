@@ -32,7 +32,7 @@ class vane::GameState
 private:
     friend class vane::GameStateManager;
     vane::GameStateManager *m_gsm;
-    size_t m_typeid;
+    int64_t m_typeid;
 
 public:
     virtual void onUpdate() {  }

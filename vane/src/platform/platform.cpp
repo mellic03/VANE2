@@ -1,13 +1,10 @@
 #include <vane.hpp>
 #include <filesystem>
 
-#include "vane/gfxapi.hpp"
-
 using namespace vane;
 
 
-vane::Platform::Platform(vane::gfxapi::RenderEngine &gfx)
-:   mRenderEngine(gfx)
+vane::Platform::Platform()
 {
     std::filesystem::current_path(std::filesystem::path(SDL_GetBasePath()));
 
@@ -49,12 +46,12 @@ bool vane::Platform::running()
 
 void Platform::update()
 {
-    if (mObjects.empty())
+    if (mServices.empty())
     {
         this->shutdown();
     }
 
-    ObjectManager::update();
+    ServiceManager::update();
     // mOpStatTx.write(&mOpStat);
     // mOpAuthRx.read(&mOpAuth);
     // mOpStatTx.bind(mOpAuthRx);
@@ -69,7 +66,7 @@ void Platform::update()
     //         return;
     //     }
 
-    //     for (auto &obj: mObjects)
+    //     for (auto &obj: mServices)
     //     {
     //         obj->onEvent((void*)(&e));
     //     }
@@ -82,7 +79,7 @@ void vane::Platform::shutdown()
     setOpStat(OpState::Stopping);
     VLOG_INFO("Shutdown initiated");
 
-    mObjects.clear();
+    mServices.clear();
 
     setOpStat(OpState::Stopped);
     VLOG_INFO("Shutdown complete");

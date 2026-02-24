@@ -32,8 +32,8 @@ void RenderEngine::ApiControl::debugOutputDisable()
 
 #include <iostream>
 
-static void debugMessageCallback( GLenum source, GLenum type, GLuint id, GLenum severity,
-                                  GLsizei length, GLchar const* message, void const* user_param )
+static void debugmsg_callback( GLenum source, GLenum type, GLuint id, GLenum severity,
+                               GLsizei length, GLchar const* message, void const* user_param )
 {
 	auto const src_str = [source]() {
 		switch (source)

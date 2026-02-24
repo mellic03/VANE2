@@ -3,8 +3,8 @@
 using namespace vane::gfxapi;
 
 
-Texture::Texture(RenderEngine &api, int w, int h, const void *data)
-:   GfxResource(api)
+Texture::Texture(int w, int h, const void *data)
+:   GfxResource(0)
 {
     mTextureFormat = TextureFormat::RGB_U8;
     auto internalformat = toUnderlyingType(mTextureFormat);
@@ -21,6 +21,21 @@ Texture::Texture(RenderEngine &api, int w, int h, const void *data)
     // gl::TextureStorage2D(mId, 1, GL_DEPTH_COMPONENT24, w, h);
     // gl::TextureSubImage2D(mId, 0, 0, 0, w, h, GL_DEPTH_COMPONENT, GL_FLOAT, data);
 
+}
+
+
+Texture::Texture(Texture &&tex)
+:   GfxResource(tex.mId), mTextureFormat(tex.mTextureFormat)
+{
+
+}
+
+
+Texture &Texture::operator=(Texture &&tex)
+{
+    mId = tex.mId;
+    mTextureFormat = tex.mTextureFormat;
+    return *this;
 }
 
 

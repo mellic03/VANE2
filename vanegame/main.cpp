@@ -2,14 +2,25 @@
 
 #include <vane.hpp>
 #include <vane/gfxapi.hpp>
+#include <vane/ioapi.hpp>
 #include "vane/gameobject.hpp"
 #include "vane/component.hpp"
 #include "vane/port.hpp"
 
-// #include "vane/message.hpp"
-// static vane::TxMsgEndpoint          tx_opctrl;
-// static RxSamplePortT<vane::OpState> rx_opstat;
-static vane::TxSamplePort<vane::OpCtrl> opAuthTx;
+
+class GameService: public vane::Service
+{
+public:
+    virtual void onUpdate() final {  }
+    virtual void onMsgRecv(vane::srvmsg_t msg) final
+    {
+        using namespace vane::gfxapi;
+
+        printf("[GameService::onMsgRecv] msg=%d\n", msg);
+    }
+};
+
+
 
 
 int main(int argc, char **argv)
@@ -17,17 +28,9 @@ int main(int argc, char **argv)
     using namespace vane;
 
     vane::Platform plat;
-    auto *gfx = plat.createObject<gfxapi::RenderEngine>("Game Name", 1024, 1024);
-          gfx->createRenderProgram("data/shader/quad.vert", "data/shader/quad.frag");
-    // auto win = std::make_shared<gfxapi::Window>(gfx, "Main Window", 1024, 1024);
-    //      win->setFramebuffer(std::make_shared<gfxapi::Framebuffer>(gfx));
-    //      win->getFramebuffer()->setTextureDst(std::make_shared<gfxapi::Texture>(gfx, 1024, 1024, nullptr));
-    //      win->setProgram(
-    //         std::make_shared<gfxapi::ShaderProgram>(gfx, "data/shader/quad.vert", "data/shader/quad.frag")
-    //     );
-
-    // auto *lmao = plat.createObject<LmaoType>();
-    //       lmao->mWindow = win;
+    auto *gfx  = plat.registerService<gfxapi::RenderEngine>("Game Name", 1024, 1024);
+    auto *io   = plat.registerService<ioapi::IoApi>();
+    auto *game = plat.registerService<GameService>();
 
     GameObject player;
     player.addComponent<GraphicsComponent>();

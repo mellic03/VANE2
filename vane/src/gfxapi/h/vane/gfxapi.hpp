@@ -1,57 +1,48 @@
 #pragma once
 
-// #include <SDL3/SDL.h>
-#include "vane/objmanager.hpp"
-#include "vane/inplace_set.hpp"
-#include <memory>
-#include <vector>
+#include "vane/gfxapi/framebuffer.hpp"
+#include "vane/gfxapi/shader.hpp"
+#include "vane/gfxapi/texture.hpp"
 
 
 namespace vane::gfxapi
 {
-    using IdType = uint32_t;
-
-    class RenderEngine;
-    class RenderGraph;
-    
-    class GfxResource;
-    class Framebuffer;
-    class Texture;
-    class GpuProgram;
-    class RenderProgram;
-    class ComputeProgram;
-
-    using FramebufferPtr    = std::shared_ptr<Framebuffer>;
-    using TexturePtr        = std::shared_ptr<Texture>;
-    using RenderProgramPtr  = std::shared_ptr<RenderProgram>;
-    using ComputeProgramPtr = std::shared_ptr<ComputeProgram>;
-
-
-    enum class TextureFormat
+    namespace detail
     {
-        RED_U8,
-        RGB_U8,
-        RGBA_U8,
-        RGBA_U32,
-        RGBA_F16,
-        RGBA_F32
-    };
+        class RenderEngineBaseRaii;
+    }
 }
 
 
-class vane::gfxapi::RenderEngine: public vane::ObjectManager::Object
+
+class vane::gfxapi::detail::RenderEngineBaseRaii
+{
+public:
+    RenderEngineBaseRaii();
+
+};
+
+
+
+class vane::gfxapi::RenderEngine
+:   public vane::gfxapi::detail::RenderEngineBaseRaii,
+    public vane::Service
 {
 public:
     struct Window;
 
     RenderEngine(const char *name, int width, int height);
     virtual void onUpdate() final;
+    virtual void onShutdown() final;
+    virtual void onMsgRecv(srvmsg_t) final;
+    virtual int  onCmdRecv(int, void*) final;
 
+    FramebufferPtr createFramebuffer();
     RenderProgramPtr createRenderProgram(const char *vertpath, const char *fragpath);
     ComputeProgramPtr createComputeProgram(const char *filepath);
 
-    void drawWindow(Window*, Framebuffer&);
-    void drawFramebuffer(Framebuffer&, RenderGraph&);
+    void drawToWindow(Window*, RenderGraph&);
+    void drawToFramebuffer(Framebuffer&, RenderGraph&);
     void _drawFramebuffer(Framebuffer&, RenderNode*);
 
 
@@ -60,7 +51,9 @@ private:
         void debugOutputEnable();
         void debugOutputDisable();
     } m_apictl;
+
     Window *m_win;
+    RenderProgram m_winprg;
 
     using WindowPtr = std::unique_ptr<Window>;
 
@@ -71,84 +64,6 @@ private:
     std::vector<ComputeProgramPtr>  m_compute_programs;
 
     Window *createWindow(const char *name, int w=512, int h=512);
-};
-
-
-
-
-class vane::gfxapi::GfxResource
-{
-public:
-    RenderEngine &mApi;
-    IdType mId;
-
-    GfxResource(RenderEngine &api, IdType id=0)
-    :   mApi(api), mId(id) {  };
 
 };
-
-
-
-
-
-class vane::gfxapi::Framebuffer: public GfxResource
-{
-    std::shared_ptr<Texture> mOutTex;
-    void _check_status();
-
-public:
-    Framebuffer(RenderEngine&);
-    ~Framebuffer();
-    void setTextureDst(const std::shared_ptr<Texture>&);
-
-};
-
-
-class vane::gfxapi::Texture: public GfxResource
-{
-private:
-    TextureFormat mTextureFormat;
-
-public:
-    Texture(RenderEngine&, int w, int h, const void *data);
-    ~Texture();
-
-    TextureFormat getTextureFormat();
-    void setTextureFormat(TextureFormat);
-
-};
-
-
-class vane::gfxapi::GpuProgram: public GfxResource
-{
-public:
-    struct Shader {
-        GpuProgram &mProg;
-        IdType     mId;
-        bool       mOkay;
-        Shader(GpuProgram &prog, IdType id, const char *filepath);
-    };
-
-    GpuProgram(RenderEngine&);
-    // GpuProgram(RenderEngine &api): GfxResource(api, gl::CreateProgram()) {  }
-};
-
-
-class vane::gfxapi::RenderProgram: public GpuProgram
-{
-public:
-    GpuProgram::Shader mVert, mFrag;
-    RenderProgram(RenderEngine&, const char *v, const char *f);
-    ~RenderProgram();
-};
-
-
-class vane::gfxapi::ComputeProgram: public GpuProgram
-{
-public:
-    GpuProgram::Shader mComp;
-    ComputeProgram(RenderEngine&, const char *c);
-};
-
-
 

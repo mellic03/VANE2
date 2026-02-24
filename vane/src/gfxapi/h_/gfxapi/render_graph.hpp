@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vane/objmanager.hpp"
+#include "vane/service.hpp"
 #include "vane/inplace_set.hpp"
 #include <memory>
 #include <vector>

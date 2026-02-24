@@ -3,7 +3,7 @@
 #include "time.hpp"
 #include "vane/port.hpp"
 #include "vane/type.hpp"
-#include "vane/objmanager.hpp"
+#include "vane/service.hpp"
 #include <type_traits>
 #include <memory>
 
@@ -21,17 +21,15 @@ namespace vane
 
 
 
-class vane::Platform: public vane::ObjectManager
+class vane::Platform: public vane::ServiceManager
 {
 public:
-    Platform(vane::gfxapi::RenderEngine&);
     Platform();
     bool running();
     void update();
     void shutdown();
 
 private:
-    vane::gfxapi::RenderEngine  &mRenderEngine;
     RxSamplePort<OpCtrl>  *mOpAuthRx;
     TxSamplePort<OpState> *mOpStatTx;
     OpCtrl                 mOpAuth;

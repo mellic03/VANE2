@@ -4,6 +4,15 @@ out FS_in {
     layout (location = 0) vec2 texcoord;
 } vsout;
 
+layout (std140, binding = 0)
+uniform ubo_CameraData {
+    vec4 color;
+    mat4 T;
+    mat4 V;
+    mat4 P;
+} uboCameraData;
+
+
 void main()
 {
     // vec2 position  = vec2(gl_VertexIndex%2, gl_VertexIndex/2) * 4.0 - 1.0;
@@ -15,5 +24,4 @@ void main()
     vsout.texcoord = texcoord;
     gl_Position = vec4(position, 1.0, 1.0);
 }
-
 

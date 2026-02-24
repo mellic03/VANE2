@@ -30,7 +30,6 @@
 
 void vane::GraphicsComponent::update()
 {
-    printf("[GraphicsComponent::update]\n");
     // printf("[GraphicsComponent::update]\n");
 
 }
@@ -45,7 +44,7 @@ void vane::GraphicsComponent::recvmsg(const void *msg, size_t msgsz)
 
 void vane::PhysicsComponent::update()
 {
-    printf("[PhysicsComponent::update]\n");
+    // printf("[PhysicsComponent::update]\n");
     // static constexpr glm::vec3 G(0.0f, -9.81f, 0.0f);
     // static glm::vec3 dPos(0.0f);
 

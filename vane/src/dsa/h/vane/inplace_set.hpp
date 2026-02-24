@@ -2,23 +2,7 @@
 #include <cstdint>
 #include "vane/assert.hpp"
 #include "vane/log.hpp"
-
-namespace vane
-{
-    class NonCopyable
-    {
-    public:
-        NonCopyable() = default;
-        ~NonCopyable() = default;
-        NonCopyable(const NonCopyable&) = delete;
-        NonCopyable& operator=(const NonCopyable&) = delete;
-        NonCopyable(NonCopyable&&) = default;
-        NonCopyable& operator=(NonCopyable&&) = default;
-    };
-
-}
-
-
+#include "vane/type.hpp"
 
 namespace vane
 {
@@ -37,11 +21,6 @@ private:
     const T *mEnd;
 
 public:
-    // struct pos_t {
-    //     T *p_;
-    //     pos_t(T *p): p_(p) {  }
-    // };
-    // inline static pos_t nopos = pos_t(nullptr);
     using pos_t = T*;
     pos_t nopos = nullptr;
 

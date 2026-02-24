@@ -7,14 +7,24 @@
 
 using namespace vane::gfxapi;
 
+ShaderProgram::ShaderProgram()
+:   mId(gl::CreateProgram()) { }
 
-GpuProgram::GpuProgram(RenderEngine &api)
-:   GfxResource(api, gl::CreateProgram()) {  }
+ShaderProgram::~ShaderProgram()
+{ gl::DeleteProgram(mId); }
 
 
-GpuProgram::Shader::Shader(GpuProgram &prog, GLuint id, const char *filepath)
-:   mProg(prog), mId(id), mOkay(false)
+
+static vane::FileReader<128*1024> file_reader_;
+
+
+detail::Shader::Shader(ShaderProgram *prog, uint32_t shaderId, const char *filepath)
+:   mId(shaderId),
+    mOkay(false)
 {
+    if (!file_reader_.loadFile(filepath))
+        return;
+
     std::string str = vane::file::loadRaw(std::string(filepath));
     const char *src = str.c_str();
 
@@ -38,16 +48,16 @@ GpuProgram::Shader::Shader(GpuProgram &prog, GLuint id, const char *filepath)
     }
     else
     {
-        gl::AttachShader(mProg.mId, mId);
+        gl::AttachShader(prog->mId, mId);
         mOkay = true;
     }
 }
 
 
-RenderProgram::RenderProgram(RenderEngine &api, const char *vertpath, const char *fragpath)
-:   GpuProgram(api),
-    mVert(*this, gl::CreateShader(GL_VERTEX_SHADER), vertpath),
-    mFrag(*this, gl::CreateShader(GL_FRAGMENT_SHADER), fragpath)
+
+RenderProgram::RenderProgram(const char *vertpath, const char *fragpath)
+:   mVert(this, gl::CreateShader(GL_VERTEX_SHADER), vertpath),
+    mFrag(this, gl::CreateShader(GL_FRAGMENT_SHADER), fragpath)
 {
     if (mVert.mOkay && mFrag.mOkay)
     {
@@ -61,19 +71,13 @@ RenderProgram::RenderProgram(RenderEngine &api, const char *vertpath, const char
 
     gl::DeleteShader(mVert.mId);
     gl::DeleteShader(mFrag.mId);
-}
 
-
-RenderProgram::~RenderProgram()
-{
-    gl::DeleteProgram(mId);
 }
 
 
 
-ComputeProgram::ComputeProgram(RenderEngine &api, const char *comppath)
-:   GpuProgram(api),
-    mComp(*this, gl::CreateShader(GL_COMPUTE_SHADER), comppath)
+ComputeProgram::ComputeProgram(const char *comppath)
+:   mComp(this, gl::CreateShader(GL_COMPUTE_SHADER), comppath)
 {
     if (mComp.mOkay)
     {

@@ -12,6 +12,7 @@ target_include_directories(
 target_sources(
     vane_dsa PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/bump_allocator.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/service.cpp"
 )
 target_link_libraries(
     vane_dsa PUBLIC vane_core

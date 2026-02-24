@@ -383,6 +383,16 @@ namespace gl
         return data;
     }
 
+    VANE_INLINE GLuint GetUniformBlockIndex(GLuint program, const GLchar *uniformBlockName)
+    {
+        GLuint data;
+        VN_GLCALL( data = glGetUniformBlockIndex(program, uniformBlockName); )
+        return data;
+    }
+
+    VANE_INLINE void UniformBlockBinding(GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding)
+    { VN_GLCALL( glUniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding); ) }
+
     VANE_INLINE void Uniform1i( GLint loc, int i )
     { VN_GLCALL( glUniform1i(loc, i); ) }
 

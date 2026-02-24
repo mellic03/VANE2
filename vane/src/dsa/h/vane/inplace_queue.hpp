@@ -1,6 +1,7 @@
 #pragma once
-#include <cstdint>
+
 #include "vane/log.hpp"
+#include "vane/type.hpp"
 
 
 namespace vane
@@ -11,7 +12,7 @@ namespace vane
 
 
 template <typename DataType, uint32_t Capacity>
-class vane::inplace_queue
+class vane::inplace_queue: private vane::NonCopyable
 {
 private:
     DataType mData[Capacity];

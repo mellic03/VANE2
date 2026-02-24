@@ -7,7 +7,7 @@
 
 void vane::detail::vnassert(const char *file, int line, bool cond, const char *condstr, const char *msg)
 {
-    if (cond)
+    if (cond == true)
     {
         return;
     }

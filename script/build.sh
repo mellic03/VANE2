@@ -45,8 +45,14 @@ cmake -DCMAKE_BUILD_TYPE="${opt_bdtype}" \
 
 make -j$(nproc)
 
-mkdir -p $VANE_OUTPUT_DIR/data && cd $VANE_OUTPUT_DIR
-cp -r $VANE_ROOT_DIR/vane/data/* ./data/
+mkdir -p $VANE_OUTPUT_DIR/data
+cp -r $VANE_ROOT_DIR/vane/data/* $VANE_OUTPUT_DIR/data/
+
+cd $VANE_OUTPUT_DIR/data/shader
+$VANE_SCRIPT_DIR/glslc.sh -C *.vert *.frag
+
+
+
 # cp $VANE_BUILD_DIR/*.elf ./
 
 if [[ "$opt_run" == "1" ]]; then

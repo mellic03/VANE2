@@ -7,11 +7,11 @@
 // #define GLM_ENABLE_EXPERIMENTAL
 // #include <glm/gtx/matrix_decompose.hpp>
 
-struct VaneTransform;
+struct Transform;
 class Transformable;
 
 
-struct VaneTransform
+struct Transform
 {
 private:
     friend class Transformable;
@@ -20,8 +20,8 @@ private:
     float mScale;
 
 public:
-    VaneTransform(): VaneTransform(glm::vec3(0.0f)) {  }
-    VaneTransform(const glm::vec3 &p): mPos(p), mRot(glm::vec3(0.0f)), mScale(1.0f) {  }
+    Transform(): Transform(glm::vec3(0.0f)) {  }
+    Transform(const glm::vec3 &p): mPos(p), mRot(glm::vec3(0.0f)), mScale(1.0f) {  }
 
     glm::mat4 to_mat4() const
     {
@@ -56,10 +56,10 @@ public:
 class Transformable
 {
 private:
-    VaneTransform mT;
+    Transform mT;
 
 public:
-    VaneTransform &getTransform() { return mT; }
+    Transform &getTransform() { return mT; }
 
     const glm::vec3 &getPos() { return mT.mPos; }
     const glm::quat &getRot() { return mT.mRot; }

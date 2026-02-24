@@ -1,5 +1,9 @@
 {
     "files.associations": {
+        "*.vs.p":   "glsl",
+        "*.vert.p": "glsl",
+        "*.fs.p":   "glsl",
+        "*.frag.p": "glsl",
         "vector": "cpp",
         "array": "cpp",
         "atomic": "cpp",
