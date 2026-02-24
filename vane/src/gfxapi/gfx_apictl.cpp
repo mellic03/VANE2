@@ -1,10 +1,39 @@
-#include "vane/gl.hpp"
+#include "gfxapi/gfxapi_gl.hpp"
 #include "vane/log.hpp"
+
+using namespace vane::gfxapi;
+
+static void debugmsg_callback(GLenum, GLenum, GLuint, GLenum, GLsizei, GLchar const*, void const*);
+
+
+void RenderEngine::ApiControl::debugOutputEnable()
+{
+    gl::Enable(GL_DEBUG_OUTPUT);
+    gl::Enable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+    gl::DebugMessageCallback(debugmsg_callback, nullptr);
+
+    gl::DebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DEBUG_SEVERITY_NOTIFICATION, 0, nullptr, GL_TRUE);
+
+    VLOG_INFO("Enabled OpenGL debug messages");
+}
+
+
+void RenderEngine::ApiControl::debugOutputDisable()
+{
+    gl::DebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DEBUG_SEVERITY_NOTIFICATION, 0, nullptr, GL_FALSE);
+}
+
+
+
+
+
+
+
+
 #include <iostream>
 
-
-static void msgcallback(GLenum source, GLenum type, GLuint id, GLenum severity,
-                        GLsizei length, GLchar const* message, void const* user_param)
+static void debugMessageCallback( GLenum source, GLenum type, GLuint id, GLenum severity,
+                                  GLsizei length, GLchar const* message, void const* user_param )
 {
 	auto const src_str = [source]() {
 		switch (source)
@@ -51,16 +80,3 @@ static void msgcallback(GLenum source, GLenum type, GLuint id, GLenum severity,
               << id << ": "
               << message << '\n';
 }
-
-
-void vaneEnableOpenGlDebugOutput()
-{
-    gl::Enable(GL_DEBUG_OUTPUT);
-    gl::Enable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-    gl::DebugMessageCallback(msgcallback, nullptr);
-    VLOG_INFO("Enabled OpenGL debug messages");
-
-    // use this to enable/disable debug messages
-    // gl::DebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DEBUG_SEVERITY_NOTIFICATION, 0, nullptr, GL_FALSE);
-}
-

@@ -1,11 +1,9 @@
 #include "gfxapi/gfxapi_gl.hpp"
-#include "gfxapi/underlyingtype.hpp"
-#include "vane/log.hpp"
 
 using namespace vane::gfxapi;
 
 
-Texture::Texture(GfxApi &api, int w, int h, const void *data)
+Texture::Texture(RenderEngine &api, int w, int h, const void *data)
 :   GfxResource(api)
 {
     mTextureFormat = TextureFormat::RGB_U8;

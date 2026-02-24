@@ -6,7 +6,8 @@
 using namespace vane;
 
 
-vane::Platform::Platform()
+vane::Platform::Platform(vane::gfxapi::RenderEngine &gfx)
+:   mRenderEngine(gfx)
 {
     std::filesystem::current_path(std::filesystem::path(SDL_GetBasePath()));
 
@@ -59,22 +60,20 @@ void Platform::update()
     // mOpStatTx.bind(mOpAuthRx);
 
 
-    SDL_Event e;
-    while (SDL_PollEvent(&e))
-    {
-        if (e.type == SDL_EVENT_QUIT)
-        {
-            this->shutdown();
-            return;
-        }
+    // SDL_Event e;
+    // while (SDL_PollEvent(&e))
+    // {
+    //     if (e.type == SDL_EVENT_QUIT)
+    //     {
+    //         this->shutdown();
+    //         return;
+    //     }
 
-        for (auto &obj: mObjects)
-        {
-            obj->onEvent((void*)(&e));
-        }
-    }
-
-
+    //     for (auto &obj: mObjects)
+    //     {
+    //         obj->onEvent((void*)(&e));
+    //     }
+    // }
 }
 
 

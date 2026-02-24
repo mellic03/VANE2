@@ -24,12 +24,14 @@ namespace vane
 class vane::Platform: public vane::ObjectManager
 {
 public:
+    Platform(vane::gfxapi::RenderEngine&);
     Platform();
     bool running();
     void update();
     void shutdown();
 
 private:
+    vane::gfxapi::RenderEngine  &mRenderEngine;
     RxSamplePort<OpCtrl>  *mOpAuthRx;
     TxSamplePort<OpState> *mOpStatTx;
     OpCtrl                 mOpAuth;

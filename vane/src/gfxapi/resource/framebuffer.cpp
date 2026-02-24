@@ -4,7 +4,7 @@
 using namespace vane::gfxapi;
 
 
-Framebuffer::Framebuffer(GfxApi &api)
+Framebuffer::Framebuffer(RenderEngine &api)
 :   GfxResource(api)
 {
     gl::CreateFramebuffers(1, &mId);

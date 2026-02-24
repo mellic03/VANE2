@@ -9,6 +9,7 @@ target_include_directories(
 )
 target_sources(
     vane_core PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/assert.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/file.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/log.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/objmanager.cpp"

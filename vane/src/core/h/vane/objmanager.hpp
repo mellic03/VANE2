@@ -22,7 +22,6 @@ namespace vane
             ~Object() {  };
 
             virtual void onUpdate() = 0;
-            virtual void onEvent(void*) = 0;
         };
 
         ObjectManager() {  }
@@ -31,13 +30,7 @@ namespace vane
         template <typename T, typename... Args>
         T   *createObject(Args...);
 
-        // template <typename T>
-        // T   *insertObject(T *obj);
-
-        template <typename T>
-        void insertObject(std::unique_ptr<T> &&obj);
-
-        void deleteObject(Object*);
+        void destroyObject(Object*);
 
     protected:
         std::vector<std::unique_ptr<Object>> mObjects;
@@ -63,36 +56,7 @@ inline T *vane::ObjectManager::createObject(Args... args)
 }
 
 
-// template <typename T>
-// inline T *vane::ObjectManager::insertObject(T *obj)
-// {
-//     static_assert(
-//         std::is_base_of_v<Object, T>,
-//         "T must be derivative of vane::ObjectManager::Object"
-//     );
-
-//     obj->mVaneTypeId = vane_typeid<T>();
-//     mObjects.push_back(std::unique_ptr<T>(obj));
-
-//     return obj;
-// }
-
-
-template <typename T>
-inline void vane::ObjectManager::insertObject(std::unique_ptr<T> &&obj)
-{
-    static_assert(
-        std::is_base_of_v<Object, T>,
-        "T must be derivative of vane::ObjectManager::Object"
-    );
-
-    obj->mVaneTypeId = vane_typeid<T>();
-    mObjects.emplace_back(std::move(obj));
-    // mObjects.emplace_back(std::dynamic_pointer_cast<Object>(obj));
-}
-
-
-inline void vane::ObjectManager::deleteObject(Object *obj)
+inline void vane::ObjectManager::destroyObject(Object *obj)
 {
     obj->mBrandOfSacrifice = true;
 }

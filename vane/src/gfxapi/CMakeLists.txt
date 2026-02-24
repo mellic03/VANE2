@@ -14,9 +14,8 @@ target_sources(
     "${CMAKE_CURRENT_SOURCE_DIR}/resource/framebuffer.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/resource/shader.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/resource/texture.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/resource/window.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/debugmsg.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/gfxapi_gl.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/gfx_api.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/gfx_apictl.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/underlyingtype.cpp"
 )
 target_link_libraries(

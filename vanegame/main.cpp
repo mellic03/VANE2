@@ -12,34 +12,22 @@
 static vane::TxSamplePort<vane::OpCtrl> opAuthTx;
 
 
-struct LmaoType: public vane::ObjectManager::Object
-{
-    std::shared_ptr<vane::gfxapi::Window> mWindow;
-
-    using Object::Object;
-    // LmaoType(std::shared_ptr<vane::gfxapi::Window> win)
-    // :   mWindow(win) {  };
-    virtual void onUpdate() final { mWindow->onUpdate(); }
-    virtual void onEvent(void *p) final { mWindow->onEvent(p); }
-};
-
-
 int main(int argc, char **argv)
 {
     using namespace vane;
 
     vane::Platform plat;
-    gfxapi::GfxApi gfx;
+    auto *gfx = plat.createObject<gfxapi::RenderEngine>("Game Name", 1024, 1024);
+          gfx->createRenderProgram("data/shader/quad.vert", "data/shader/quad.frag");
+    // auto win = std::make_shared<gfxapi::Window>(gfx, "Main Window", 1024, 1024);
+    //      win->setFramebuffer(std::make_shared<gfxapi::Framebuffer>(gfx));
+    //      win->getFramebuffer()->setTextureDst(std::make_shared<gfxapi::Texture>(gfx, 1024, 1024, nullptr));
+    //      win->setProgram(
+    //         std::make_shared<gfxapi::ShaderProgram>(gfx, "data/shader/quad.vert", "data/shader/quad.frag")
+    //     );
 
-    auto win = std::make_shared<gfxapi::Window>(gfx, "Main Window", 1024, 1024);
-         win->setFramebuffer(std::make_shared<gfxapi::Framebuffer>(gfx));
-         win->getFramebuffer()->setTextureDst(std::make_shared<gfxapi::Texture>(gfx, 1024, 1024, nullptr));
-         win->setProgram(
-            std::make_shared<gfxapi::ShaderProgram>(gfx, "data/shader/quad.vert", "data/shader/quad.frag")
-        );
-
-    auto *lmao = plat.createObject<LmaoType>();
-          lmao->mWindow = win;
+    // auto *lmao = plat.createObject<LmaoType>();
+    //       lmao->mWindow = win;
 
     GameObject player;
     player.addComponent<GraphicsComponent>();

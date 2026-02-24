@@ -8,7 +8,7 @@
 using namespace vane::gfxapi;
 
 
-GpuProgram::GpuProgram(GfxApi &api)
+GpuProgram::GpuProgram(RenderEngine &api)
 :   GfxResource(api, gl::CreateProgram()) {  }
 
 
@@ -44,7 +44,7 @@ GpuProgram::Shader::Shader(GpuProgram &prog, GLuint id, const char *filepath)
 }
 
 
-ShaderProgram::ShaderProgram(GfxApi &api, const char *vertpath, const char *fragpath)
+RenderProgram::RenderProgram(RenderEngine &api, const char *vertpath, const char *fragpath)
 :   GpuProgram(api),
     mVert(*this, gl::CreateShader(GL_VERTEX_SHADER), vertpath),
     mFrag(*this, gl::CreateShader(GL_FRAGMENT_SHADER), fragpath)
@@ -64,14 +64,14 @@ ShaderProgram::ShaderProgram(GfxApi &api, const char *vertpath, const char *frag
 }
 
 
-ShaderProgram::~ShaderProgram()
+RenderProgram::~RenderProgram()
 {
     gl::DeleteProgram(mId);
 }
 
 
 
-ComputeProgram::ComputeProgram(GfxApi &api, const char *comppath)
+ComputeProgram::ComputeProgram(RenderEngine &api, const char *comppath)
 :   GpuProgram(api),
     mComp(*this, gl::CreateShader(GL_COMPUTE_SHADER), comppath)
 {
