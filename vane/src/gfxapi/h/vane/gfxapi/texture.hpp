@@ -8,7 +8,7 @@ class vane::gfxapi::Texture: public GfxResource
 public:
     TextureFormat mTextureFormat;
 
-    Texture(int w, int h, const void *data);
+    Texture(int w, int h, const void *data, TextureFormat fmt=TextureFormat::RGBA_F16);
     Texture(Texture&&);
     Texture &operator=(Texture&&);
     ~Texture();

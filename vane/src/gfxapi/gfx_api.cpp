@@ -49,9 +49,11 @@ struct UboCameraData
 RenderEngine::RenderEngine(const char *name, int width, int height)
 :   RenderEngineBaseRaii(),
     m_win(new Window(name, width, height)),
-    m_winprg("data/shader/quad.vert", "data/shader/quad.frag")
+    m_winprg("data/shader/quad.vert", "data/shader/quad.frag"),
+    m_compute("data/shader/particles.comp")
 {
-
+    m_compute_textures[0] = new Texture(1024, 1024, nullptr, TextureFormat::RGBA_F16);
+    m_compute_textures[1] = new Texture(1024, 1024, nullptr, TextureFormat::RGBA_F16);
 }
 
 static UboCameraData *camdata_ptr_ = nullptr;
@@ -65,6 +67,14 @@ void RenderEngine::onUpdate()
 
     m_win->_makeCurrent();
 
+
+    gl::UseProgram(m_compute.mId);
+    gl::BindImageTexture(0, m_compute_textures[0]->mId, 0, GL_FALSE, 0, GL_READ_ONLY, GL_RGBA16F);
+    gl::BindImageTexture(1, m_compute_textures[1]->mId, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA16F);
+    gl::DispatchCompute(1024/8, 1024/8, 1);
+    std::swap(m_compute_textures[0], m_compute_textures[1]);
+
+
     SDL_GetMouseState(&(camdata_.mouse.x), &(camdata_.mouse.y));
     camdata_.mouse /= m_win->mSize;
     camdata_.mouse.y = 1.0f - camdata_.mouse.y;
@@ -76,7 +86,9 @@ void RenderEngine::onUpdate()
     ubo_camera_.sendToGpu();
     ubo_camera_.bindToProgram(&m_winprg);
 
-    gl::UseProgram(m_winprg.mId);
+    gl::UseProgram(m_winprg.mId); 
+    gl::BindTextureUnit(1, m_compute_textures[0]->mId);
+    
     gl::BindVertexArray(m_win->mVAO);
     gl::DrawArrays(GL_TRIANGLES, 0, 3);
 
@@ -94,7 +106,6 @@ void RenderEngine::onMsgRecv(vane::message msg, void *arg)
 {
     SDL_Event *e = (SDL_Event*)arg;
 
-    // printf("[RenderEngine::onMsgRecv] msg=%d\n", msg);
     switch (msg)
     {
         case message::IO_WIN_EVENT:
@@ -106,6 +117,9 @@ void RenderEngine::onMsgRecv(vane::message msg, void *arg)
                 srvCmdToAll(command::SRV_SHUTDOWN, nullptr);
             break;
         }
+
+        case message::IO_KEYUP_EVENT:
+            break;
 
         case message::IO_KEYDOWN_EVENT:
             if (camdata_ptr_)

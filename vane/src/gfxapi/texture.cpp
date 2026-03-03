@@ -3,11 +3,11 @@
 using namespace vane::gfxapi;
 
 
-Texture::Texture(int w, int h, const void *data)
-:   GfxResource(0)
+Texture::Texture(int w, int h, const void *data, TextureFormat fmt)
+:   GfxResource(0),
+    mTextureFormat(fmt)
 {
-    mTextureFormat = TextureFormat::RGB_U8;
-    auto internalformat = toUnderlyingType(mTextureFormat);
+    GLenum internalformat = toUnderlyingType(mTextureFormat);
 
     gl::CreateTextures(GL_TEXTURE_2D, 1, &mId);
     gl::TextureParameteri(mId, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE );
@@ -15,7 +15,7 @@ Texture::Texture(int w, int h, const void *data)
     gl::TextureParameteri(mId, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     gl::TextureParameteri(mId, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-    gl::TextureStorage2D(mId, 1, GL_RGBA8, w, h);
+    gl::TextureStorage2D(mId, 1, internalformat, w, h);
     gl::TextureSubImage2D(mId, 0, 0, 0, w, h, GL_RGBA, GL_UNSIGNED_BYTE, data);
 
     // gl::TextureStorage2D(mId, 1, GL_DEPTH_COMPONENT24, w, h);

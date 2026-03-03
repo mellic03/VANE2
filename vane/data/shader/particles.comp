@@ -9,7 +9,8 @@ layout (
 
 #define OUTPUT_W 1024
 #define OUTPUT_H 1024
-layout (binding = 0, rgba16f) uniform image2D un_output;
+layout (binding=0, rgba16f) readonly  uniform image2D un_input;
+layout (binding=1, rgba16f) writeonly uniform image2D un_output;
 
 
 void main()
@@ -17,5 +18,10 @@ void main()
     ivec2 texel = ivec2(gl_GlobalInvocationID.xy);
     vec2  coord = vec2(texel) / vec2(OUTPUT_W, OUTPUT_H);
     vec3  color = vec3(coord.x, coord.y, coord.x*coord.y);
-    imageStore(un_output, texel, vec4(color, 1.0));
+
+    vec3 color_in  = imageLoad(un_input, texel).rgb;
+    // vec3 color_out = color_in * color;
+    vec3 color_out = vec3(coord, 0.0);
+
+    imageStore(un_output, texel, vec4(color_out, 1.0));
 }

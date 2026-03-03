@@ -66,6 +66,8 @@ private:
 
     Window *m_win;
     RenderProgram m_winprg;
+    ComputeProgram m_compute;
+    Texture *m_compute_textures[2];
 
     using WindowPtr = std::unique_ptr<Window>;
 
