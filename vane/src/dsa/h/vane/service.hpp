@@ -14,10 +14,10 @@ namespace vane
     class ServiceManager: public vane::NonCopyable
     {
     private:
-        static int typeidx_;
-        const int mTypeIdxBase;
+        static vaneid_t typeidx_;
+        const vaneid_t mTypeIdxBase;
         bool mEnabled;
-        int _typeIdxToArrayIdx(int typeidx);
+        int _typeIdxToArrayIdx(vaneid_t typeidx);
 
     protected:
         std::vector<vane::Service*> mServices;
@@ -53,8 +53,7 @@ namespace vane
     private:
         friend class ServiceManager;
         bool   mBrandOfSacrifice;
-        size_t mVaneTypeId;
-        int    mTypeIdx;
+        vaneid_t mTypeIdx;
         ServiceManager *mSrvManager;
 
     protected:
@@ -73,13 +72,12 @@ namespace vane
         T *getService() { return mSrvManager->getService<T>(); }
 
     public:
-        Service(): mBrandOfSacrifice(false), mVaneTypeId(0) {  };
-        ~Service() {  };
+        Service(): mBrandOfSacrifice(false) {  };
+        virtual ~Service() = default;
 
         virtual void onUpdate() = 0;
         virtual void onEnable()   {  };
         virtual void onDisable()  {  };
-        virtual void onShutdown() {  };
         virtual void onMsgRecv(vane::message, void*) = 0;
         virtual void onCmdRecv(vane::command, void*) {  };
 
@@ -105,7 +103,6 @@ inline T *vane::ServiceManager::registerService(Args... args)
 
     T *srv = new T(args...);
        srv->mBrandOfSacrifice = false;
-       srv->mVaneTypeId = vane_typeid<T>();
        srv->mTypeIdx    = srv_typeid<T>();
        srv->mSrvManager = this;
     mServices.push_back(srv);
@@ -113,8 +110,8 @@ inline T *vane::ServiceManager::registerService(Args... args)
     int idx_maybe = _typeIdxToArrayIdx(srv_typeid<T>()); 
 
     VLOG_INFO(
-        "Registered service (VaneTypeId, TypeIdx, Idx, idx_maybe) == ({}, {}, {}, {})",
-        srv->mVaneTypeId, srv->mTypeIdx, mServices.size() - 1, idx_maybe
+        "Registered service (TypeIdx, Idx, idx_maybe) == ({}, {}, {})",
+        srv->mTypeIdx, mServices.size() - 1, idx_maybe
     );
 
     return srv;

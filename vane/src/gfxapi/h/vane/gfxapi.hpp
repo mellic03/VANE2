@@ -45,7 +45,6 @@ public:
     RenderEngine(const char *name, int width, int height);
     virtual void onUpdate();
     virtual void onEvent(void*) {  };
-    // virtual void onShutdown() final;
     virtual void onMsgRecv(vane::message, void*) final;
     virtual void onCmdRecv(vane::command, void*) final;
 
@@ -64,12 +63,12 @@ private:
         void debugOutputDisable();
     } m_apictl;
 
-    Window *m_win;
+    using WindowPtr = std::unique_ptr<Window>;
+
+    WindowPtr m_win;
     RenderProgram m_winprg;
     ComputeProgram m_compute;
     Texture *m_compute_textures[2];
-
-    using WindowPtr = std::unique_ptr<Window>;
 
     std::vector<WindowPtr>          m_windows;
     std::vector<FramebufferPtr>     m_framebuffers;

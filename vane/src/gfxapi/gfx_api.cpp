@@ -59,21 +59,49 @@ RenderEngine::RenderEngine(const char *name, int width, int height)
 static UboCameraData *camdata_ptr_ = nullptr;
 static glm::vec3 camdata_pos_ = glm::vec3(0.0f);
 
+struct ssbo_particles_t
+{
+    glm::vec4 pos[1024];
+    glm::vec4 vel[1024];
+};
+static ssbo_particles_t ssbo_particles_;
+
+#include "libidk/idk_random.hpp"
+
 void RenderEngine::onUpdate()
 {
+    static bool first = true;
+    static SsboGpuOnly *ssbos[2] = {
+        new SsboGpuOnly("SSBO_2", sizeof(ssbo_particles_t)),
+        new SsboGpuOnly("SSBO_3", sizeof(ssbo_particles_t))
+    };
+    if (first)
+    {
+        first = false;
+        for (int i=0; i<1024; i++)
+        {
+            idk::randvec3(0.0f, 1024.0f, &(ssbo_particles_.pos[i][0]));
+            idk::randvec3(-1.0f, +1.0f, &(ssbo_particles_.vel[i][0]));
+        }
+        ssbos[0]->write(0, sizeof(ssbo_particles_t), &ssbo_particles_);
+    }
+
     static UboWrapperT<UboCameraData> ubo_camera_("ubo_CameraData");
     static UboCameraData &camdata_ = ubo_camera_.get();
     camdata_ptr_ = &camdata_;
 
     m_win->_makeCurrent();
 
-
     gl::UseProgram(m_compute.mId);
     gl::BindImageTexture(0, m_compute_textures[0]->mId, 0, GL_FALSE, 0, GL_READ_ONLY, GL_RGBA16F);
     gl::BindImageTexture(1, m_compute_textures[1]->mId, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA16F);
+    ssbos[0]->bindToProgramIndex(2);
+    ssbos[1]->bindToProgramIndex(3);
     gl::DispatchCompute(1024/8, 1024/8, 1);
-    std::swap(m_compute_textures[0], m_compute_textures[1]);
 
+    std::swap(m_compute_textures[0], m_compute_textures[1]);
+    std::swap(ssbos[0], ssbos[1]);
+    gl::MemoryBarrier(GL_ALL_BARRIER_BITS);
 
     SDL_GetMouseState(&(camdata_.mouse.x), &(camdata_.mouse.y));
     camdata_.mouse /= m_win->mSize;
@@ -92,14 +120,17 @@ void RenderEngine::onUpdate()
     gl::BindVertexArray(m_win->mVAO);
     gl::DrawArrays(GL_TRIANGLES, 0, 3);
 
+    // gl::MultiDrawElementsIndirect(
+    //     GL_TRIANGLES,
+    //     GL_UNSIGNED_INT,
+    //     (const void *)(sizeof(idk::gl::DrawCmd) * drawCmdOffset),
+    //     drawCmdCount,
+    //     sizeof(idk::gl::DrawCmd)
+    // );
+
     m_win->_swap();
 }
 
-
-// void RenderEngine::onShutdown()
-// {
-//     delete m_win;
-// }
 
 
 void RenderEngine::onMsgRecv(vane::message msg, void *arg)
@@ -144,6 +175,8 @@ void RenderEngine::onMsgRecv(vane::message msg, void *arg)
 
 void RenderEngine::onCmdRecv(vane::command cmd, void *arg)
 {
+    (void)arg;
+
     switch (cmd)
     {
         case command::GFX_ENABLE:
@@ -190,7 +223,8 @@ ComputeProgramPtr RenderEngine::createComputeProgram(const char *filepath)
 
 void RenderEngine::drawToWindow(Window *win, RenderGraph &rg)
 {
-    
+    (void)win;
+    (void)rg;
 }
 
 void RenderEngine::drawToFramebuffer(Framebuffer &fb, RenderGraph &rg)

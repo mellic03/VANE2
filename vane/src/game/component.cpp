@@ -36,7 +36,8 @@ void vane::GraphicsComponent::update()
 
 void vane::GraphicsComponent::recvmsg(const void *msg, size_t msgsz)
 {
-
+    (void)msg;
+    (void)msgsz;
 }
 
 
@@ -59,6 +60,9 @@ void vane::PhysicsComponent::update()
 
 void vane::PhysicsComponent::recvmsg(const void *msg, size_t msgsz)
 {
+    (void)msg;
+    (void)msgsz;
+
     // if (msg.type != vaneTypeID<PhysicsComponent>())
     // {
     //     return;

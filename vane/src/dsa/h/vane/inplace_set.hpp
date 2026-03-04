@@ -33,9 +33,9 @@ public:
     T &operator[](int);
     const T &operator[](int) const;
 
-    const int  size()  const { return int(mTail - mBase); }
-    const bool empty() const { return (mBase == mTail); }
-    const bool full()  const { return (mTail == mEnd); }
+    int  size()  const { return int(mTail - mBase); }
+    bool empty() const { return (mBase == mTail); }
+    bool full()  const { return (mTail == mEnd); }
 
 };
 

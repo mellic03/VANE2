@@ -49,7 +49,7 @@ mkdir -p $VANE_OUTPUT_DIR/data
 cp -r $VANE_ROOT_DIR/vane/data/* $VANE_OUTPUT_DIR/data/
 
 cd $VANE_OUTPUT_DIR/data/shader
-$VANE_SCRIPT_DIR/glslc.sh -C *.vert *.frag
+$VANE_SCRIPT_DIR/glslc.sh -C *.vert *.frag *.comp
 
 
 

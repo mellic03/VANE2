@@ -17,19 +17,65 @@ ShaderProgram::~ShaderProgram()
 
 static vane::FileReader<128*1024> file_reader_;
 
+#include "vane_string.hpp"
+void shader_preprocess(const std::string &src) // , std::string &out)
+{
+    static char incpath[256];
+
+    const char *beg = src.data();
+    const char *end = beg + src.length();
+
+    const char *str = beg;
+    while (true)
+    {
+        str = vane::string::seek_ch(str, '#');
+        printf("str: 0x%lx\n", (uint64_t)str);
+        if (!(*str && str<end))
+        {
+            return;
+        }
+
+        str = vane::string::skip_key(str, "#include");
+        VANE_ASSERT(str != nullptr, "Shader preprocess error: expected \"#include\"");
+
+        str = vane::string::skip_ch(str, ' ');
+        VANE_ASSERT(
+            *str == '\"',
+            "Shader preprocess error: expected \"{}\", recieved \"{}\"",
+            "\"", *str
+        );
+
+        const char *A = str;
+        const char *B = vane::string::seek_ch(A+1, '\"');
+        VANE_ASSERT(B != nullptr, "Shader preprocess error: expected \"\"\"");
+
+        A += 1; // "filename.glsl" --> filename.glsl"
+        B -= 1; //  filename.glsl" --> filename.glsl
+        std::memset(incpath, '\0', sizeof(incpath));
+        std::strncpy(incpath, A, B-A);
+        std::printf("incpath: \"%s\"\n", incpath);
+        exit(123);
+    }
+}
+
 
 detail::Shader::Shader(ShaderProgram *prog, uint32_t shaderId, const char *filepath)
 :   mId(shaderId),
-    mOkay(false)
+    mOkay(false),
+    mFilepath(filepath)
 {
     if (!file_reader_.loadFile(filepath))
         return;
 
+    // shader_preprocess(std::string(filepath));
     std::string str = vane::file::loadRaw(std::string(filepath));
     const char *src = str.c_str();
 
     gl::ShaderSource(mId, 1, &src, NULL);
     gl::CompileShader(mId);
+
+    // gl::ShaderBinary(1, &mId, GL_SHADER_BINARY_FORMAT_SPIR_V_ARB, src, str.length());
+    // gl::SpecializeShader(mId, "main", 0, 0, 0);
 
     GLint result, length;
     gl::GetShaderiv(mId, GL_COMPILE_STATUS, &result);

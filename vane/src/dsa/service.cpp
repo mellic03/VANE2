@@ -1,7 +1,6 @@
 #include "vane/service.hpp"
 
-
-int vane::ServiceManager::typeidx_ = 0;
+vaneid_t vane::ServiceManager::typeidx_ = 0;
 
 
 vane::ServiceManager::ServiceManager()
@@ -12,18 +11,17 @@ vane::ServiceManager::ServiceManager()
 }
 
 
-int vane::ServiceManager::_typeIdxToArrayIdx(int typeidx)
+int vane::ServiceManager::_typeIdxToArrayIdx(vaneid_t typeidx)
 {
-    int idx = typeidx - mTypeIdxBase;
+    size_t idx = typeidx - mTypeIdxBase;
 
-    if (!(0<=idx && idx<mServices.size()))
+    if (!(idx < mServices.size()))
     {
         return -1;
     }
 
     return idx;
 }
-
 
 
 void vane::ServiceManager::update()

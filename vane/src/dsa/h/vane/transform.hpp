@@ -35,7 +35,7 @@ public:
 
     const glm::vec3 &getPos() { return mPos; }
     const glm::quat &getRot() { return mRot; }
-    const float getScale() { return mScale; }
+    float getScale() { return mScale; }
 
     void setPos(const glm::vec3 &p) { mPos = p; }
     void setRot(const glm::quat &q) { mRot = q; }
@@ -63,7 +63,7 @@ public:
 
     const glm::vec3 &getPos() { return mT.mPos; }
     const glm::quat &getRot() { return mT.mRot; }
-    const float getScale() { return mT.mScale; }
+    float getScale() { return mT.mScale; }
 
     void setPos(const glm::vec3 &p) { mT.mPos = p; }
     void setRot(const glm::quat &q) { mT.mRot = q; }

@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <cstdint>
 
-// using vaneid_t = int64_t;
+using vaneid_t = size_t;
 
 namespace vane
 {
@@ -60,7 +60,7 @@ namespace vane
 
 namespace vane::detail
 {
-    inline static int64_t vane_typeid_curr_ = 1;
+    inline static vaneid_t vane_typeid_curr_ = 1;
 
     // template <typename T>
     // struct vane_typeid_impl
@@ -74,9 +74,9 @@ namespace vane::detail
 
 
 template <typename T>
-inline int64_t vane_typeid()
+inline vaneid_t vane_typeid()
 {
-    static const int64_t id = vane::detail::vane_typeid_curr_++;
+    static const vaneid_t id = vane::detail::vane_typeid_curr_++;
     return id;
 }
 
@@ -92,16 +92,16 @@ namespace vane
     {
         struct srv_typeid_impl
         {
-            inline static int type_idx_ = 0;
+            inline static vaneid_t type_idx_ = 0;
         };
     }
 }
 
 
 template <typename T>
-inline int srv_typeid()
+inline vaneid_t srv_typeid()
 {
-    static const int id = vane::detail::srv_typeid_impl::type_idx_++;
+    static const vaneid_t id = vane::detail::srv_typeid_impl::type_idx_++;
     return id;
 }
 

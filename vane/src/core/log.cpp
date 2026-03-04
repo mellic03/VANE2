@@ -50,6 +50,7 @@ void vane::vnlog(vane::LogType type, const char *title, const char *fmt, ...)
 #ifdef VANELOG_VERBOSE
     fprintf((std::FILE*)vl_outfile_, "%s[%s]%s[%s] ", color, severity, ANSI::RESET, title);
 #else
+    (void)title;
     fprintf((std::FILE*)vl_outfile_, "%s[%s]%s ", color, severity, ANSI::RESET);
 #endif
 

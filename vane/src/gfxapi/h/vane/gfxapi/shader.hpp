@@ -10,6 +10,7 @@ namespace vane::gfxapi::detail
     public:
         uint32_t mId;
         bool     mOkay;
+        const char *mFilepath;
         Shader(vane::gfxapi::ShaderProgram*, uint32_t id, const char *filepath);
     };
 }

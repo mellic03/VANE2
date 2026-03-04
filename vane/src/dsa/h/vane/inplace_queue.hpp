@@ -69,13 +69,13 @@ public:
         return value;
     }
 
-    const int size()       { return mSize; }
-    const int size() const { return mSize; }
+    int size()       { return mSize; }
+    int size() const { return mSize; }
 
-    const bool empty()       { return (mSize == 0); }
-    const bool empty() const { return (mSize == 0); }
+    bool empty()       { return (mSize == 0); }
+    bool empty() const { return (mSize == 0); }
 
-    const bool full()        { return (mSize == Capacity); }
-    const bool full()  const { return (mSize == Capacity); }
+    bool full()        { return (mSize == Capacity); }
+    bool full()  const { return (mSize == Capacity); }
 
 };

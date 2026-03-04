@@ -40,11 +40,6 @@ class vane::gfxapi::GfxResource: vane::NonCopyable
 {
 public:
     IdType mId;
-
-    GfxResource(IdType id): mId(0)
-    {
-
-    }
-
+    GfxResource(IdType id): mId(id) {  }
 };
 

@@ -44,6 +44,6 @@ bool vane::FileReader<N>::loadFile(const char *filepath)
 
     VLOG_INFO("FileReader<{}> loaded {} bytes", N, mSize);
 
-    return 0<=mSize && mSize<N;
+    return mSize < N;
 }
 

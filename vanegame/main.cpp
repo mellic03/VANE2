@@ -15,7 +15,7 @@ public:
     virtual void onMsgRecv(vane::message msg, void*) final
     {
         using namespace vane::gfxapi;
-        printf("[GameService::onMsgRecv] msg=%d\n", msg);
+        printf("[GameService::onMsgRecv] msg=%d\n", static_cast<int>(msg));
     }
 };
 
@@ -26,6 +26,9 @@ int main(int argc, char **argv)
 {
     using namespace vane;
 
+    (void)argc;
+    (void)argv;
+
     // ioapi::IoApi   io;
     // gfxapi::GfxApi gfx;
 
@@ -33,6 +36,10 @@ int main(int argc, char **argv)
     auto *gfx  = plat.registerService<GfxApi>("Game Name", 1024, 1024);
     auto *io   = plat.registerService<IoApi>();
     auto *game = plat.registerService<GameService>();
+
+    (void)gfx;
+    (void)io;
+    (void)game;
 
     GameObject player;
     player.addComponent<GraphicsComponent>();

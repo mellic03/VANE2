@@ -35,7 +35,7 @@ public:
     RenderGraph(size_t max_objs = 4096)
     :   mRoot(new RenderNode())
     {
-
+        (void)max_objs;
     }
 
     RenderNode *rootNode()

@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 
 project(vane VERSION 0.0.1)
 
+add_compile_options(-Werror -Wall -Wextra)
+
 set(VANE_SRCPATH "${CMAKE_SOURCE_DIR}/vane/src")
 set(VANE_INCPATH "${CMAKE_SOURCE_DIR}/vane/inc")
 set(THIRDPARTY_PREFIX "${CMAKE_SOURCE_DIR}/external/install/")

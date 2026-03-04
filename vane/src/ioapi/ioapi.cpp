@@ -49,6 +49,8 @@ void IoApi::onShutdown()
 
 void IoApi::onMsgRecv(vane::message msg, void *arg)
 {
+    (void)arg;
+
     switch (msg)
     {
         default:
@@ -61,6 +63,8 @@ void IoApi::onMsgRecv(vane::message msg, void *arg)
 
 void IoApi::onCmdRecv(vane::command cmd, void *arg)
 {
+    (void)arg;
+
     switch (cmd)
     {
         default:
