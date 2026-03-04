@@ -71,11 +71,11 @@ detail::Shader::Shader(ShaderProgram *prog, uint32_t shaderId, const char *filep
     std::string str = vane::file::loadRaw(std::string(filepath));
     const char *src = str.c_str();
 
-    gl::ShaderSource(mId, 1, &src, NULL);
-    gl::CompileShader(mId);
+    // gl::ShaderSource(mId, 1, &src, NULL);
+    // gl::CompileShader(mId);
 
-    // gl::ShaderBinary(1, &mId, GL_SHADER_BINARY_FORMAT_SPIR_V_ARB, src, str.length());
-    // gl::SpecializeShader(mId, "main", 0, 0, 0);
+    gl::ShaderBinary(1, &mId, GL_SHADER_BINARY_FORMAT_SPIR_V_ARB, src, str.length());
+    gl::SpecializeShader(mId, "main", 0, 0, 0);
 
     GLint result, length;
     gl::GetShaderiv(mId, GL_COMPILE_STATUS, &result);

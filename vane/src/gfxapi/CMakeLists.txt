@@ -11,6 +11,7 @@ target_include_directories(
 )
 target_sources(
     vane_gfxapi PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/camera.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/buffer.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/framebuffer.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/gfx_api.cpp"

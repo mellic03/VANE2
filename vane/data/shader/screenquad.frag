@@ -16,8 +16,7 @@ uniform ubo_CameraData {
 } uboCameraData;
 // #include "ubo.glsl"
 
-layout(binding = 1)
-uniform sampler2D unTexture;
+layout(binding = 1) uniform sampler2D unTexture;
 
 
 void main()
@@ -32,5 +31,5 @@ void main()
         color = texture(unTexture, uv).rgb;
     }
 
-    fsout_frag_color = uboCameraData.P * uboCameraData.V * uboCameraData.T * vec4(color, 1.0);
+    fsout_frag_color = vec4(color, 1.0);
 }

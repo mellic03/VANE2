@@ -9,7 +9,7 @@
 
 namespace vane
 {
-    class GameObject: public Transformable
+    class GameObject
     {
     private:
         dsa::LinkedList<iComponent> mComponents;

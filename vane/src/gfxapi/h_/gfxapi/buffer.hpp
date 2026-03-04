@@ -2,6 +2,7 @@
 #pragma once
 
 #include "vane/gfxapi.hpp"
+#include "gfxapi/gl_storage.hpp"
 
 
 namespace vane::gfxapi
@@ -15,8 +16,9 @@ namespace vane::gfxapi
     public:
         UboGpuOnly(const char *name, size_t size);
         ~UboGpuOnly();
-        void bindToProgram(ShaderProgram*);
         void write(size_t offset, size_t nbytes, const void *src);
+        void bindToProgram(ShaderProgram*);
+        void bindToIndex(uint32_t idx);
     };
 
 
@@ -65,11 +67,11 @@ namespace vane::gfxapi
         const size_t mSize;
 
     public:
-        SsboGpuOnly(const char *name, size_t size);
+        SsboGpuOnly(const char *name, size_t size, const void *data = nullptr);
         ~SsboGpuOnly();
+        void write(size_t offset, size_t size, const void *data);
         void bindToProgram(ShaderProgram*);
-        void bindToProgramIndex(uint32_t idx);
-        void write(size_t offset, size_t nbytes, const void *src);
+        void bindToIndex(uint32_t idx);
     };
 }
 

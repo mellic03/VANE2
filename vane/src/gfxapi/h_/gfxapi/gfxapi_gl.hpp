@@ -1,6 +1,7 @@
 #pragma once
 
 #include "vane/gfxapi.hpp"
+#include "gfxapi/camera.hpp"
 #include "gfxapi/buffer.hpp"
 #include "gfxapi/gl.hpp"
 #include "gfxapi/render_graph.hpp"

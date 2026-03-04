@@ -5,7 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 // #define GLM_ENABLE_EXPERIMENTAL
-// #include <glm/gtx/matrix_decompose.hpp>
+// #include <glm/gtx/matrix_decopose.hpp>
 
 struct Transform;
 class Transformable;
@@ -15,67 +15,102 @@ struct Transform
 {
 private:
     friend class Transformable;
-    glm::vec3 mPos;
-    glm::quat mRot;
-    float mScale;
+    glm::mat4 m4;
+    glm::vec3 pos;
+    glm::quat rot;
+    float scale;
+    bool dirty;
 
 public:
-    Transform(): Transform(glm::vec3(0.0f)) {  }
-    Transform(const glm::vec3 &p): mPos(p), mRot(glm::vec3(0.0f)), mScale(1.0f) {  }
-
-    glm::mat4 to_mat4() const
+    Transform(const glm::vec3 &p = glm::vec3(0.0f))
+    :   m4(1.0f),
+        pos(p),
+        rot(glm::vec3(0.0f)),
+        scale(1.0f),
+        dirty(false)
     {
-        glm::mat4 mat = glm::translate(glm::mat4(1.0f), mPos);
-        mat = glm::rotate(mat, glm::radians(mRot.x), glm::vec3(1,0,0));
-        mat = glm::rotate(mat, glm::radians(mRot.y), glm::vec3(0,1,0));
-        mat = glm::rotate(mat, glm::radians(mRot.z), glm::vec3(0,0,1));
-        mat = glm::scale(mat, glm::vec3(mScale));
-        return mat;
+
     }
 
-    const glm::vec3 &getPos() { return mPos; }
-    const glm::quat &getRot() { return mRot; }
-    float getScale() { return mScale; }
+    const glm::mat4 &to_mat4()
+    {
+        if (dirty)
+        {
+            m4 = glm::translate(glm::mat4(1.0f), pos);
+            m4 = glm::rotate(m4, glm::radians(rot.x), glm::vec3(1,0,0));
+            m4 = glm::rotate(m4, glm::radians(rot.y), glm::vec3(0,1,0));
+            m4 = glm::rotate(m4, glm::radians(rot.z), glm::vec3(0,0,1));
+            m4 = glm::scale(m4, glm::vec3(scale));
+            dirty = false;
+        }
+        return m4;
+    }
 
-    void setPos(const glm::vec3 &p) { mPos = p; }
-    void setRot(const glm::quat &q) { mRot = q; }
-    void setScl(float s) { mScale = s; }
+    glm::vec3 getPos() { return pos; }
+    glm::quat getRot() { return rot; }
+    float getScale() { return scale; }
 
-    void translate(float x, float y, float z) { mPos += glm::vec3(x, y, z); }
-    void translate(const glm::vec3 &delta) { mPos += delta; }
+    void setPos(const glm::vec3 &p)
+    {
+        dirty = true;
+        pos = p;
+    }
+
+    void setRot(const glm::quat &q)
+    {
+        dirty = true;
+        rot = q;
+    }
+
+    void setScale(float s)
+    {
+        dirty = true;
+        scale = s;
+    }
+
+    void translate(float x, float y, float z)
+    {
+        dirty = true;
+        pos += glm::vec3(x, y, z);
+    }
+    void translate(const glm::vec3 &delta)
+    {
+        dirty = true;
+        pos += delta;
+    }
 
     void rotate(float radTheta, const glm::vec3 &axis)
     {
-        mRot = glm::normalize(mRot * glm::angleAxis(radTheta, axis));
+        dirty = true;
+        rot = glm::normalize(rot * glm::angleAxis(radTheta, axis));
     }
-
 };
 
 
 
-class Transformable
-{
-private:
-    Transform mT;
+// class Transformable
+// {
+// private:
+//     Transform mT;
 
-public:
-    Transform &getTransform() { return mT; }
+// public:
+//     Transform &getTransform() { return mT; }
 
-    const glm::vec3 &getPos() { return mT.mPos; }
-    const glm::quat &getRot() { return mT.mRot; }
-    float getScale() { return mT.mScale; }
+//     const glm::vec3 &getPos() { return mT.pos; }
+//     const glm::quat &getRot() { return mT.rot; }
+//     float getScale() { return mT.scale; }
 
-    void setPos(const glm::vec3 &p) { mT.mPos = p; }
-    void setRot(const glm::quat &q) { mT.mRot = q; }
-    void setScl(float s) { mT.mScale = s; }
+//     void setPos(const glm::vec3 &p) { mT.pos = p; }
+//     void setRot(const glm::quat &q) { mT.rot = q; }
+//     void setScale(float s) { mT.scale = s; }
 
-    void translate(float x, float y, float z) { mT.mPos += glm::vec3(x, y, z); }
-    void translate(const glm::vec3 &delta) { mT.mPos += delta; }
+//     void translate(float x, float y, float z) { mT.pos += glm::vec3(x, y, z); }
+//     void translate(const glm::vec3 &delta) { mT.pos += delta; }
 
-    void rotate(float radTheta, const glm::vec3 &axis)
-    {
-        mT.mRot = glm::normalize(mT.mRot * glm::angleAxis(radTheta, axis));
-    }
+//     void rotate(float radTheta, const glm::vec3 &axis)
+//     {
+//         mT.rot = glm::normalize(mT.rot * glm::angleAxis(radTheta, axis));
+//     }
 
-};
+// };
 

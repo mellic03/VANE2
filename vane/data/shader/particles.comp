@@ -1,38 +1,16 @@
 #version 450 core
 
 layout (
-    local_size_x = 8,
-    local_size_y = 8,
+    local_size_x = 32,
+    local_size_y = 1,
     local_size_z = 1
 ) in;
 
-
-#define OUTPUT_W 1024
-#define OUTPUT_H 1024
-layout (binding=0, rgba16f) readonly  uniform image2D un_input;
-layout (binding=1, rgba16f) writeonly uniform image2D un_output;
-
-#define PARTICLE_COUNT 1024
-
-layout (binding = 2, std430) readonly
-buffer SSBO_2 {
-    vec4 pos[PARTICLE_COUNT];
-} ssbo_in;
-
-layout (binding = 3, std430) writeonly
-buffer SSBO_3 {
-    vec4 pos[PARTICLE_COUNT];
-} ssbo_out;
-
+#include "storage_ssbo.glsl"
 
 void main()
 {
-    ivec2 texel = ivec2(gl_GlobalInvocationID.xy);
-    vec2  coord = vec2(texel) / vec2(OUTPUT_W, OUTPUT_H);
-    vec3  color = vec3(coord.x, coord.y, coord.x*coord.y);
-
-    vec3 color_in  = imageLoad(un_input, texel).rgb;
-    vec3 color_out = vec3(coord, 0.0);
-
-    imageStore(un_output, texel, vec4(color_out, 1.0));
+    uint idx = gl_GlobalInvocationID.x;
+    ssOut.pos[idx] = ssIn.pos[idx] + ssIn.vel[idx];
+    ssOut.vel[idx] = 0.99*ssIn.vel[idx];
 }

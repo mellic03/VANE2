@@ -8,18 +8,17 @@
 struct vane::gfxapi::Camera
 {
     friend class RenderEngine;
-public:
-    Camera();
-
-
 private:
+    FramebufferPtr mFramebuffer;
+
+    glm::mat4 mProj;
+    glm::mat4 mView;
     Transform mTransform;
 
-    struct {
-        float pos[4];
-        float rot[4];
-        float scale;
-    };
+public:
+    Camera(int w, int h);
+
+    Transform &getTransform() { return mTransform; }
 
 };
 

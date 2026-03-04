@@ -3,6 +3,7 @@
 #include <glm/glm.hpp>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/ext/matrix_clip_space.hpp>
+#include "libidk/idk_random.hpp"
 
 using namespace vane::gfxapi;
 
@@ -36,87 +37,53 @@ detail::RenderEngineBaseRaii::RenderEngineBaseRaii()
 
 
 
-struct UboCameraData
-{
-    glm::vec4 mouse;
-    glm::vec4 rgba = glm::vec4(0.5f);
-    glm::mat4 T;
-    glm::mat4 V;
-    glm::mat4 P;
-};
+static SsboGpuOnly *ssbos_[2];
+static void *camdata_ptr_ = nullptr;
+static glm::vec3 camdata_pos_ = glm::vec3(0.0f);
 
 
 RenderEngine::RenderEngine(const char *name, int width, int height)
 :   RenderEngineBaseRaii(),
     m_win(new Window(name, width, height)),
-    m_winprg("data/shader/quad.vert", "data/shader/quad.frag"),
-    m_compute("data/shader/particles.comp")
+    m_winprg("data/shader/screenquad.vert.spv", "data/shader/screenquad.frag.spv"),
+    m_compute("data/shader/particles.comp.spv")
 {
     m_compute_textures[0] = new Texture(1024, 1024, nullptr, TextureFormat::RGBA_F16);
     m_compute_textures[1] = new Texture(1024, 1024, nullptr, TextureFormat::RGBA_F16);
+
+
+    ssbos_[0] = new SsboGpuOnly("SSBO_2", sizeof(gl_storage::ssbo_particles_t));
+    ssbos_[1] = new SsboGpuOnly("SSBO_3", sizeof(gl_storage::ssbo_particles_t));
+
+    auto *tmp = new gl_storage::ssbo_particles_t;
+    for (int i=0; i<1024; i++)
+    {
+        idk::randvec3(0.0f, 1024.0f, &(tmp->pos[i][0]));
+        idk::randvec3(-1.0f, +1.0f, &(tmp->vel[i][0]));
+    }
+    ssbos_[0]->write(0, sizeof(gl_storage::ssbo_particles_t), tmp);
+    delete tmp;
 }
 
-static UboCameraData *camdata_ptr_ = nullptr;
-static glm::vec3 camdata_pos_ = glm::vec3(0.0f);
-
-struct ssbo_particles_t
-{
-    glm::vec4 pos[1024];
-    glm::vec4 vel[1024];
-};
-static ssbo_particles_t ssbo_particles_;
-
-#include "libidk/idk_random.hpp"
 
 void RenderEngine::onUpdate()
 {
-    static bool first = true;
-    static SsboGpuOnly *ssbos[2] = {
-        new SsboGpuOnly("SSBO_2", sizeof(ssbo_particles_t)),
-        new SsboGpuOnly("SSBO_3", sizeof(ssbo_particles_t))
-    };
-    if (first)
-    {
-        first = false;
-        for (int i=0; i<1024; i++)
-        {
-            idk::randvec3(0.0f, 1024.0f, &(ssbo_particles_.pos[i][0]));
-            idk::randvec3(-1.0f, +1.0f, &(ssbo_particles_.vel[i][0]));
-        }
-        ssbos[0]->write(0, sizeof(ssbo_particles_t), &ssbo_particles_);
-    }
-
-    static UboWrapperT<UboCameraData> ubo_camera_("ubo_CameraData");
-    static UboCameraData &camdata_ = ubo_camera_.get();
-    camdata_ptr_ = &camdata_;
-
     m_win->_makeCurrent();
 
     gl::UseProgram(m_compute.mId);
-    gl::BindImageTexture(0, m_compute_textures[0]->mId, 0, GL_FALSE, 0, GL_READ_ONLY, GL_RGBA16F);
-    gl::BindImageTexture(1, m_compute_textures[1]->mId, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA16F);
-    ssbos[0]->bindToProgramIndex(2);
-    ssbos[1]->bindToProgramIndex(3);
-    gl::DispatchCompute(1024/8, 1024/8, 1);
+    ssbos_[0]->bindToIndex(2);
+    ssbos_[1]->bindToIndex(3);
+    gl::DispatchCompute(gl_storage::SSBO_PARTICLE_COUNT/32, 1, 1);
 
     std::swap(m_compute_textures[0], m_compute_textures[1]);
-    std::swap(ssbos[0], ssbos[1]);
+    std::swap(ssbos_[0], ssbos_[1]);
     gl::MemoryBarrier(GL_ALL_BARRIER_BITS);
 
-    SDL_GetMouseState(&(camdata_.mouse.x), &(camdata_.mouse.y));
-    camdata_.mouse /= m_win->mSize;
-    camdata_.mouse.y = 1.0f - camdata_.mouse.y;
-    // camdata_.mouse += 
 
-    camdata_.T = glm::translate(glm::mat4(1.0f), camdata_pos_);
-    camdata_.V = glm::lookAt(glm::vec3(0.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-    camdata_.P = glm::perspective(glm::radians(80.0f), 1.0f, 0.001f, 100.0f);
-    ubo_camera_.sendToGpu();
-    ubo_camera_.bindToProgram(&m_winprg);
-
-    gl::UseProgram(m_winprg.mId); 
+    gl::BindFramebuffer(GL_FRAMEBUFFER, 0);
+    gl::UseProgram(m_winprg.mId);
     gl::BindTextureUnit(1, m_compute_textures[0]->mId);
-    
+
     gl::BindVertexArray(m_win->mVAO);
     gl::DrawArrays(GL_TRIANGLES, 0, 3);
 
@@ -155,8 +122,8 @@ void RenderEngine::onMsgRecv(vane::message msg, void *arg)
         case message::IO_KEYDOWN_EVENT:
             if (camdata_ptr_)
             {
-                if (e->key.key == SDLK_A)  camdata_ptr_->rgba.r *= 0.99f;
-                if (e->key.key == SDLK_D)  camdata_ptr_->rgba.r *= 1.01f;
+                // if (e->key.key == SDLK_A)  camdata_ptr_->rgba.r *= 0.99f;
+                // if (e->key.key == SDLK_D)  camdata_ptr_->rgba.r *= 1.01f;
 
                 if (e->key.key == SDLK_LEFT)  camdata_pos_.x -= 0.0025f;
                 if (e->key.key == SDLK_RIGHT) camdata_pos_.x += 0.0025f;
@@ -197,9 +164,11 @@ void RenderEngine::onCmdRecv(vane::command cmd, void *arg)
 
 
 
-
-
-
+Camera *RenderEngine::createCamera(int w, int h)
+{
+    m_cameras.push_back(new Camera(w, h));
+    return m_cameras.back();
+}
 
 FramebufferPtr RenderEngine::createFramebuffer()
 {
@@ -218,8 +187,36 @@ ComputeProgramPtr RenderEngine::createComputeProgram(const char *filepath)
 
 
 
+struct UboCameraWriter: public UboWrapperT<gl_storage::ubo_camera_t>
+{
+    using UboWrapperT::UboWrapperT;
+    static constexpr size_t BINDING_INDEX = 0;
+};
 
+void RenderEngine::drawToCamera(Camera &cam)
+{
+    static UboCameraWriter ubo_camera_("ubo_CameraData");
+    auto &camubo = ubo_camera_.get();
+    auto &tex = cam.mFramebuffer->mTexture;
 
+    SDL_GetMouseState(&(camubo.mouse.x), &(camubo.mouse.y));
+    camubo.mouse /= glm::vec4(tex->mWidth, tex->mHeight, 1.0f, 1.0f);
+    camubo.mouse.y = 1.0f - camubo.mouse.y;
+
+    camubo.T = cam.mTransform.to_mat4();
+    camubo.V = cam.mView;
+    camubo.P = cam.mProj;
+
+    gl::BindFramebuffer(GL_FRAMEBUFFER, cam.mFramebuffer->mId);
+    gl::UseProgram(m_winprg.mId);
+
+    ubo_camera_.sendToGpu();
+    ubo_camera_.bindToIndex(UboCameraWriter::BINDING_INDEX);
+
+    gl::BindVertexArray(m_win->mVAO);
+    gl::DrawArrays(GL_TRIANGLES, 0, 3);
+
+}
 
 void RenderEngine::drawToWindow(Window *win, RenderGraph &rg)
 {

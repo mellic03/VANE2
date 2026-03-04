@@ -5,6 +5,7 @@ using namespace vane::gfxapi;
 
 Texture::Texture(int w, int h, const void *data, TextureFormat fmt)
 :   GfxResource(0),
+    mWidth(w), mHeight(h),
     mTextureFormat(fmt)
 {
     GLenum internalformat = toUnderlyingType(mTextureFormat);
@@ -25,7 +26,9 @@ Texture::Texture(int w, int h, const void *data, TextureFormat fmt)
 
 
 Texture::Texture(Texture &&tex)
-:   GfxResource(tex.mId), mTextureFormat(tex.mTextureFormat)
+:   GfxResource(tex.mId),
+    mWidth(tex.mWidth), mHeight(tex.mHeight),
+    mTextureFormat(tex.mTextureFormat)
 {
 
 }

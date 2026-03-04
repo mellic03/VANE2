@@ -21,7 +21,6 @@ public:
 
 
 
-
 int main(int argc, char **argv)
 {
     using namespace vane;
@@ -36,10 +35,12 @@ int main(int argc, char **argv)
     auto *gfx  = plat.registerService<GfxApi>("Game Name", 1024, 1024);
     auto *io   = plat.registerService<IoApi>();
     auto *game = plat.registerService<GameService>();
-
-    (void)gfx;
+    
     (void)io;
     (void)game;
+
+    auto *cam = gfx->createCamera(512, 512);
+    (void)cam;
 
     GameObject player;
     player.addComponent<GraphicsComponent>();

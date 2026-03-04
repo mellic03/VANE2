@@ -48,10 +48,12 @@ public:
     virtual void onMsgRecv(vane::message, void*) final;
     virtual void onCmdRecv(vane::command, void*) final;
 
+    Camera *createCamera(int w, int h);
     FramebufferPtr createFramebuffer();
     RenderProgramPtr createRenderProgram(const char *vertpath, const char *fragpath);
     ComputeProgramPtr createComputeProgram(const char *filepath);
 
+    void drawToCamera(Camera&);
     void drawToWindow(Window*, RenderGraph&);
     void drawToFramebuffer(Framebuffer&, RenderGraph&);
     void _drawFramebuffer(Framebuffer&, RenderNode*);
@@ -71,6 +73,7 @@ private:
     Texture *m_compute_textures[2];
 
     std::vector<WindowPtr>          m_windows;
+    std::vector<Camera*>            m_cameras;
     std::vector<FramebufferPtr>     m_framebuffers;
     std::vector<TexturePtr>         m_textures;
     std::vector<RenderProgramPtr>   m_render_programs;

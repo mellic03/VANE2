@@ -1,4 +1,3 @@
-
 layout (std140, binding = 0)
 uniform ubo_CameraData {
     vec4 mouse;
@@ -7,4 +6,3 @@ uniform ubo_CameraData {
     mat4 V;
     mat4 P;
 } uboCameraData;
-

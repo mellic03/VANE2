@@ -6,6 +6,8 @@
 class vane::gfxapi::Texture: public GfxResource
 {
 public:
+    const int mWidth;
+    const int mHeight;
     TextureFormat mTextureFormat;
 
     Texture(int w, int h, const void *data, TextureFormat fmt=TextureFormat::RGBA_F16);

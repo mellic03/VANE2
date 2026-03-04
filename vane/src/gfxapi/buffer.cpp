@@ -20,16 +20,22 @@ UboGpuOnly::~UboGpuOnly()
     gl::DeleteBuffers(1, &mId);
 }
 
+void UboGpuOnly::write(size_t offset, size_t nbytes, const void *src)
+{
+    gl::NamedBufferSubData(mId, offset, nbytes, src);
+}
+
 void UboGpuOnly::bindToProgram(ShaderProgram *P)
 {
     GLint idx = gl::GetUniformBlockIndex(P->mId, mName);
     gl::BindBufferBase(GL_UNIFORM_BUFFER, idx, mId);
 }
 
-void UboGpuOnly::write(size_t offset, size_t nbytes, const void *src)
+void UboGpuOnly::bindToIndex(uint32_t idx)
 {
-    gl::NamedBufferSubData(mId, offset, nbytes, src);
+    gl::BindBufferBase(GL_UNIFORM_BUFFER, idx, mId);
 }
+
 
 
 
@@ -62,18 +68,23 @@ void UboGpuCpu::sendToGpu()
 
 
 
-SsboGpuOnly::SsboGpuOnly(const char *name, size_t size)
+SsboGpuOnly::SsboGpuOnly(const char *name, size_t size, const void *data)
 :   GfxResource(0),
     mName(name),
     mSize(size)
 {
     gl::CreateBuffers(1, &mId);
-    gl::NamedBufferData(mId, mSize, nullptr, GL_DYNAMIC_DRAW); 
+    gl::NamedBufferData(mId, mSize, data, GL_DYNAMIC_DRAW); 
 }
 
 SsboGpuOnly::~SsboGpuOnly()
 {
     gl::DeleteBuffers(1, &mId);
+}
+
+void SsboGpuOnly::write(size_t offset, size_t nbytes, const void *src)
+{
+    gl::NamedBufferSubData(mId, offset, nbytes, src);
 }
 
 void SsboGpuOnly::bindToProgram(ShaderProgram *P)
@@ -82,13 +93,8 @@ void SsboGpuOnly::bindToProgram(ShaderProgram *P)
     gl::BindBufferBase(GL_SHADER_STORAGE_BUFFER, idx, mId);
 }
 
-void SsboGpuOnly::bindToProgramIndex(uint32_t idx)
+void SsboGpuOnly::bindToIndex(uint32_t idx)
 {
-    // GLuint idx = gl::GetProgramResourceIndex(P->mId, GL_SHADER_STORAGE_BLOCK, mName);
     gl::BindBufferBase(GL_SHADER_STORAGE_BUFFER, idx, mId);
 }
 
-void SsboGpuOnly::write(size_t offset, size_t nbytes, const void *src)
-{
-    gl::NamedBufferSubData(mId, offset, nbytes, src);
-}
