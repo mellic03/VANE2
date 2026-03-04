@@ -28,9 +28,6 @@ int main(int argc, char **argv)
     (void)argc;
     (void)argv;
 
-    // ioapi::IoApi   io;
-    // gfxapi::GfxApi gfx;
-
     vane::Platform plat;
     auto *gfx  = plat.registerService<GfxApi>("Game Name", 1024, 1024);
     auto *io   = plat.registerService<IoApi>();
